@@ -1,6 +1,6 @@
 #Tareas realizadas
 
-Nada a destacar
+Nada a destacar, la mayoría fue realizado en el segundo trimestre [Home Slam segundo trimestre angular](https://github.com/Kuzafkto/home-slam-firebase)
 
 #Tareas a realizar
 
