@@ -1,0 +1,111 @@
+.page-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.dragAndDrop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  margin: 2%;
+}
+
+.players-list,
+.team-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  height: 100%;
+}
+
+ion-input {
+  font-size: 1.2rem;
+  margin-left: 2%;
+}
+
+.dragging {
+  opacity: 0.5;
+  border: 2px dashed #000;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+ion-button {
+  --background: #009a44;
+  --background-hover: #009a44;
+  --background-activated: #03ca5a;
+  --background-focused: #03ca5a;
+  --font-size: 2.5rem !important;
+}
+
+.submitButton {
+  font-size: 2rem;
+}
+
+.divider-line {
+  width: 5px;
+  height: 100vh;
+  background-color: #009a44;
+}
+
+.main-background {
+  background-color: #7e4d32;
+  color: #fff;
+}
+
+.rounde {
+  background-color: #fff;
+  color: #fff;
+  height: 5vh;
+  width: 4vw;
+  margin: 2%;
+  border-radius: 50px;
+}
+
+.custom-loading {
+  --ion-color-primary: #7e4d32;
+}
+
+ion-content {
+  --ion-background-color: #005625;
+}
+
+ion-icon {
+  --ion-background-color: #009a44;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* Reducir la altura */
+  max-width: 70%; /* Reducir el ancho */
+  margin: 0 auto;
+}
+
+ion-input {
+  font-size: 1rem; /* Reducir el tamaño de la fuente */
+  width: 100%; /* Ajustar el ancho */
+}

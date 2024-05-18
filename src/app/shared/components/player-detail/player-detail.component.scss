@@ -1,0 +1,52 @@
+ion-button{
+  --background: #009a44;
+  --background-hover: #009a44;
+  --background-activated: #03ca5a;
+  --background-focused: #03ca5a;
+  --font-size:2.5rem !important;
+//009a44
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column; // alinear horizontal, para vertical poner column
+  flex: 1; // ocupa toda la row
+  height: calc(100% - 100px); //altura=100%-50px para el boton y 50 para el label
+  overflow-y: auto;
+}
+.page-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+ion-input{
+  font-size: 2rem;
+  margin-left:2%;
+}
+ion-label{
+  font-size: 1.4rem !important;
+}
+ion-title{
+  font-size: 2.5rem;
+  text-align: center;
+}
+.submitButton{
+  font-size: 2rem;
+}
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 2%;
+  text-align: center;
+}

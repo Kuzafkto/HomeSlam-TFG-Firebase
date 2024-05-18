@@ -1,0 +1,55 @@
+.team-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-button {
+  margin: 2%;
+}
+
+.team-name {
+  font-size: 2.5rem;
+  font-family: 'titlesFont', sans-serif;
+  color: #009a44
+}
+
+h3 {
+  color: var(--ion-color-primary);
+}
+
+.ion-margin-start {
+  --margin-start: 10px;
+}
+
+.team-name-container {
+  width: 100%;
+  text-align: center;
+}
+
+.player-container {
+  display: inline-block; 
+  border-radius: 5%;
+  background-color: #7e4d32;
+  margin: 10px;
+  padding: 2%;
+  overflow: hidden;
+}
+
+ion-text.player-name {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  white-space: nowrap;//espacios en blanco no hagan wrap pls
+}
+
+.player-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  background-color: #009A44; 
+  margin: 5px;
+}

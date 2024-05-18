@@ -1,0 +1,39 @@
+    /*.player-avatar {
+        width: 100%;
+        height: 20%;
+        background-color: #ddd;
+        background-size: contain;
+        background-position: center;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }*/ //para implementar la imagen del jugador
+    
+
+      .player-name-container{
+        width: 100%;
+        text-align: center;
+      }
+    
+    .player-positions-row {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    .position-image {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        margin-right: 10px;
+      }
+
+.big-font {
+    font-size: 2.5rem;
+    font-family: 'titlesFont', sans-serif;
+    color:#7e4d32;
+  }
+.close-button-header{
+  margin: 3%;
+}

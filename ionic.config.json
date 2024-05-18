@@ -1,0 +1,7 @@
+{
+  "name": "home-slam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

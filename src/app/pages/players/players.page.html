@@ -1,0 +1,24 @@
+<ion-header>
+  <app-toolbar></app-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="main-background">
+  <ion-button fill="clear" aria-label="New User" (click)="onNewplayer()" class="round">
+    <ion-icon size="large"  slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+
+  <div class="users-panel">
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let player of (players.players$ | async); let i = index">
+        <app-player-info
+          appHighLight
+          [player]="player"
+          (onCardClicked)="onCardClicked(player)"
+          (onDeleteClicked)="onDeleteClicked(player)"
+          (onDeleteClicked)="onDeleteClicked(player)">
+        </app-player-info>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-loading [isOpen]="loading" class="custom-loading" message="Loading..."></ion-loading>
+</ion-content>

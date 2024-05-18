@@ -1,0 +1,20 @@
+.selected {
+    --background: #009a44;
+    --color: var(--ion-color-primary-contrast);
+    }
+    .not-selected{
+      --background: var(--ion-color-light);
+      --color: #009a44;
+    } 
+
+    ion-button{
+      font-size: 2rem;
+    }
+
+    .position-selector-container {
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }

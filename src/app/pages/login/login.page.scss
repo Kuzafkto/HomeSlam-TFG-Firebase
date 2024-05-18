@@ -1,0 +1,60 @@
+//esto es casi igual que el del profe pero tiene unos cambios en el titulo e imagen
+ion-content {
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .container {
+    min-height: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    ion-card {
+      box-shadow: none;
+      border: 1px solid var(--ion-color-medium);
+      border-radius: 8px;
+      width: auto;
+      min-height: 500px;
+      overflow-y: auto;
+      height: auto;
+      padding: 24px 20px 18px;
+      min-width: 350px;
+    }
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--ion-color-dark);
+  }
+  
+  .logo-thumbnail {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2%   ;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  //boton de no tengo cuenta con texto centrado
+.ion-text-center ion-button {
+  text-transform: none;
+  text-align: center;
+  font-size: 1rem;
+}
+
+  //cambia imagen de fondo
+  ion-content{
+    --min-height: 100vh;
+    //esto es de la posicion 0 en el eje X y 100 en el Y (lo pone en la esquina superior izquierda) el otro 100% es que se adapta al 100% de la altura 
+    --background: url('../../../assets/imgs/login-background.jpg') 0/100% 100% no-repeat; 
+    --background-repeat: no-repeat;
+    --background-size: cover;
+  }

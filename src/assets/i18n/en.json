@@ -1,0 +1,69 @@
+{
+    "about":{
+        "description":"Some crazy dude who loves baseball and board games"
+    },
+    "login":{
+        "user":"User",
+        "pwd":"Password",
+        "noAccount":"¿Wanna register?",
+        "submit":"Access",
+        "access":"Home Slam Access",
+        "pwdError":"Password has to be 12 characters longs at least",
+        "userError":"Name has to be 2 characters long at least"
+    },
+    "register":{
+        "email":"Email",
+        "name":"Name",
+        "surname":"Surname",
+        "nickname":"Nickname",
+        "pwd":"Password",
+        "confirm":"Confirm Password",
+        "login":"I have an account",
+        "submit":"Register",
+        "access":"Register in Home Slam",
+        "emailError":"Enter a valid format email address",
+        "nameError":"Enter your name (2 characters long minimum)" ,
+        "surnameError":"Enter your surname (2 characters long minimum)",
+        "passwordError":"Password has to be 12 characters longs at least",
+        "nickError":"Enter your nickname (2 characters long minimum)"
+    },
+    "header":{
+        "user":{
+            "profile":"My profile",
+            "signout":"signout"
+        },
+        "languages":{
+            "es":"Spanish",
+            "en":"English"
+        }
+    },
+    
+    "menu":{
+        "players":"Players",
+        "players-alt":"Go to Players",
+        "about":"About Kuza",
+        "about-alt":"More about Kuza",
+        "teams":"Teams",
+        "teams-alt":"Go to Teams"
+    },
+    "players":{
+        "new":"New Player",
+        "edit":"Edit Player",
+        "name":"Name",
+        "surname":"Surname",
+        "age":"Age: ",
+        "create":"Create",
+        "save":"Save",
+        "ageError":"Age has to be 18 minimum",
+        "title":"Players",
+        "submit":"Submit"
+    },
+    "teams":{
+        "new":"New Team",
+        "edit":"Edit Team",
+        "name":"Name: ",
+        "players":"Players",
+        "title":"Teams",
+        "submit":"Submit"
+    }
+}

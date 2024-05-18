@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">KuzaFkto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="about-container">
+    <img src="{{userUrl}}" alt="Descripción" class="about-image">
+    <ion-title class="about-title">KuzaFkto</ion-title>
+    <ion-label class="about-description">{{'about.description'|translate}}</ion-label>
+
+    <ion-row class="about-buttons">
+      <ion-col size="6" class="about-button-col">
+        <ion-button expand="full" (click)="openLink('https://github.com/kuzafkto')" class="about-button">
+          <ion-icon name="logo-github" slot="start"></ion-icon>
+          GitHub
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="6" class="about-button-col">
+        <ion-button expand="full" (click)="openLink('https://www.linkedin.com/in/marco-valente-2b5a3224a/')" class="about-button">
+          <ion-icon name="logo-linkedin" slot="start"></ion-icon>
+          LinkedIn
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="6" class="about-button-col">
+        <ion-button expand="full" (click)="openLink('https://twitter.com/KuzaFkto')" class="about-button">
+          <ion-icon name="logo-twitter" slot="start"></ion-icon>
+          Twitter (X)
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

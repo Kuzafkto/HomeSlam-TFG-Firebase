@@ -1,0 +1,70 @@
+{
+    "about":{
+        "description":"Un loquete aficionado al baseball y los juegos de mesa"
+    },
+    "login":{
+        "user":"Usuario",
+        "pwd":"Contraseña",
+        "noAccount":"¿Necesitas registrarte?",
+        "submit":"Acceder",
+        "access":"Acceder a Home Slam",
+        "pwdError":"La contraseña debe contener al menos 12 caracteres",
+        "userError":"El nombre debe tener al menos 2 caracteres"
+    },
+    "register":{
+        "email":"Email",
+        "name":"Nombre",
+        "surname":"Apellidos",
+        "nickname":"Apodo",
+        "pwd":"Contraseña",
+        "confirm":"Confirmar contraseña",
+        "login":"Tengo Cuenta",
+        "submit":"Registrar",
+        "access":"Registrarse en Home Slam",
+        "emailError":"Ingrese un correo electrónico válido",
+        "nameError":"Ingrese su nombre (minimo 2 caracteres)" ,
+        "surnameError":"Ingrese su apellido (minimo 2 caracteres)",
+        "passwordError":"La contraseña debe contener al menos 12 caracteres",
+        "nickError":"Ingrese un apodo (minimo 2 caracteres)"
+    },
+    "header":{
+        "user":{
+            "profile":"Mi perfil",
+            "signout":"Cerrar sesión"
+        },
+        "languages":{
+            "es":"Español",
+            "en":"Inglés"
+        }
+    },
+    
+    "menu":{
+        "players":"Jugadores",
+        "players-alt":"Ir a Jugadores",
+        "about":"Sobre Kuza",
+        "about-alt":"Saber mas sobre Kuza",
+        "teams":"Equipos",
+        "teams-alt":"Ir a Equipos"
+    },
+    "players":{
+        "new":"Jugador nuevo",
+        "edit":"Editar Jugador",
+        "name":"Nombre",
+        "surname":"Apellidos",
+        "age":"Edad: ",
+        "create":"Crear",
+        "save":"Guardar",
+        "ageError":"La edad debe ser al menos de 18 ",
+        "title":"Jugadores",
+        "submit":"Confirmar"
+
+    },
+    "teams":{
+        "new":"Equipo nuevo",
+        "edit":"Editar Jugador",
+        "name":"Nombre: ",
+        "players":"Jugadores",
+        "title":"Equipos",
+        "submit":"Confirmar"
+    }
+}

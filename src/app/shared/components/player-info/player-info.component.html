@@ -1,0 +1,49 @@
+<div>
+  <ion-card appHighLight button (click)="onCardClick()">
+    <div class="close-button-header">
+      <ion-button
+        *ngIf="showDeleteButton"
+        fill="clear"
+        aria-label="Delete"
+        (click)="onDeleteClick($event)"
+      >
+        <ion-icon
+          slot="icon-only"
+          color="primary"
+          name="trash"
+          aria-hidden="true"
+        ></ion-icon>
+      </ion-button>
+    </div>
+    <div class="card-container">
+      <div class="player-name-container">
+        <ion-text color="medium" class="player-name big-font">
+          {{ player?.name | name : 15 }}
+        </ion-text>
+      </div>
+      <div class="player-name-container">
+        <ion-text color="medium" class="player-name big-font">
+          {{ player?.surname | name : 20 }}
+        </ion-text>
+      </div>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>
+            <ion-text color="medium"
+              >{{ "players.age" | translate }}{{ player?.age }}</ion-text
+            >
+          </ion-label>
+        </ion-item>
+        <div class="player-positions">
+          <div class="player-positions-row">
+            <ng-container *ngFor="let position of player?.positions">
+              <!-- Usas aca positionImage -->
+              <div class="position-image" positionImage [positionName]="position"></div>
+            </ng-container>
+          </div>
+        </div>
+      </ion-card-content>
+    </div>
+  </ion-card>
+</div>

@@ -1,0 +1,27 @@
+<ion-header>
+</ion-header>
+<ion-content [fullscreen]="true" class="home-content">
+    <ion-buttons class="home-buttons" slot="fixed">
+      <div class="button-container">
+        <ion-label class="button-label">{{'menu.players'|translate}}</ion-label>
+        <ion-button fill="clear" (click)="goToPlayers()" class="rounded-button">
+          <img src="../../../assets/imgs/players.logo.png" alt="Players" title="Ir a jugadores">
+        </ion-button>
+      </div>
+  
+      <div class="button-container">
+        <ion-label class="button-label">{{'menu.about'|translate}}</ion-label>
+        <ion-button fill="clear" (click)="goToAbout()" class="rounded-button">
+          <img src="{{this.userUrl}}" alt="About" title="Acerca de">
+        </ion-button>
+      </div>
+  
+      <div class="button-container">
+        <ion-label class="button-label">{{'menu.teams'|translate}}</ion-label>
+        <ion-button fill="clear" (click)="goToTeams()" class="rounded-button">
+          <img src="../../../assets/imgs/teams.logo.png" alt="Teams" title="Ir a equipos">
+        </ion-button>
+      </div>
+    </ion-buttons>
+  </ion-content>
+  

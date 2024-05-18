@@ -1,0 +1,58 @@
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.home-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 2%;
+
+}
+
+.rounded-button {
+  width: 100%;
+  height:100%;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 0 2%; //2% de margin arriba y abajo
+
+}
+
+.rounded-button img {
+  width: 300px; //manten la imagen pq sino se te va todo despoporcionado 
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #fff;
+}
+ion-content{
+  --ion-background-color:#005625;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2%
+}
+
+.button-label {
+  font-size: 1rem;
+  margin-bottom: 5px; //mini separacion 
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .rounded-button img {
+    width: 100px; 
+    height: 100px;
+  }
+  .rounded-button {
+    width: 100%;
+    height: 50%;
+  }
+}

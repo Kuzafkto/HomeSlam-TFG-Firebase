@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <div class="logo">
+          <ion-thumbnail class="logo-thumbnail">
+            <img alt="logo of home slam" src="../../../assets/imgs/homeslam.logo.png" />
+          </ion-thumbnail>
+          <ion-text class="logo-text">{{'register.access'|translate}}</ion-text>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-center">
+          <ion-button fill="clear" (click)="goToLoginPage()">
+            {{ 'register.login'|translate }}
+          </ion-button>
+        </div>
+        <app-register-form (onsubmit)="onRegister($event)"></app-register-form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

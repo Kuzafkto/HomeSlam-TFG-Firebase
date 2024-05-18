@@ -1,0 +1,24 @@
+.main-background {
+    background-color: #7e4d32;
+    color: #fff;
+  }
+  
+  .round {
+    background-color: #fff;
+    color: #fff;
+    height: 5vh;
+    width: 4vw;
+    margin:2%;
+    border-radius: 50px;
+  }
+  
+  .custom-loading {
+    --ion-color-primary: #7e4d32;
+  }
+  ion-content{
+    --ion-background-color:#005625;
+}
+ion-icon{
+    --ion-background-color:#009a44;
+}
+//009a44

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" fill="clear" (click)="onCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'teams.title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-container">
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+      <div class="input-container">
+        <ion-item>
+          <ion-label position="floating">{{ 'teams.name' | translate }}</ion-label>
+          <ion-input formControlName="name" type="text"></ion-input>
+        </ion-item>
+      </div>
+    </form>
+
+    <div class="dragAndDrop">
+      <div cdkDropList #availablePlayersList="cdkDropList" [cdkDropListData]="availablePlayersArray"
+        [cdkDropListConnectedTo]="[currentTeamList]" id="availablePlayersList" class="players-list"
+        (cdkDropListDropped)="drop($event)">
+        <ion-row>
+          <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of availablePlayers; let i = index"
+            cdkDrag>
+            <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <div cdkDropList #currentTeamList="cdkDropList" [cdkDropListData]="currentTeamPlayersArray"
+        [cdkDropListConnectedTo]="[availablePlayersList]" class="team-list" id="currentTeamList"
+        (cdkDropListDropped)="drop($event)">
+        <ion-row>
+          <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of currentTeamPlayers; let i = index"
+            cdkDrag>
+            <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-button type="submit" [disabled]="!form.valid || !isFormDirty" class="submitButton" expand="full"
+    (click)="onSubmit()">{{ 'teams.submit' | translate }}</ion-button>
+</ion-footer>
