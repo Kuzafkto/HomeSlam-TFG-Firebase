@@ -1,44 +1,32 @@
-
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button color="primary" fill="clear" (click)="onCancel()">
-          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>
-        {{'players.title'|translate}}
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" fill="clear" (click)="onCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{'players.title'|translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content class="ion-padding">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
-      <ion-item>
-        <ion-label position="floating">{{'players.name'|translate}}</ion-label>
-        <ion-input formControlName="name" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">{{'players.surname'|translate}}</ion-label>
-        <ion-input formControlName="surname" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">{{'players.age'|translate}}</ion-label>
-        <ion-input formControlName="age" type="number"></ion-input>
-      </ion-item>
-      
-      <app-position-selector formControlName="positions" [inputPositions]="this.selectedPositions"
-      (positionsChange)="updateSelected($event)"></app-position-selector>
-    </form>
-  </ion-content>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+    <ion-item>
+      <app-picture-selectable formControlName="imageUrl"></app-picture-selectable>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'players.name'|translate}}</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
 
+    <app-position-selector formControlName="positions" [inputPositions]="this.selectedPositions"
+    (positionsChange)="updateSelected($event)"></app-position-selector>
+  </form>
+</ion-content>
 
-  <ion-footer>
-    <!--aca se usa el isFormDirty que habíamos declarado antes para chequear si el form es valido o no-->
-    <ion-button  type="submit" [disabled]="!form.valid || !isFormDirty" class="submitButton" expand="full" (click)="onSubmit()">{{'players.submit'|translate}}</ion-button>
-  </ion-footer>
-  <!--[disabled]="!form.valid || !isFormDirty"-->
-
-  <div *ngIf="form.get('age')?.invalid && form.get('age')?.touched" class="error-message">
-    {{'players.ageError'|translate}}
-  </div>
+<ion-footer>
+  <!--aca se usa el isFormDirty que habíamos declarado antes para chequear si el form es valido o no-->
+  <ion-button type="submit" [disabled]="!form.valid || !isFormDirty" class="submitButton" expand="full" (click)="onSubmit()">{{'players.submit'|translate}}</ion-button>
+</ion-footer>

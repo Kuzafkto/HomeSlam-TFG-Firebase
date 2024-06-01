@@ -14,15 +14,10 @@ export class PlayerInfoComponent implements OnInit {
   @Output() onDeleteClicked: EventEmitter<void> = new EventEmitter<void>();
   @Input() showDeleteButton: boolean = true;
 
-  url: any;
+  constructor(private apisvc: ApiService) { }
 
-  ngOnInit() {
-    this.apisvc.get(`/upload/files/?name=catcher`).subscribe(result => {
-      this.url = result[0].formats.thumbnail.url;
-    });
-  }
+  ngOnInit() { }
 
-  ur2: number[] | undefined = this.player?.positions;
   onCardClick() {
     this.onCardClicked.emit();
   }
@@ -31,11 +26,10 @@ export class PlayerInfoComponent implements OnInit {
     this.onDeleteClicked.emit();
     event.stopPropagation();
   }
-  constructor(
-    private apisvc: ApiService
-  ) { }
 
-
+  getPositionImageUrl(positionId: number): string {
+    // Aquí puedes devolver la URL de la imagen basada en el ID de la posición.
+    // De momento, usaremos una imagen genérica.
+    return `/assets/positions/${positionId}.png`;
+  }
 }
-
-

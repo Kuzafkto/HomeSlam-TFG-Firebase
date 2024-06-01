@@ -51,7 +51,6 @@
         "edit":"Edit Player",
         "name":"Name",
         "surname":"Surname",
-        "age":"Age: ",
         "create":"Create",
         "save":"Save",
         "ageError":"Age has to be 18 minimum",

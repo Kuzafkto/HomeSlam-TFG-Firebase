@@ -5,7 +5,6 @@ import { Player } from "./player";
 export interface User {
     id?:number,
     name:string,
-    surname:string,
     nickname?:string
     picture?:Media|null,
     uuid?:string,

@@ -1,6 +1,6 @@
 .page-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: calc(100% - 100px);
+  height: calc(100% - 20px);
   overflow-y: auto;
 }
 
@@ -17,8 +17,28 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  max-width: 50%;
+  max-width: 70%; /* Reducido para que ocupe menos ancho */
   margin: 0 auto;
+}
+
+ion-input,
+ion-textarea {
+  font-size: 1.2rem;
+  margin-left: 2%;
+  width: 100%; /* Asegura que ocupen el ancho completo del contenedor */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
 }
 
 .dragAndDrop {
@@ -35,12 +55,7 @@
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-  height: 100%;
-}
-
-ion-input {
-  font-size: 1.2rem;
-  margin-left: 2%;
+  max-height: 300px; /* Limita la altura y permite el desplazamiento */
 }
 
 .dragging {
@@ -96,16 +111,16 @@ ion-content {
 ion-icon {
   --ion-background-color: #009a44;
 }
-.input-container {
+
+.story-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px; /* Reducir la altura */
-  max-width: 70%; /* Reducir el ancho */
-  margin: 0 auto;
+  max-width: 70%;
+  margin: 20px auto;
 }
 
-ion-input {
-  font-size: 1rem; /* Reducir el tamaño de la fuente */
-  width: 100%; /* Ajustar el ancho */
+.story-container ion-textarea {
+  width: 100%;
+  font-size: 1.2rem;
 }

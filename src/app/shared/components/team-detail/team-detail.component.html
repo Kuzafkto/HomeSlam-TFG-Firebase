@@ -20,33 +20,42 @@
           <ion-input formControlName="name" type="text"></ion-input>
         </ion-item>
       </div>
+
+      <app-picture-selectable formControlName="imageUrl"></app-picture-selectable>
+
+      <div class="dragAndDrop">
+        <div cdkDropList #availablePlayersList="cdkDropList" [cdkDropListData]="availablePlayersArray"
+          [cdkDropListConnectedTo]="[currentTeamList]" id="availablePlayersList" class="players-list"
+          (cdkDropListDropped)="drop($event)">
+          <ion-row>
+            <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of availablePlayers; let i = index"
+              cdkDrag>
+              <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <div cdkDropList #currentTeamList="cdkDropList" [cdkDropListData]="currentTeamPlayersArray"
+          [cdkDropListConnectedTo]="[availablePlayersList]" class="team-list" id="currentTeamList"
+          (cdkDropListDropped)="drop($event)">
+          <ion-row>
+            <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of currentTeamPlayers; let i = index"
+              cdkDrag>
+              <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <div class="story-container">
+        <ion-item>
+          <ion-label position="floating">{{ 'teams.story' | translate }}</ion-label>
+          <ion-textarea formControlName="story"></ion-textarea>
+        </ion-item>
+      </div>
     </form>
-
-    <div class="dragAndDrop">
-      <div cdkDropList #availablePlayersList="cdkDropList" [cdkDropListData]="availablePlayersArray"
-        [cdkDropListConnectedTo]="[currentTeamList]" id="availablePlayersList" class="players-list"
-        (cdkDropListDropped)="drop($event)">
-        <ion-row>
-          <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of availablePlayers; let i = index"
-            cdkDrag>
-            <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
-          </ion-col>
-        </ion-row>
-      </div>
-
-      <div class="divider-line"></div>
-
-      <div cdkDropList #currentTeamList="cdkDropList" [cdkDropListData]="currentTeamPlayersArray"
-        [cdkDropListConnectedTo]="[availablePlayersList]" class="team-list" id="currentTeamList"
-        (cdkDropListDropped)="drop($event)">
-        <ion-row>
-          <ion-col size="12" size-md="10" size-lg="6" size-xl="4" *ngFor="let player of currentTeamPlayers; let i = index"
-            cdkDrag>
-            <app-player-info [showDeleteButton]="false" class="player-card" [player]="player"></app-player-info>
-          </ion-col>
-        </ion-row>
-      </div>
-    </div>
   </div>
 </ion-content>
 

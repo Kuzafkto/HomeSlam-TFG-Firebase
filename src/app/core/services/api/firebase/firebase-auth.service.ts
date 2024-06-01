@@ -80,7 +80,6 @@ export class FirebaseAuthService extends AuthService{
     if(info.uuid)
       return from(this.firebaseSvc.createDocumentWithId('users',{
     name:info.name,
-    surname:info.surname,
     nickname:info.nickname,
     players:[],
     teams:[],
@@ -94,7 +93,6 @@ export class FirebaseAuthService extends AuthService{
       return from(this.firebaseSvc.getDocument('users', this.firebaseSvc.user.uid)).pipe(map(data=>{
         return {
           name:data.data['name'],
-          surname:data.data['surname'],
           nickname:data.data['nickname'],
           players:data.data['players'],
           teams:data.data['teams'],

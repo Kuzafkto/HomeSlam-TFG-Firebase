@@ -51,7 +51,6 @@
         "edit":"Editar Jugador",
         "name":"Nombre",
         "surname":"Apellidos",
-        "age":"Edad: ",
         "create":"Crear",
         "save":"Guardar",
         "ageError":"La edad debe ser al menos de 18 ",

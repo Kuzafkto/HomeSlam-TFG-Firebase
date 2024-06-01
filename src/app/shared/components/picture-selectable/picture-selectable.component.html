@@ -1,0 +1,22 @@
+<input type="file" #fileLoader accept="image/png, image/gif, image/jpeg" hidden>
+<div class="user-picture" id="picture">
+  <ng-container *ngIf="hasValue">
+    <ion-img id="open-modal" [src]="picture$ | async"></ion-img>
+    <ion-button *ngIf="!isDisabled"
+      style="position:absolute;top:0;right:0;--background:rgba(var(--ion-color-primary-rgb), 0.7);"
+      expand="full" (click)="onChangePicture($event, fileLoader)">
+        <ion-icon slot="icon-only" name="image"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="!isDisabled"
+      style="position:absolute;top:40px;right:0;--background:rgba(var(--ion-color-danger-rgb), 0.7);"
+      expand="full" (click)="onDeletePicture($event)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+  </ng-container>
+  
+  <ion-button color="medium" *ngIf="!isDisabled && !hasValue"
+  style="height:100%;width:100%"
+  expand="full" fill="clear" (click)="onChangePicture($event, fileLoader)">
+    <ion-icon name="image" style="width:50vw;height:50vh"></ion-icon>
+  </ion-button>
+</div>

@@ -27,7 +27,6 @@ export class UsersService {
   public addUser(user: User): Observable<any> {
       return from(this.firebaseSvc.createDocument("users", {
         name: user.name,
-        surname: user.surname,
         nickname: user.nickname
       }));
     

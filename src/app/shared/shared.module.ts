@@ -17,6 +17,7 @@ import { PositionImageDirective } from './directives/position-image.directive';
 import {TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from '../core/services/custom-translate.service';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
+import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 
 
 
@@ -26,6 +27,7 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
     //Directifes
     //Pipes
     //Components
+    PictureSelectableComponent,
     PlayerDetailComponent,
     LoginFormComponent,
     PlayerInfoComponent,
@@ -62,6 +64,7 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
     //Directifes
     //Pipes
     //Components
+    PictureSelectableComponent,
     PlayerDetailComponent,
     AppToolbarComponent,
     LoginFormComponent,

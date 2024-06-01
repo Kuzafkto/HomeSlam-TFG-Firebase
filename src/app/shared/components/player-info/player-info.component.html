@@ -1,49 +1,19 @@
-<div>
-  <ion-card appHighLight button (click)="onCardClick()">
-    <div class="close-button-header">
-      <ion-button
-        *ngIf="showDeleteButton"
-        fill="clear"
-        aria-label="Delete"
-        (click)="onDeleteClick($event)"
-      >
-        <ion-icon
-          slot="icon-only"
-          color="primary"
-          name="trash"
-          aria-hidden="true"
-        ></ion-icon>
-      </ion-button>
+<div class="player-card" (click)="onCardClick()">
+  <div class="player-avatar" *ngIf="player?.imageUrl">
+    <img [src]="player?.imageUrl" alt="{{ player?.name }}" />
+  </div>
+  <div class="player-name-container">
+    <div class="big-font">{{ player?.name }}</div>
+  </div>
+  <div class="player-positions">
+    <div class="player-positions-row">
+      <ng-container *ngFor="let position of player?.positions">
+        <!-- Usas aca positionImage -->
+        <div class="position-image" positionImage [positionName]="position"></div>
+      </ng-container>
     </div>
-    <div class="card-container">
-      <div class="player-name-container">
-        <ion-text color="medium" class="player-name big-font">
-          {{ player?.name | name : 15 }}
-        </ion-text>
-      </div>
-      <div class="player-name-container">
-        <ion-text color="medium" class="player-name big-font">
-          {{ player?.surname | name : 20 }}
-        </ion-text>
-      </div>
-
-      <ion-card-content>
-        <ion-item>
-          <ion-label>
-            <ion-text color="medium"
-              >{{ "players.age" | translate }}{{ player?.age }}</ion-text
-            >
-          </ion-label>
-        </ion-item>
-        <div class="player-positions">
-          <div class="player-positions-row">
-            <ng-container *ngFor="let position of player?.positions">
-              <!-- Usas aca positionImage -->
-              <div class="position-image" positionImage [positionName]="position"></div>
-            </ng-container>
-          </div>
-        </div>
-      </ion-card-content>
-    </div>
-  </ion-card>
+  </div>
+  <ion-button *ngIf="showDeleteButton" class="delete-button" fill="clear" color="danger" (click)="onDeleteClick($event)">
+    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+  </ion-button>
 </div>

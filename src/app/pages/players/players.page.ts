@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Haptics } from '@capacitor/haptics';
 import { ModalController, ToastController, ToastOptions } from '@ionic/angular';
+import { dataURLtoBlob } from 'src/app/core/helpers/blob';
 import { Player } from 'src/app/core/interfaces/player';
 import { AuthService } from 'src/app/core/services/api/auth.service';
+import { MediaService } from 'src/app/core/services/api/media.service';
 import { PlayersService } from 'src/app/core/services/api/player.service';
 import { PlayerDetailComponent } from 'src/app/shared/components/player-detail/player-detail.component';
 
@@ -20,6 +22,8 @@ export class PlayersPage implements OnInit {
     private toast:ToastController,
     public players:PlayersService,
     private modal:ModalController,
+    private media:MediaService
+
   ) {
   }
 
@@ -101,21 +105,36 @@ export class PlayersPage implements OnInit {
   }
 
   
-  async presentForm(data:Player|null, onDismiss:(result:any)=>void){
-    
+  async presentForm(data: any | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
-      component:PlayerDetailComponent,
-      componentProps:{
-        player:data
+      component: PlayerDetailComponent,
+      componentProps: {
+        player: data
       },
-      cssClass:"fullModal"
+      cssClass: "fullModal"
     });
-    modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        onDismiss(result);
+    await modal.present();
+    const result = await modal.onDidDismiss();
+    
+    if (result && result.data) {
+      if (result.data.imageUrl) {
+        // Si hay una nueva imagen, cargarla primero
+        dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
+          this.media.upload(blob).subscribe((media: number[]) => {
+            result.data.imageUrl = media[0];
+            result.data.imageUrl = result.data.imageUrl.url_medium;
+            onDismiss(result);
+          });
+        });
+      } else {
+        result.data.imageUrl = data?.imageUrl || "";
+        this.players.updatePlayer(result.data).subscribe(() => {
+          onDismiss(result);
+        });
       }
-    });
+    } else {
+      onDismiss(result);
+    }
   }
 
   onNewplayer(){

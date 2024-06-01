@@ -52,8 +52,10 @@ export class TeamService {
               uuid: doc.id,
               id: doc.data['id'],
               name: doc.data['name'],
-              players: teamPlayers, // Asignación directa del arreglo teamPlayers
-              trainers: doc.data['trainers'].map((trainer: { uuid: any; }) => ({ uuid: trainer.uuid }))
+              players: teamPlayers,
+              trainers: doc.data['trainers'].map((trainer: { uuid: any; }) => ({ uuid: trainer.uuid })),
+              story: doc.data['story'],
+              imageUrl: doc.data['imageUrl']
             };
             return payload;
           })
@@ -130,13 +132,12 @@ export class TeamService {
   public addTeam(team: Team): Observable<Team> {
     return from(this.firebaseSvc.createDocument("teams", team)).pipe(
       switchMap((createdDocId: string) => {
-        // Obtener el usuario actual
+        // obtener el usuario actual
         return this.firebaseAuth.me().pipe(
           switchMap((user: User) => {
             if (user && user.uuid) {
-              // Agregar el UUID del equipo al array de equipos del usuario
               user.teams.push(createdDocId);
-              // Actualizar el documento del usuario con el nuevo array de equipos
+              // actualizar el doc
               return from(this.firebaseSvc.updateDocumentField("users", user.uuid, "teams", user.teams)).pipe(
                 switchMap(() => {
                   // Obtener los UUID de los jugadores del equipo
@@ -146,9 +147,9 @@ export class TeamService {
                       playerUUIDs.push(player.uuid);
                     }
                   });
-                  // Actualizar el campo 'players' del documento del equipo con los UUID de los jugadores
+                  // actualizar el campo 'players' del documento del equipo con los UUID de los jugadores
                   return from(this.firebaseSvc.updateDocumentField("teams", createdDocId, "players", playerUUIDs)).pipe(
-                    map(() => team) // Devolver el equipo creado después de la actualización
+                    map(() => team) // devolver el equipo creado después de la actualización
                   );
                 })
               );
@@ -192,8 +193,11 @@ export class TeamService {
       } else {
         obs.error(new Error("Team does not have UUID"));
       }
-      if(team.uuid)
-      this.firebaseSvc.updateDocumentField("teams",team.uuid,"name",team.name)
+      if(team.uuid){
+        this.firebaseSvc.updateDocumentField("teams",team.uuid,"name",team.name);
+        this.firebaseSvc.updateDocumentField("teams",team.uuid,"story",team.story);
+        this.firebaseSvc.updateDocumentField("teams",team.uuid,"imageUrl",team.imageUrl);
+      }
       else
         obs.error(new Error("Team does not have UUID"));
     });

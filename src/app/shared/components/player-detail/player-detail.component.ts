@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Player, Position } from 'src/app/core/interfaces/player';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -17,18 +18,16 @@ export class PlayerDetailComponent implements OnInit {
   selectedPositions = new Set<number>();
   initialSelectedPositions = new Set<number>();
   name: string = "";
-  surname: string = "";
-  age: number = 18;
   uuid:string="";
   @Input() set player(_player: Player | null) {
     if (_player) {
       this.mode = 'Edit';
-      this.form.controls['id'].setValue(_player.id);
       this.form.controls['name'].setValue(_player.name);
-      this.form.controls['surname'].setValue(_player.surname);
-      this.form.controls['age'].setValue(_player.age);
-      if(_player.uuid){
-        this.uuid=_player.uuid;
+      if (_player.imageUrl) {
+        this.form.controls['imageUrl'].setValue(_player.imageUrl);
+      }
+      if (_player.uuid) {
+        this.uuid = _player.uuid;
       }
       this.selectedPositions.clear();
       _player.positions.forEach(position => {
@@ -38,6 +37,7 @@ export class PlayerDetailComponent implements OnInit {
       this.initialSelectedPositions = new Set(this.selectedPositions);
     }
   }
+  
 
 
   //Array con todas las posiciones para mostrar en el template
@@ -77,22 +77,21 @@ export class PlayerDetailComponent implements OnInit {
 
   constructor(
     private _modal: ModalController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private firebaseService: FirebaseService // Asegúrate de inyectar tu servicio de Firebase
+
   ) {
     this.form = this.formBuilder.group({
       id: [null],
       name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      age: [18, [Validators.required, Validators.min(18)]],
-      positions: this.formBuilder.array([])
+      positions: this.formBuilder.array([]),
+      imageUrl: [''] 
     });
-
   }
+  
 
   ngOnInit() {
     this.name = this.form.get('name')?.value;
-    this.surname = this.form.get('surname')?.value;
-    this.age = this.form.get('age')?.value;
   }
 
   onCancel() {
@@ -122,7 +121,7 @@ export class PlayerDetailComponent implements OnInit {
 
   //chequea si el formulario esta sucio, es necesario esta funcion porque el .dirty por defecto no tiene en cuenta los formArray por lo que chequearemos si los sets de las posiciones iniciales y las "cambiadas" son los mismos
   get isFormDirty(): boolean {
-    return (this.form.get('name')?.value != this.name || this.form.get('surname')?.value != this.surname || this.form.get('age')?.value != this.age) || !this.areSetsEqual(this.selectedPositions, this.initialSelectedPositions);
+    return (this.form.get('name')?.value != this.name || !this.areSetsEqual(this.selectedPositions, this.initialSelectedPositions));
   }
 
 
@@ -140,7 +139,14 @@ export class PlayerDetailComponent implements OnInit {
     //en caso de que no haya devuelto false, entonces son iguales y devuelve true
     return true;
   }
-
+  onImageChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.firebaseService.imageUpload(file).then((url: string) => {
+        this.form.controls['imageUrl'].setValue(url);
+      });
+    }
+  }
 }
 
 

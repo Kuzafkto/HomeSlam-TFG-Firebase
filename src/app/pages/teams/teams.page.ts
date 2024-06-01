@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Haptics } from '@capacitor/haptics';
 import { ModalController, ToastController, ToastOptions } from '@ionic/angular';
+import { dataURLtoBlob } from 'src/app/core/helpers/blob';
 import { Team } from 'src/app/core/interfaces/team';
+import { MediaService } from 'src/app/core/services/api/media.service';
 import { TeamService } from 'src/app/core/services/api/team.service';
 import { TeamDetailComponent } from 'src/app/shared/components/team-detail/team-detail.component';
 
@@ -18,7 +20,8 @@ export class TeamsPage implements OnInit {
   constructor(
     public teams:TeamService,
     private toast:ToastController,
-    private modal:ModalController
+    private modal:ModalController,
+    private media:MediaService
   ) { }
 
   ngOnInit() {
@@ -125,20 +128,36 @@ export class TeamsPage implements OnInit {
       });
   }
 
-  async presentForm(data:any|null, onDismiss:(result:any)=>void){
-    
+  async presentForm(data: any | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
-      component:TeamDetailComponent,
-      componentProps:{
-        team:data
+      component: TeamDetailComponent,
+      componentProps: {
+        team: data
       },
-      cssClass:"fullModal"
+      cssClass: "fullModal"
     });
-    modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        onDismiss(result);
+    await modal.present();
+    const result = await modal.onDidDismiss();
+    
+    if (result && result.data) {
+      if (result.data.imageUrl) {
+        // Si hay una nueva imagen, cargarla primero
+        dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
+          this.media.upload(blob).subscribe((media: number[]) => {
+            result.data.imageUrl = media[0];
+            result.data.imageUrl = result.data.imageUrl.url_medium;
+            onDismiss(result);
+          });
+        });
+      } else {
+        result.data.imageUrl = data?.imageUrl || "";
+        this.teams.updateTeam(result.data).subscribe(() => {
+          onDismiss(result);
+        });
       }
-    });
+    } else {
+      onDismiss(result);
+    }
   }
+  
 }

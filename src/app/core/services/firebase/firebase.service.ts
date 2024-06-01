@@ -55,9 +55,8 @@ export class FirebaseService {
           this._isLogged.next(true);
           //todos los subscribetocollection aqui
           console.log(user.uid,"yyyyyyyyy",user.email);
-          this.subscribeToUserPlayers( user.uid, this._players, (el: any) => el)
-          this.subscribeToUserTeams(user.uid, this._teams, (el: any) => el,this._players);
-
+          this.subscribeToPlayers(this._players, (el: any) => el);
+          this.subscribeToTeams(this._teams, (el: any) => el, this._players);
         }
       } else {
         this._isLogged.next(false);
@@ -342,115 +341,73 @@ export class FirebaseService {
     });
   }
 
-  public async subscribeToUserPlayers(userId: string, subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
-
-    if (!this._db) {
-        return null;
-    }
-
-    try {
-        const docRef = doc(this._db!, "users", userId);
-        const unsubscribeUser = onSnapshot(docRef, async (doc) => {
-            if (doc.exists()) {
-                // jugadores del usuario
-                const userPlayers = doc.get("players") || [];
-                //jugadores que pertenecen al usuario
-                const playerQuery = query(collection(this._db, 'players'), where('__name__', 'in', userPlayers));
-
-                //cambios en la consulta de jugadores
-                const unsubscribePlayers = onSnapshot(playerQuery, async (snapshot) => {
-                    try {
-                        //  datos de los jugadores y meterles  el uid
-                        const players = snapshot.docs.map(doc => {
-                            const playerData = mapFunction(doc.data());
-                            playerData.uuid = doc.id;
-                            return playerData;
-                        });
-                        // actualizar behaviour
-                        subject.next(players);
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
-                }, (error) => {
-                    console.error('Error in onSnapshot:', error);
-                });
-
-                return () => {
-                    unsubscribeUser();
-                    unsubscribePlayers();
-                };
-            } else {
-                console.log('El documento de usuario no existe');
-                return null;
-            }
-        });
-
-        return unsubscribeUser;
-    } catch (error) {
-        console.error('Error:', error);
-        return null;
-    }
-}
-
-
-public async subscribeToUserTeams(userId: string, subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any, playersSubject: BehaviorSubject<any[]>): Promise<Unsubscribe | null> {
+  public async subscribeToPlayers(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
   if (!this._db) {
     return null;
   }
 
   try {
-    const docRef = doc(this._db!, "users", userId);
-    const unsubscribeUser = onSnapshot(docRef, async (doc) => {
-      if (doc.exists()) {
-        const userTeams = doc.get("teams") || [];
-        // query 
-        const teamQuery = query(collection(this._db, 'teams'), where('__name__', 'in', userTeams));
-
-        //suscribirse a los cambios en los equipos 
-        const unsubscribeTeams = onSnapshot(teamQuery, async (snapshot) => {
-          try {
-            // mapear documentos de equipos a obejtos de equipos
-            const teams = snapshot.docs.map(doc => {
-              // mapeo a los datos del equipo
-              const teamData = mapFunction(doc.data());
-              // id del documento como el campo "uuid"
-              teamData.uuid = doc.id;
-              return teamData;
-            });
-            console.log('Teams:', teams);
-            // obtener jugadores del usuario
-            playersSubject.pipe(take(1)).subscribe(players => {
-              // para cada equipo, filtrar los jugadores del equipo con los jugadores del usuario
-              teams.forEach(team => {
-                const teamPlayers = players.filter(player => team.players.includes(player.uuid));
-                team.players = teamPlayers;
-              });
-              console.log('equipos:', teams);
-              
-              subject.next(teams);
-            });
-
-          } catch (error) {
-            console.error('error:', error);
-          }
-        }, (error) => {
-          console.error('error de snapshot:', error);
-        });
-        return () => {
-          unsubscribeUser(); // desuscribirse de los cambios en el documento del usuario
-          unsubscribeTeams(); // desuscribirse de los cambios en los equipos del usuario
-        };
-      } else {
-        console.log('El documento de usuario no existe');
-        return null; 
-      }
+    const playersRef = collection(this._db, "players");
+    const unsubscribePlayers = onSnapshot(playersRef, (snapshot) => {
+      const players = snapshot.docs.map(doc => {
+        const playerData = mapFunction(doc.data());
+        playerData.uuid = doc.id;
+        return playerData;
+      });
+      subject.next(players);
+    }, (error) => {
+      console.error('Error in onSnapshot:', error);
     });
 
-    return unsubscribeUser;
+    return unsubscribePlayers;
   } catch (error) {
-    console.error('error:', error); 
-    return null; // nulo en caso de error
+    console.error('Error:', error);
+    return null;
   }
 }
+
+public async subscribeToTeams(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any, playersSubject: BehaviorSubject<any[]>): Promise<Unsubscribe | null> {
+  if (!this._db) {
+    return null;
+  }
+
+  try {
+    const teamsRef = collection(this._db, "teams");
+    const unsubscribeTeams = onSnapshot(teamsRef, async (snapshot) => {
+      const teams = snapshot.docs.map(doc => {
+        const teamData = mapFunction(doc.data());
+        teamData.uuid = doc.id;
+        return teamData;
+      });
+      console.log('Teams:', teams);
+
+      // Obtener jugadores del usuario
+      playersSubject.pipe(take(1)).subscribe(players => {
+        // Para cada equipo, filtrar los jugadores del equipo con los jugadores del usuario
+        teams.forEach(team => {
+          if (Array.isArray(team.players)) {
+            const teamPlayers = players.filter(player => team.players.includes(player.uuid));
+            team.players = teamPlayers;
+          } else {
+            team.players = []; // Inicializar como array vacío si no tiene la propiedad players
+          }
+        });
+        console.log('Equipos actualizados:', teams);
+
+        subject.next(teams);
+      });
+
+    }, (error) => {
+      console.error('Error in onSnapshot:', error);
+    });
+
+    return unsubscribeTeams;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}
+
+
 
 }
