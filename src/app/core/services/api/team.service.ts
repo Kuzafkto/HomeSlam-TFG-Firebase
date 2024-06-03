@@ -214,26 +214,7 @@ export class TeamService {
       }
   
       // Eliminar el equipo de la colección "teams"
-      from(this.firebaseSvc.deleteDocument("teams", team.uuid)).pipe(
-        switchMap(() => {
-          // Obtener el usuario actual
-          return this.firebaseAuth.me();
-        }),
-        switchMap((user: User) => {
-          // Verificar que el usuario tenga UUID y una lista de equipos
-          if (!user || !user.uuid || !user.teams || user.teams.length === 0) {
-            return new Observable<Team>(obs => {
-              obs.error(new Error('User is incomplete'));
-            });
-          }
-  
-          // Eliminar el UUID del equipo del array de equipos del usuario
-          user.teams = user.teams.filter(uuid => uuid !== team.uuid);
-  
-          // Actualizar el documento del usuario
-          return from(this.firebaseSvc.updateDocument("users", user, user.uuid));
-        })
-      ).subscribe({
+      from(this.firebaseSvc.deleteDocument("teams", team.uuid)).subscribe({
         next: () => {
           obs.next(team); // Devolver el equipo eliminado en el observable
           obs.complete();

@@ -76,7 +76,9 @@ export class AppToolbarComponent  implements OnInit {
   }
   public goToTeams(){
     this.router.navigate(['/teams']);
-
+  }
+  public goToGames(){
+    this.router.navigate(['/games']);
   }
   onLogout(){
     this.auth.logout();

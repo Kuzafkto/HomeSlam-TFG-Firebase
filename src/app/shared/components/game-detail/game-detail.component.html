@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" fill="clear" (click)="onCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{'games.title'|translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+    <div class="team-images-container">
+      <div class="team-info">
+        <div class="team-image">
+          <img *ngIf="localTeamImageUrl" [src]="localTeamImageUrl" alt="Local Team">
+        </div>
+        <div class="team-name">{{ localTeamName }}</div>
+      </div>
+      <div class="vs-text">VS</div>
+      <div class="team-info">
+        <div class="team-image">
+          <img *ngIf="visitorTeamImageUrl" [src]="visitorTeamImageUrl" alt="Visitor Team">
+        </div>
+        <div class="team-name">{{ visitorTeamName }}</div>
+      </div>
+    </div>
+    <ion-item>
+      <ion-label position="floating">{{'games.date'|translate}}</ion-label>
+      <ion-datetime 
+      formControlName="gameDate" 
+      display-format="DD/MM/YYYY" 
+      picker-format="DD MMMM YYYY" 
+      presentation="date">
+    </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'games.localTeam'|translate}}</ion-label>
+      <ion-select formControlName="local" (ionChange)="updateTeamImages()">
+        <ion-select-option *ngFor="let team of allTeams" [value]="team.uuid">{{ team.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'games.localRuns'|translate}}</ion-label>
+      <ion-input formControlName="localRuns" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'games.visitorTeam'|translate}}</ion-label>
+      <ion-select formControlName="visitor" (ionChange)="updateTeamImages()">
+        <ion-select-option *ngFor="let team of allTeams" [value]="team.uuid">{{ team.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'games.visitorRuns'|translate}}</ion-label>
+      <ion-input formControlName="visitorRuns" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'games.story'|translate}}</ion-label>
+      <ion-input formControlName="story" type="string"></ion-input>
+    </ion-item> 
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-button type="submit" class="submitButton" expand="full" (click)="onSubmit()">{{'games.submit'|translate}}</ion-button>
+</ion-footer>

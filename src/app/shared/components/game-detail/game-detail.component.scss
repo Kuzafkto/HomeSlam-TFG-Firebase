@@ -1,0 +1,82 @@
+ion-button {
+    --background: #009a44;
+    --background-hover: #009a44;
+    --background-activated: #03ca5a;
+    --background-focused: #03ca5a;
+    --font-size: 2.5rem !important;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: calc(100% - 100px);
+    overflow-y: auto;
+  }
+  .page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  
+  ion-input {
+    font-size: 1.5rem;
+    margin-left: 2%;
+  }
+  ion-label {
+    font-size: 1.4rem !important;
+  }
+  ion-title {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .submitButton {
+    font-size: 2rem;
+  }
+  .error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 2%;
+    text-align: center;
+  }
+  
+  .team-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+  }
+  
+  .team-info {
+    text-align: center;
+  }
+  
+  .team-name {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .team-image img {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .vs-text {
+    margin: 0 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

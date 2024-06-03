@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ game?.local?.name }} vs {{ game?.visitor?.name }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p><strong>Date:</strong> {{ game?.gameDate | date }}</p>
+    <p><strong>Local Team:</strong> {{ game?.local?.name }} ({{ game?.localRuns }} runs)</p>
+    <p><strong>Visitor Team:</strong> {{ game?.visitor?.name }} ({{ game?.visitorRuns }} runs)</p>
+    <p><strong>Story:</strong> {{ game?.story }}</p>
+  </ion-card-content>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="full" color="primary" (click)="onCardClick()">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        Edit
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="full" color="danger" (click)="onDeleteClick($event)">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Delete
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-card>

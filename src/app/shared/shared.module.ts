@@ -18,6 +18,8 @@ import {TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from '../core/services/custom-translate.service';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
+import { GameInfoComponent } from './components/game-info/game-info.component';
+import { GameDetailComponent } from './components/game-detail/game-detail.component';
 
 
 
@@ -38,7 +40,8 @@ import { PictureSelectableComponent } from './components/picture-selectable/pict
       RegisterFormComponent,
       NamePipe,
       PositionImageDirective,
-      
+      GameInfoComponent,
+      GameDetailComponent
       
       ],
   imports: [
@@ -75,6 +78,8 @@ import { PictureSelectableComponent } from './components/picture-selectable/pict
     PositionSelectorComponent,
     PositionImageDirective,
     TranslateModule,
+    GameInfoComponent,
+    GameDetailComponent
   ]
 })
 export class SharedModule { }

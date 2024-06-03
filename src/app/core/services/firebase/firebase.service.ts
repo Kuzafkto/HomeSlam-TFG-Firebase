@@ -1,10 +1,12 @@
 import { Inject, Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, take } from "rxjs";
+import { BehaviorSubject, Observable, from, of, switchMap, map, take, toArray } from "rxjs";
 import { initializeApp, getApp, FirebaseApp } from "firebase/app";
 import { getFirestore, addDoc, collection, updateDoc, doc, onSnapshot, getDoc, setDoc, query, where, getDocs, Unsubscribe, DocumentData, deleteDoc, Firestore } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytes, FirebaseStorage } from "firebase/storage";
 import { createUserWithEmailAndPassword, deleteUser, signInAnonymously, signOut, signInWithEmailAndPassword, initializeAuth, indexedDBLocalPersistence, UserCredential, Auth, User } from "firebase/auth";
 import { Player } from "../../interfaces/player";
+import { Team } from "../../interfaces/team";
+import { Game } from "../../interfaces/game";
 
 export interface FirebaseStorageFile {
   path: string,
@@ -15,7 +17,6 @@ export interface FirebaseDocument {
   id: string;
   data: DocumentData;
 }
-
 
 export interface FirebaseUserCredential {
   user: UserCredential
@@ -36,6 +37,9 @@ export class FirebaseService {
   public players$: Observable<any[]> = this._players.asObservable();
   private _teams: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   public teams$: Observable<any[]> = this._teams.asObservable();
+  private _games: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public games$: Observable<any[]> = this._games.asObservable();
+
   constructor(
     @Inject('firebase-config') config: any
   ) {
@@ -54,14 +58,14 @@ export class FirebaseService {
         if (user.uid && user.email) {
           this._isLogged.next(true);
           //todos los subscribetocollection aqui
-          console.log(user.uid,"yyyyyyyyy",user.email);
+          console.log(user.uid, "yyyyyyyyy", user.email);
           this.subscribeToPlayers(this._players, (el: any) => el);
           this.subscribeToTeams(this._teams, (el: any) => el, this._players);
+          this.subscribeToGames(this._games, (el: any) => el, this._teams);
         }
       } else {
         this._isLogged.next(false);
       }
-
     });
   }
 
@@ -113,8 +117,6 @@ export class FirebaseService {
   public imageUpload(blob: Blob): Promise<any> {
     return this.fileUpload(blob, 'image/jpeg', 'images', 'image', ".jpg");
   }
-
-
 
   public createDocument(collectionName: string, data: any): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -214,13 +216,14 @@ export class FirebaseService {
     });
   }
 
-  public subscribeToCollection(collectionName:string, subject: BehaviorSubject<any[]>, mapFunction:(el:FirebaseDocument)=>any):Unsubscribe | null{
-    if(!this._db)
-        return null;
+  public subscribeToCollection(collectionName: string, subject: BehaviorSubject<any[]>, mapFunction: (el: FirebaseDocument) => any): Unsubscribe | null {
+    if (!this._db)
+      return null;
     return onSnapshot(collection(this._db, collectionName), (snapshot) => {
-      subject.next(snapshot.docs.map<FirebaseDocument>(doc=>{
-        return {id:doc.id, data:doc.data()}}).map(mapFunction));
-    }, error=>{});
+      subject.next(snapshot.docs.map<FirebaseDocument>(doc => {
+        return { id: doc.id, data: doc.data() }
+      }).map(mapFunction));
+    }, error => { });
   }
 
   public signOut(signInAnon: boolean = false): Promise<void> {
@@ -342,72 +345,104 @@ export class FirebaseService {
   }
 
   public async subscribeToPlayers(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
-  if (!this._db) {
-    return null;
-  }
+    if (!this._db) {
+      return null;
+    }
 
-  try {
-    const playersRef = collection(this._db, "players");
-    const unsubscribePlayers = onSnapshot(playersRef, (snapshot) => {
-      const players = snapshot.docs.map(doc => {
-        const playerData = mapFunction(doc.data());
-        playerData.uuid = doc.id;
-        return playerData;
-      });
-      subject.next(players);
-    }, (error) => {
-      console.error('Error in onSnapshot:', error);
-    });
-
-    return unsubscribePlayers;
-  } catch (error) {
-    console.error('Error:', error);
-    return null;
-  }
-}
-
-public async subscribeToTeams(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any, playersSubject: BehaviorSubject<any[]>): Promise<Unsubscribe | null> {
-  if (!this._db) {
-    return null;
-  }
-
-  try {
-    const teamsRef = collection(this._db, "teams");
-    const unsubscribeTeams = onSnapshot(teamsRef, async (snapshot) => {
-      const teams = snapshot.docs.map(doc => {
-        const teamData = mapFunction(doc.data());
-        teamData.uuid = doc.id;
-        return teamData;
-      });
-      console.log('Teams:', teams);
-
-      // Obtener jugadores del usuario
-      playersSubject.pipe(take(1)).subscribe(players => {
-        // Para cada equipo, filtrar los jugadores del equipo con los jugadores del usuario
-        teams.forEach(team => {
-          if (Array.isArray(team.players)) {
-            const teamPlayers = players.filter(player => team.players.includes(player.uuid));
-            team.players = teamPlayers;
-          } else {
-            team.players = []; // Inicializar como array vacío si no tiene la propiedad players
-          }
+    try {
+      const playersRef = collection(this._db, "players");
+      const unsubscribePlayers = onSnapshot(playersRef, (snapshot) => {
+        const players = snapshot.docs.map(doc => {
+          const playerData = mapFunction(doc.data());
+          playerData.uuid = doc.id;
+          return playerData;
         });
-        console.log('Equipos actualizados:', teams);
-
-        subject.next(teams);
+        subject.next(players);
+      }, (error) => {
+        console.error('Error in onSnapshot:', error);
       });
 
-    }, (error) => {
-      console.error('Error in onSnapshot:', error);
-    });
-
-    return unsubscribeTeams;
-  } catch (error) {
-    console.error('Error:', error);
-    return null;
+      return unsubscribePlayers;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
   }
-}
 
+  public async subscribeToTeams(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any, playersSubject: BehaviorSubject<any[]>): Promise<Unsubscribe | null> {
+    if (!this._db) {
+      return null;
+    }
 
+    try {
+      const teamsRef = collection(this._db, "teams");
+      const unsubscribeTeams = onSnapshot(teamsRef, async (snapshot) => {
+        const teams = snapshot.docs.map(doc => {
+          const teamData = mapFunction(doc.data());
+          teamData.uuid = doc.id;
+          return teamData;
+        });
+        console.log('Teams:', teams);
 
+        // Obtener jugadores del usuario
+        playersSubject.pipe(take(1)).subscribe(players => {
+          // Para cada equipo, filtrar los jugadores del equipo con los jugadores del usuario
+          teams.forEach(team => {
+            if (Array.isArray(team.players)) {
+              const teamPlayers = players.filter(player => team.players.includes(player.uuid));
+              team.players = teamPlayers;
+            } else {
+              team.players = []; // Inicializar como array vacío si no tiene la propiedad players
+            }
+          });
+          console.log('Equipos actualizados:', teams);
+
+          subject.next(teams);
+        });
+
+      }, (error) => {
+        console.error('Error in onSnapshot:', error);
+      });
+
+      return unsubscribeTeams;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
+  public async subscribeToGames(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any, teamsSubject: BehaviorSubject<any[]>): Promise<Unsubscribe | null> {
+    if (!this._db) {
+      return null;
+    }
+
+    try {
+      const gamesRef = collection(this._db, "games");
+      const unsubscribeGames = onSnapshot(gamesRef, async (snapshot) => {
+        const games = snapshot.docs.map(doc => {
+          const gameData = mapFunction(doc.data());
+          gameData.uuid = doc.id;
+          return gameData;
+        });
+
+        // Obtener los equipos y mapearlos a los juegos
+        teamsSubject.pipe(take(1)).subscribe(teams => {
+          games.forEach(game => {
+            game.local = teams.find(team => team.uuid === game.local) || null;
+            game.visitor = teams.find(team => team.uuid === game.visitor) || null;
+          });
+          subject.next(games);
+        });
+
+      }, (error) => {
+        console.error('Error in onSnapshot:', error);
+      });
+
+      return unsubscribeGames;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+  
 }
