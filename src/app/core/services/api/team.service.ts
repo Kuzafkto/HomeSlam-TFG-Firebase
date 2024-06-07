@@ -132,35 +132,24 @@ export class TeamService {
   public addTeam(team: Team): Observable<Team> {
     return from(this.firebaseSvc.createDocument("teams", team)).pipe(
       switchMap((createdDocId: string) => {
-        // obtener el usuario actual
-        return this.firebaseAuth.me().pipe(
-          switchMap((user: User) => {
-            if (user && user.uuid) {
-              user.teams.push(createdDocId);
-              // actualizar el doc
-              return from(this.firebaseSvc.updateDocumentField("users", user.uuid, "teams", user.teams)).pipe(
-                switchMap(() => {
-                  // Obtener los UUID de los jugadores del equipo
-                  let playerUUIDs: string[] = [];
-                  team.players.forEach(player => {
-                    if (player.uuid) {
-                      playerUUIDs.push(player.uuid);
-                    }
-                  });
-                  // actualizar el campo 'players' del documento del equipo con los UUID de los jugadores
-                  return from(this.firebaseSvc.updateDocumentField("teams", createdDocId, "players", playerUUIDs)).pipe(
-                    map(() => team) // devolver el equipo creado después de la actualización
-                  );
-                })
-              );
-            } else {
-              return throwError(new Error('User does not have UUID'));
-            }
+        // Obtener los UUID de los jugadores del equipo
+        let playerUUIDs: string[] = [];
+        team.players.forEach(player => {
+          if (player.uuid) {
+            playerUUIDs.push(player.uuid);
+          }
+        });
+        // Actualizar el campo 'players' del documento del equipo con los UUID de los jugadores
+        return from(this.firebaseSvc.updateDocumentField("teams", createdDocId, "players", playerUUIDs)).pipe(
+          map(() => {
+            team.uuid = createdDocId;
+            return team; // devolver el equipo creado después de la actualización
           })
         );
       })
     );
   }
+  
   
   
   

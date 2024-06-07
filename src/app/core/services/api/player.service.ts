@@ -54,24 +54,10 @@ export class PlayersService {
 
   public addPlayer(player: Player): Observable<Player> {
     return from(this.firebaseSvc.createDocument("players", player)).pipe(
-      switchMap((created: any) => {
-        const docId = created;
-        return this.firebaseAuth.me().pipe(
-          switchMap((user: User) => {
-            if (user && user.uuid) {
-              return from(this.firebaseSvc.updateDocumentField("users", user.uuid, "players", user.players.concat(docId))).pipe(
-                map(() => player)
-              );
-            } else {
-              return new Observable<Player>(obs => {
-                obs.error(new Error('User does not have UUID'));
-              });
-            }
-          })
-        );
-      })
+      map(() => player) // devolver el jugador creado después de la creación del documento
     );
   }
+  
 
   public getAll(): Observable<Player[]> {
     return from(this.firebaseSvc.getDocuments("players")).pipe(

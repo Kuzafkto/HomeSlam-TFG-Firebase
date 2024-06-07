@@ -38,7 +38,7 @@ export class TeamsPage implements OnInit {
         case 'ok':{
           this.teams.addTeam(info.data).subscribe(async player=>{
               const options:ToastOptions = {
-              message:"Team created",
+              message:`Team ${info.data.name} created`,
               duration:1000,
               position:'bottom',
               color:'tertiary',
@@ -66,7 +66,7 @@ export class TeamsPage implements OnInit {
         case 'ok':{
           this.teams.updateTeam(info.data).subscribe(async team=>{
               const options:ToastOptions = {
-              message:"Team modified",
+              message:`Team ${info.data.name} modified`,
               duration:1000,
               position:'bottom',
               color:'tertiary',
@@ -82,7 +82,7 @@ export class TeamsPage implements OnInit {
         case 'delete':{
           this.teams.deleteTeam(info.data).subscribe(async team=>{
             const options:ToastOptions = {
-            message:"Team deleted",
+            message:`Team ${team.name} deleted`,
             duration:1000,
             position:'bottom',
             color:'tertiary',
@@ -111,7 +111,7 @@ export class TeamsPage implements OnInit {
     this.teams.deleteTeam(_team).subscribe(
         {next: async team=>{
         const options:ToastOptions = {
-          message:`Team deleted`,
+          message:`Team ${team.name}deleted`,
           duration:1000,
           position:'bottom',
           color:'danger',
@@ -141,19 +141,23 @@ export class TeamsPage implements OnInit {
     
     if (result && result.data) {
       if (result.data.imageUrl) {
-        // Si hay una nueva imagen, cargarla primero
-        dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
-          this.media.upload(blob).subscribe((media: number[]) => {
-            result.data.imageUrl = media[0];
-            result.data.imageUrl = result.data.imageUrl.url_medium;
-            onDismiss(result);
-          });
-        });
-      } else {
-        result.data.imageUrl = data?.imageUrl || "";
-        this.teams.updateTeam(result.data).subscribe(() => {
+        // Comparar la URL de la imagen actual con la URL de la imagen anterior
+        if (data && data.imageUrl === result.data.imageUrl) {
+          // Si las URLs son iguales, no realizar la conversión
           onDismiss(result);
-        });
+        } else {
+          // Si la URL es diferente, convertir la imagen actual a Blob
+          dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
+            this.media.upload(blob).subscribe((media: number[]) => {
+              result.data.imageUrl = media[0];
+              result.data.imageUrl = result.data.imageUrl.url_medium;
+              onDismiss(result);
+            });
+          });
+        }
+      } else {
+        result.data.imageUrl = "";
+        onDismiss(result)
       }
     } else {
       onDismiss(result);

@@ -39,7 +39,8 @@ export class FirebaseService {
   public teams$: Observable<any[]> = this._teams.asObservable();
   private _games: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   public games$: Observable<any[]> = this._games.asObservable();
-
+  private _votes: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public votes$: Observable<any[]> = this._votes.asObservable();
   constructor(
     @Inject('firebase-config') config: any
   ) {
@@ -62,6 +63,7 @@ export class FirebaseService {
           this.subscribeToPlayers(this._players, (el: any) => el);
           this.subscribeToTeams(this._teams, (el: any) => el, this._players);
           this.subscribeToGames(this._games, (el: any) => el, this._teams);
+          this.subscribeToVotes(this._votes, (el: any) => el);
         }
       } else {
         this._isLogged.next(false);
@@ -445,4 +447,29 @@ export class FirebaseService {
     }
   }
   
+  public async subscribeToVotes(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
+    if (!this._db) {
+      return null;
+    }
+  
+    try {
+      const votesRef = collection(this._db, "votes");
+      const unsubscribeVotes = onSnapshot(votesRef, (snapshot) => {
+        const votes = snapshot.docs.map(doc => {
+          const voteData = mapFunction(doc.data());
+          voteData.uuid = doc.id;
+          return voteData;
+        });
+        subject.next(votes);
+      }, (error) => {
+        console.error('Error in onSnapshot:', error);
+      });
+  
+      return unsubscribeVotes;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
 }

@@ -32,12 +32,12 @@ export class GamesPage implements OnInit {
   }
 
   onNewGame() {
-    this.presentForm(null, (info: any) => {
-      switch(info.role) {
+    var onDismiss = (info: any) => {
+      switch (info.role) {
         case 'ok': {
           this.gameService.addGame(info.data).subscribe(async () => {
             const options: ToastOptions = {
-              message: "Game created",
+              message: `Game ${info.data.name} created`,
               duration: 1000,
               position: 'bottom',
               color: 'tertiary',
@@ -47,6 +47,16 @@ export class GamesPage implements OnInit {
             toast.present();
             await Haptics.notification();
             //this.gameService.getAll().subscribe();
+          }, error => {
+            console.error('Error creating game:', error);
+            const options: ToastOptions = {
+              message: 'Error creating game',
+              duration: 1000,
+              position: 'bottom',
+              color: 'danger',
+              cssClass: 'card-ion-toast'
+            };
+            this.toast.create(options).then(toast => toast.present());
           });
         }
         break;
@@ -54,16 +64,17 @@ export class GamesPage implements OnInit {
           console.error("No debería entrar");
         }
       }
-    });
+    }
+    this.presentForm(null, onDismiss);
   }
 
-  async onCardClicked(game: Game) {
-    this.presentForm(game, (info: any) => {
-      switch(info.role) {
+  public async onCardClicked(game: Game) {
+    var onDismiss = (info: any) => {
+      switch (info.role) {
         case 'ok': {
           this.gameService.updateGame(info.data).subscribe(async () => {
             const options: ToastOptions = {
-              message: "Game modified",
+              message: `Game ${info.data.name} modified`,
               duration: 1000,
               position: 'bottom',
               color: 'tertiary',
@@ -73,13 +84,23 @@ export class GamesPage implements OnInit {
             toast.present();
             await Haptics.notification();
             //this.gameService.getAll().subscribe();
+          }, error => {
+            console.error('Error modifying game:', error);
+            const options: ToastOptions = {
+              message: 'Error modifying game',
+              duration: 1000,
+              position: 'bottom',
+              color: 'danger',
+              cssClass: 'card-ion-toast'
+            };
+            this.toast.create(options).then(toast => toast.present());
           });
         }
         break;
         case 'delete': {
           this.gameService.deleteGame(info.data).subscribe(async () => {
             const options: ToastOptions = {
-              message: "Game deleted",
+              message: `Game ${info.data.name} deleted`,
               duration: 1000,
               position: 'bottom',
               color: 'tertiary',
@@ -89,6 +110,16 @@ export class GamesPage implements OnInit {
             toast.present();
             await Haptics.notification();
             //this.gameService.getAll().subscribe();
+          }, error => {
+            console.error('Error deleting game:', error);
+            const options: ToastOptions = {
+              message: 'Error deleting game',
+              duration: 1000,
+              position: 'bottom',
+              color: 'danger',
+              cssClass: 'card-ion-toast'
+            };
+            this.toast.create(options).then(toast => toast.present());
           });
         }
         break;
@@ -97,26 +128,39 @@ export class GamesPage implements OnInit {
         }
       }
       //this.gameService.getAll().subscribe();
-    });
+    }
+    this.presentForm(game, onDismiss);
   }
 
   public onDeleteClicked(game: Game) {
-    this.gameService.deleteGame(game).subscribe(
-      async () => {
-        const options: ToastOptions = {
-          message: `Game deleted`,
-          duration: 1000,
-          position: 'bottom',
-          color: 'danger',
-          cssClass: 'fav-ion-toast'
-        };
-        const toast = await this.toast.create(options);
-        toast.present();
-        await Haptics.notification();
-        //this.gameService.getAll().subscribe();
-      },
-      error => {
-        console.log(error);
+    var _game: Game = { ...game };
+
+    this.gameService.deleteGame(_game).subscribe(
+      {
+        next: async () => {
+          const options: ToastOptions = {
+            message: `Game deleted`,
+            duration: 1000,
+            position: 'bottom',
+            color: 'danger',
+            cssClass: 'fav-ion-toast'
+          };
+          const toast = await this.toast.create(options);
+          toast.present();
+          await Haptics.notification();
+          //this.gameService.getAll().subscribe();
+        },
+        error: err => {
+          console.log(err);
+          const options: ToastOptions = {
+            message: 'Error deleting game',
+            duration: 1000,
+            position: 'bottom',
+            color: 'danger',
+            cssClass: 'card-ion-toast'
+          };
+          this.toast.create(options).then(toast => toast.present());
+        }
       }
     );
   }
@@ -134,19 +178,33 @@ export class GamesPage implements OnInit {
 
     if (result && result.data) {
       if (result.data.imageUrl) {
-        // Si hay una nueva imagen, cargarla primero
-        dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
-          this.media.upload(blob).subscribe((media: number[]) => {
-            result.data.imageUrl = media[0];
-            result.data.imageUrl = result.data.imageUrl.url_medium;
-            onDismiss(result);
-          });
-        });
-      } else {
-        result.data.imageUrl = data?.imageUrl || "";
-        this.gameService.updateGame(result.data).subscribe(() => {
+        // Comparar la URL de la imagen actual con la URL de la imagen anterior
+        if (data && data.imageUrl === result.data.imageUrl) {
+          // Si las URLs son iguales, no realizar la conversión
           onDismiss(result);
-        });
+        } else {
+          // Si la URL es diferente, convertir la imagen actual a Blob
+          dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
+            this.media.upload(blob).subscribe((media: number[]) => {
+              result.data.imageUrl = media[0];
+              result.data.imageUrl = result.data.imageUrl.url_medium;
+              onDismiss(result);
+            }, error => {
+              console.error('Error uploading image:', error);
+              const options: ToastOptions = {
+                message: 'Error uploading image',
+                duration: 1000,
+                position: 'bottom',
+                color: 'danger',
+                cssClass: 'card-ion-toast'
+              };
+              this.toast.create(options).then(toast => toast.present());
+            });
+          });
+        }
+      } else {
+        result.data.imageUrl = "";
+        onDismiss(result)
       }
     } else {
       onDismiss(result);

@@ -64,5 +64,13 @@
         "players":"Players",
         "title":"Teams",
         "submit":"Submit"
+    },
+    "games":{
+        "date":"Date",
+        "localTeam":"Local team",
+        "localRuns":"Local team runs",
+        "visitorTeam":"Visitor team",
+        "visitorRuns":"Visitor team runs",
+        "story":"Story"
     }
 }

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Game } from 'src/app/core/interfaces/game';
+import { VoteService } from 'src/app/core/services/api/vote.service';
 import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
@@ -19,6 +20,8 @@ export class GameDetailComponent implements OnInit {
   visitorTeamImageUrl: string | null = null;
   localTeamName: string | null = null;
   visitorTeamName: string | null = null;
+  voteCounts: { [teamId: string]: number } = {};
+  gameTitle: string = '';
 
   @Input() set game(_game: Game | null) {
     if (_game) {
@@ -33,20 +36,22 @@ export class GameDetailComponent implements OnInit {
         this.uuid = _game.uuid;
       }
       this.updateTeamImages();
+      this.updateGameTitle();
     }
   }
 
   constructor(
     private _modal: ModalController,
     private formBuilder: FormBuilder,
-    private firebaseService: FirebaseService // Asegúrate de inyectar tu servicio de Firebase
+    private firebaseService: FirebaseService,
+    private voteService: VoteService,
   ) {
     this.form = this.formBuilder.group({
       gameDate: ['', [Validators.required]],
       local: ['', [Validators.required]],
-      localRuns: [0, [Validators.required]],
+      localRuns: ['', [Validators.required, this.customRunValidator]],
       visitor: ['', [Validators.required]],
-      visitorRuns: [0, [Validators.required]],
+      visitorRuns: ['', [Validators.required, this.customRunValidator]],
       story: ['', [Validators.required]],
     });
   }
@@ -55,6 +60,12 @@ export class GameDetailComponent implements OnInit {
     this.firebaseService.teams$.subscribe(teams => {
       this.allTeams = teams;
       this.updateTeamImages();
+      this.updateGameTitle();
+    });
+
+    this.voteService.countVotesForTeams(this.uuid).subscribe(counts => {
+      this.voteCounts = counts;
+      console.log(this.voteCounts);
     });
   }
 
@@ -92,5 +103,35 @@ export class GameDetailComponent implements OnInit {
     this.visitorTeamImageUrl = visitorTeam ? visitorTeam.imageUrl : null;
     this.localTeamName = localTeam ? localTeam.name : null;
     this.visitorTeamName = visitorTeam ? visitorTeam.name : null;
+    this.updateGameTitle();
+  }
+
+  updateGameTitle() {
+    const localTeam = this.allTeams.find(team => team.uuid === this.form.value.local);
+    const visitorTeam = this.allTeams.find(team => team.uuid === this.form.value.visitor);
+    const localTeamName = localTeam ? localTeam.name : 'Local';
+    const visitorTeamName = visitorTeam ? visitorTeam.name : 'Visitor';
+    this.gameTitle = `${localTeamName} vs ${visitorTeamName}`;
+  }
+
+  hasVoteCounts(): boolean {
+    return Object.keys(this.voteCounts).length > 0;
+  }
+
+  // Validador personalizado para los campos de puntuación
+  customRunValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    const valid = /^\d+$/.test(value) || value === '?';
+    return valid ? null : { invalidRun: true };
+  }
+
+  getTeamName(teamId: string): string {
+    const team = this.allTeams.find(t => t.uuid === teamId);
+    return team ? team.name : teamId;
+  }
+
+  onTeamChange() {
+    this.updateTeamImages();
+    this.updateGameTitle();
   }
 }

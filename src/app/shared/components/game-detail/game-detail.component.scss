@@ -13,6 +13,7 @@ ion-button {
     height: calc(100% - 100px);
     overflow-y: auto;
   }
+  
   .page-container {
     display: flex;
     flex-direction: row;
@@ -32,16 +33,20 @@ ion-button {
     font-size: 1.5rem;
     margin-left: 2%;
   }
+  
   ion-label {
     font-size: 1.4rem !important;
   }
+  
   ion-title {
     font-size: 2.5rem;
     text-align: center;
   }
+  
   .submitButton {
     font-size: 2rem;
   }
+  
   .error-message {
     color: red;
     font-size: 1.2rem;
@@ -55,7 +60,6 @@ ion-button {
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
-
   }
   
   .team-info {
@@ -78,5 +82,26 @@ ion-button {
     margin: 0 10px;
     font-size: 24px;
     font-weight: bold;
+  }
+  
+  .winner-votes-section {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .winner-votes-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .team-vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .team-votes {
+    font-size: 1.2rem;
   }
   

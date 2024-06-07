@@ -65,5 +65,13 @@
         "players":"Jugadores",
         "title":"Equipos",
         "submit":"Confirmar"
+    },
+    "games":{
+        "date":"Fecha",
+        "localTeam":"Equipo local",
+        "localRuns":"Carreras equipo local",
+        "visitorTeam":"Equipo Visitante",
+        "visitorRuns":"Carreras equipo visitante",
+        "story":"Historia"
     }
 }
