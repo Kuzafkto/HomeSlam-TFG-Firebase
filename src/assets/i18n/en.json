@@ -71,6 +71,8 @@
         "localRuns":"Local team runs",
         "visitorTeam":"Visitor team",
         "visitorRuns":"Visitor team runs",
-        "story":"Story"
+        "story":"Story",
+        "runs":"Runs",
+        "submit":"Submit"
     }
 }

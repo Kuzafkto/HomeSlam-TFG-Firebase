@@ -72,6 +72,8 @@
         "localRuns":"Carreras equipo local",
         "visitorTeam":"Equipo Visitante",
         "visitorRuns":"Carreras equipo visitante",
-        "story":"Historia"
+        "story":"Historia",
+        "runs":"Carreras",
+        "submit":"Confirmar"
     }
 }

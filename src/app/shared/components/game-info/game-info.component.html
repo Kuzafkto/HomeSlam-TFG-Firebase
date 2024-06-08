@@ -2,11 +2,25 @@
   <ion-card-header>
     <ion-card-title>{{ game?.local?.name }} vs {{ game?.visitor?.name }}</ion-card-title>
   </ion-card-header>
-  <ion-card-content>
-    <p><strong>Date:</strong> {{ game?.gameDate | date }}</p>
-    <p><strong>Local Team:</strong> {{ game?.local?.name }} ({{ game?.localRuns }} runs)</p>
-    <p><strong>Visitor Team:</strong> {{ game?.visitor?.name }} ({{ game?.visitorRuns }} runs)</p>
-    <p><strong>Story:</strong> {{ game?.story }}</p>
+  <ion-card-content class="card-content">
+    <div class="team-info-container">
+      <div class="team-info">
+        <div class="team-name">{{ game?.local?.name }}</div>
+        <div class="team-image">
+          <img *ngIf="game?.local?.imageUrl" [src]="game?.local?.imageUrl" alt="Local Team">
+        </div>
+        <div class="team-runs">{{ game?.localRuns }}</div>
+      </div>
+      <div class="vs-text">VS</div>
+      <div class="team-info">
+        <div class="team-name">{{ game?.visitor?.name }}</div>
+        <div class="team-image">
+          <img *ngIf="game?.visitor?.imageUrl" [src]="game?.visitor?.imageUrl" alt="Visitor Team">
+        </div>
+        <div class="team-runs">{{ game?.visitorRuns }}</div>
+      </div>
+    </div>
+    <p><strong>{{'games.date'|translate}}:</strong> {{ game?.gameDate | date }}</p>
   </ion-card-content>
   <ion-row>
     <ion-col>

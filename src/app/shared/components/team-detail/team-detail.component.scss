@@ -56,6 +56,9 @@ ion-textarea {
   overflow-y: auto;
   padding: 10px;
   max-height: 300px; /* Limita la altura y permite el desplazamiento */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .dragging {
@@ -123,4 +126,12 @@ ion-icon {
 .story-container ion-textarea {
   width: 100%;
   font-size: 1.2rem;
+}
+
+.player-card {
+  width: 100%;
+  height: 100%;
+  max-width: 120px;
+  max-height: 150px;
+  margin: 10px;
 }
