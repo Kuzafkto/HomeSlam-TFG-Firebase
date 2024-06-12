@@ -1,0 +1,16 @@
+<ion-card >
+  <ion-card-content>
+    <div class="user-avatar">
+      <img [src]="user?.picture || defaultPictureUrl" alt="{{ user?.name }}">
+    </div>
+    <div class="user-info-container">
+      <div class="big-font">{{ user?.name }}</div>
+      <div class="small-font">{{ user?.nickname }}</div>
+      <div class="small-font">{{ user?.email }}</div>
+    </div>
+    <ion-item lines="none">
+      <ion-label>{{ 'users.isAdmin' | translate }}</ion-label>
+      <ion-checkbox [checked]="user?.isAdmin" (ionChange)="onIsAdminChange($event)"></ion-checkbox>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

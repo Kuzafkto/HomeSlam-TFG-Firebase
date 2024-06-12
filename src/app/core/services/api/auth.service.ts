@@ -17,6 +17,10 @@ export abstract class AuthService {
 
   protected _logged = new BehaviorSubject<boolean|null>(null);
   public isLogged$ = this._logged.asObservable();
+  protected _isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAdmin$: Observable<boolean> = this._isAdmin.asObservable();
+  protected _isOwner: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isOwner$: Observable<boolean> = this._isOwner.asObservable();
   protected _user = new BehaviorSubject<User|null>(null);
   public user$ = this._user.asObservable();
   

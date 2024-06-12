@@ -15,6 +15,9 @@
             {{'login.noAccount' | translate}}
           </ion-button>
         </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
         <app-login-form (onsubmit)="onLogin($event)"></app-login-form>
       </ion-card-content>
     </ion-card>

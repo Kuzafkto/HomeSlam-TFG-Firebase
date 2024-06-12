@@ -75,5 +75,12 @@
         "story":"Historia",
         "runs":"Carreras",
         "submit":"Confirmar"
+    },
+    "errors":{
+        "accessDeniedTitle":"Acceso denegado",
+        "accessDeniedText":"Usted no tiene permisos de propietario para esta funcionalidad"
+    },
+    "users":{
+        "isAdmin":"Admin"
     }
 }

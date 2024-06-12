@@ -20,6 +20,8 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
 import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 
 
@@ -41,7 +43,9 @@ import { GameDetailComponent } from './components/game-detail/game-detail.compon
       NamePipe,
       PositionImageDirective,
       GameInfoComponent,
-      GameDetailComponent
+      GameDetailComponent,
+      UserInfoComponent,
+      ErrorModalComponent
       
       ],
   imports: [
@@ -79,7 +83,9 @@ import { GameDetailComponent } from './components/game-detail/game-detail.compon
     PositionImageDirective,
     TranslateModule,
     GameInfoComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    UserInfoComponent,
+    ErrorModalComponent
   ]
 })
 export class SharedModule { }

@@ -1,32 +1,22 @@
-.toolbar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .large-button {
-    font-size: 4rem; 
-  }
-  
-  .home-slam-title {
-    font-size: 3rem;
-    font-family: 'baseballFont';//se podria cambiar esta fuente por otra nueva luego
-  }
-  
-  .user-name {
-    font-size: 1.5rem; 
-  }
-  
-  .button-icon {
-    width: 3em;
-    height: 3em;
-  }
-.hidden{
+ion-toolbar{
+--background: var(--ion-color-customBrown);
+}
+
+.home-slam-title {
+  font-size: 3rem;
+  font-family: 'baseballFont'; /* se podría cambiar esta fuente por otra nueva luego */
+}
+
+.user-name {
+  font-size: 1.5rem; 
+}
+
+.button-icon {
+  width: 3em;
+  height: 3em;
+  color: var(--ion-color-customGreen);
+}
+
+.hidden {
   visibility: hidden;
 }

@@ -74,5 +74,12 @@
         "story":"Story",
         "runs":"Runs",
         "submit":"Submit"
+    },
+    "errors":{
+        "accessDeniedTitle":"Access Denied",
+        "accessDeniedText":"You don't have owner access to this feature"
+    },
+    "users":{
+        "isAdmin":"Admin"
     }
 }

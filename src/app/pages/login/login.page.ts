@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
 import { UserRegisterInfo } from 'src/app/core/interfaces/user-register-info';
@@ -13,7 +13,8 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  
+  errorMessage: string | null = null;
+
   async activateVibrationWithOptions() {
     try {
       const options = {
@@ -31,9 +32,14 @@ export class LoginPage implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.errorMessage = params['error'] || null;
+    });
   }
 
   onLogin(credentials: UserCredentials) {

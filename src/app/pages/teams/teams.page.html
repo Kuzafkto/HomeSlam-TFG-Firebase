@@ -1,10 +1,12 @@
-<ion-header [translucent]="true">
-  <app-toolbar></app-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" class="main-background">
+  <ion-header [translucent]="true">
+    <app-toolbar></app-toolbar>
+  </ion-header>
   <ion-button fill="clear" aria-label="New User" (click)="onNewteam()" class="rounde">
     <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+  <ion-button fill="solid" color="primary" (click)="downloadTeamsCSV()">
+    Download Teams CSV
   </ion-button>
   <ion-row>
     <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let team of ((teams.teams$ | async)); let i = index">
@@ -16,7 +18,6 @@
         (onDeleteClicked)="onDeleteClicked(team)">
       </app-team-info>
     </ion-col>
-    
   </ion-row>
   <ion-loading [isOpen]="loading" class="custom-loading" message="Loading..."></ion-loading>
 </ion-content>

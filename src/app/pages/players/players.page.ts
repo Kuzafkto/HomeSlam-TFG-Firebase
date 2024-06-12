@@ -7,6 +7,8 @@ import { Player } from 'src/app/core/interfaces/player';
 import { MediaService } from 'src/app/core/services/api/media.service';
 import { PlayersService } from 'src/app/core/services/api/player.service';
 import { PlayerDetailComponent } from 'src/app/shared/components/player-detail/player-detail.component';
+import { CsvService } from 'src/app/core/services/api/csv.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-players',
@@ -22,7 +24,8 @@ export class PlayersPage implements OnInit {
     private toast: ToastController,
     public players: PlayersService,
     private modal: ModalController,
-    private media: MediaService
+    private media: MediaService,
+    private csvService: CsvService // Inyecta el servicio CSV
   ) {}
 
   ngOnInit(): void {
@@ -203,5 +206,23 @@ export class PlayersPage implements OnInit {
       }
     }
     this.presentForm(null, onDismiss);
+  }
+
+  downloadPlayersCSV() {
+    this.players.players$.pipe(take(1)).subscribe((players) => {
+      const formattedPlayers = players.map(player => {
+        return {
+          uuid: player.uuid,
+          name: player.name,
+          imageUrl: player.imageUrl,
+          positions: player.positions.join(', ')
+        };
+      });
+
+      const orderedKeys = ['uuid', 'name', 'imageUrl', 'positions'];
+
+      const csvData = this.csvService.convertToCSV(formattedPlayers, orderedKeys);
+      this.csvService.downloadFile(csvData, 'players.csv');
+    });
   }
 }

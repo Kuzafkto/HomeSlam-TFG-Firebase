@@ -1,6 +1,7 @@
 import { NgModule, inject } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { OwnerGuard } from './core/guards/owner.guard';
 
 const routes: Routes = [
   {
@@ -38,9 +39,18 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
-  },  {
+  },
+  {
     path: 'games',
-    loadChildren: () => import('./pages/games/games.module').then( m => m.GamesPageModule)
+    loadChildren: () => import('./pages/games/games.module').then( m => m.GamesPageModule),
+    canActivate:[AuthGuard]
+
+  },
+  {
+    path: 'users-admin',
+    loadChildren: () => import('./pages/users-admin/users-admin.module').then( m => m.UsersAdminPageModule),
+    canActivate:[AuthGuard,OwnerGuard]
+
   },
 
 

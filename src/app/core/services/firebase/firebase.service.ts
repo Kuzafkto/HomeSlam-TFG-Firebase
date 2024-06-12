@@ -4,9 +4,6 @@ import { initializeApp, getApp, FirebaseApp } from "firebase/app";
 import { getFirestore, addDoc, collection, updateDoc, doc, onSnapshot, getDoc, setDoc, query, where, getDocs, Unsubscribe, DocumentData, deleteDoc, Firestore } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytes, FirebaseStorage } from "firebase/storage";
 import { createUserWithEmailAndPassword, deleteUser, signInAnonymously, signOut, signInWithEmailAndPassword, initializeAuth, indexedDBLocalPersistence, UserCredential, Auth, User } from "firebase/auth";
-import { Player } from "../../interfaces/player";
-import { Team } from "../../interfaces/team";
-import { Game } from "../../interfaces/game";
 
 export interface FirebaseStorageFile {
   path: string,
@@ -41,6 +38,13 @@ export class FirebaseService {
   public games$: Observable<any[]> = this._games.asObservable();
   private _votes: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   public votes$: Observable<any[]> = this._votes.asObservable();
+  private _users: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public users$: Observable<any[]> = this._users.asObservable();
+  private _isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAdmin$: Observable<boolean> = this._isAdmin.asObservable();
+  private _isOwner: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isOwner$: Observable<boolean> = this._isAdmin.asObservable();
+
   constructor(
     @Inject('firebase-config') config: any
   ) {
@@ -64,15 +68,33 @@ export class FirebaseService {
           this.subscribeToTeams(this._teams, (el: any) => el, this._players);
           this.subscribeToGames(this._games, (el: any) => el, this._teams);
           this.subscribeToVotes(this._votes, (el: any) => el);
+          this.subscribeToUsers(this._users, this.mapUser);
+          this.checkUserStatus(user.uid);
+
         }
       } else {
         this._isLogged.next(false);
+        this._isAdmin.next(false);
       }
     });
   }
 
   public get user(): User | null {
     return this._user;
+  }
+
+  private checkUserStatus(userId: string) {
+    const userDocRef = doc(this._db, 'users', userId);
+    onSnapshot(userDocRef, (doc) => {
+      if (doc.exists()) {
+        const userData = doc.data();
+        this._isAdmin.next(userData["isAdmin"] === true);
+        this._isOwner.next(userData["isOwner"] === true);
+      } else {
+        this._isAdmin.next(false);
+        this._isOwner.next(false);
+      }
+    });
   }
 
   public fileUpload(blob: Blob, mimeType: string, path: string, prefix: string, extension: string): Promise<FirebaseStorageFile> {
@@ -297,7 +319,7 @@ export class FirebaseService {
             console.log(`Error during sign up.`);
             break;
           case 'auth/weak-password':
-            console.log('Password is not strong enough. Add additional characters including special characters and numbers.');
+            console.log("Password is not strong enough. Add additional characters including special characters and numbers.");
             break;
           default:
             console.log(error.message);
@@ -346,6 +368,19 @@ export class FirebaseService {
     });
   }
 
+  // Mapeo para los usuarios
+  public mapUser(doc: DocumentData): any {
+    return {
+      email: doc['email'],
+      name: doc['name'],
+      nickname: doc['nickname'],
+      picture: doc['picture'],
+      isAdmin:doc['isAdmin'],
+      isOwner:doc['isOwner'],
+      uuid: doc["id"]
+    };
+  }
+
   public async subscribeToPlayers(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
     if (!this._db) {
       return null;
@@ -365,6 +400,31 @@ export class FirebaseService {
       });
 
       return unsubscribePlayers;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
+  public async subscribeToUsers(subject: BehaviorSubject<any[]>, mapFunction: (el: DocumentData) => any): Promise<Unsubscribe | null> {
+    if (!this._db) {
+      return null;
+    }
+
+    try {
+      const usersRef = collection(this._db, "users");
+      const unsubscribeUsers = onSnapshot(usersRef, (snapshot) => {
+        const users = snapshot.docs.map(doc => {
+          const userData = mapFunction(doc.data());
+          userData.uuid = doc.id;
+          return userData;
+        });
+        subject.next(users);
+      }, (error) => {
+        console.error('Error in onSnapshot:', error);
+      });
+
+      return unsubscribeUsers;
     } catch (error) {
       console.error('Error:', error);
       return null;
@@ -471,5 +531,4 @@ export class FirebaseService {
       return null;
     }
   }
-
 }

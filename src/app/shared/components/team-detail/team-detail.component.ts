@@ -25,7 +25,6 @@ export class TeamDetailComponent implements OnInit {
   @Input() set team(_team: Team | null) {
     if (_team) {
       this.mode = 'Edit';
-      this.form.controls['id'].setValue(_team.id);
       this.form.controls['name'].setValue(_team.name);
       this.form.controls['uuid'].setValue(_team.uuid); 
       this.form.controls['imageUrl'].setValue(_team.imageUrl || '');
@@ -49,7 +48,6 @@ export class TeamDetailComponent implements OnInit {
     private firebaseService: FirebaseService // Asegúrate de inyectar tu servicio de Firebase
   ) {
     this.form = this.formBuilder.group({
-      id: [null],
       name: ['', [Validators.required]],
       players: this.formBuilder.array([]),
       uuid: [''],

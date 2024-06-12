@@ -1,0 +1,42 @@
+
+  
+  ion-header {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+  }
+  
+  ion-content {
+    --background: red;
+    --color: white;
+  }
+  
+  ion-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ion-title.modal-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    
+  }
+  
+  .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-message {
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+  }
+  

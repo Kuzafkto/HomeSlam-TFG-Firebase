@@ -36,13 +36,6 @@ export class PlayersService {
       console.log(user);
     });
 
-    this.firebaseAuth.me().subscribe(user => {
-      if (user.players.includes(doc.id)) {
-        console.log("incluye " + doc.data['name']);
-      }
-    });
-
-    // Mapeo de doc a Player
     return {
       name: doc.data['name'],
       positions: doc.data['positions'],
@@ -113,16 +106,6 @@ export class PlayersService {
         switchMap(() => {
           return this.firebaseAuth.me();
         }),
-        switchMap((user: User) => {
-          if (!user || !user.uuid || !user.players || user.players.length === 0) {
-            return new Observable<Player>(obs => {
-              obs.error(new Error('User is incomplete'));
-            });
-          }
-
-          user.players = user.players.filter(uuid => uuid !== player.uuid);
-          return from(this.firebaseSvc.updateDocument("users", user, user.uuid));
-        })
       ).subscribe({
         next: () => {
           obs.next(player);

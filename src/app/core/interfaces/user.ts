@@ -4,14 +4,14 @@ import { Player } from "./player";
 
 export interface User {
     id?:number,
+    email:string,
     name:string,
     nickname?:string
-    picture?:Media|null,
+    picture?:string|undefined,
     uuid?:string,
-    players:string[],
-    teams:string[]
+    isAdmin:boolean,
+    isOwner:boolean
 }
 
 export type PaginatedUsers = PaginatedData<User>;
-
 

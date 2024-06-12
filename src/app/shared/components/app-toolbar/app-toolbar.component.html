@@ -4,25 +4,28 @@
   <!-- Botones de jugadores equipos y about -->
   <ion-buttons slot="end">
     <ion-button fill="clear" aria-label="Players" (click)="goToPlayers()" class="round-button">
-      <ion-icon slot="icon-only" color="primary" name="baseball-outline" aria-hidden="true" class="button-icon"></ion-icon>
+      <ion-icon slot="icon-only" name="baseball-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
 
     <ion-button fill="clear" aria-label="Teams" (click)="goToTeams()" class="round-button">
-      <ion-icon slot="icon-only" color="primary" name="people-outline" aria-hidden="true" class="button-icon"></ion-icon>
+      <ion-icon slot="icon-only" name="people-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
-    <ion-button fill="clear" aria-label="Teams" (click)="goToGames()" class="round-button">
-      <ion-icon slot="icon-only" color="primary" name="trophy-outline" aria-hidden="true" class="button-icon"></ion-icon>
+    <ion-button fill="clear" aria-label="Games" (click)="goToGames()" class="round-button">
+      <ion-icon slot="icon-only" name="trophy-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
     <ion-button fill="clear" aria-label="About" (click)="goToAbout()" class="round-button">
-      <ion-icon slot="icon-only" color="primary" name="person" aria-hidden="true" class="button-icon"></ion-icon>
+      <ion-icon slot="icon-only" name="person" aria-hidden="true" class="button-icon"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="isOwner$ | async" fill="clear" aria-label="UsersAdmin" (click)="goToUsersAdmin()" class="round-button">
+      <ion-icon slot="icon-only" name="book" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
   </ion-buttons>
 
-<!--Aca va el nombre del user y el boton de logout con el slot end para que esten al final-->
+  <!-- Aquí va el nombre del usuario y el botón de logout con el slot end para que estén al final -->
   <ion-buttons slot="end">
     <ion-title class="user-name">{{ username$ | async }}</ion-title>
     <ion-button fill="clear" aria-label="Logout" (click)="onLogout()" class="round-button">
-      <ion-icon slot="icon-only" color="primary" name="log-out-outline" aria-hidden="true" class="button-icon"></ion-icon>
+      <ion-icon slot="icon-only" name="log-out-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
     <ion-button id="language-trigger" shape="round" color="primary" fill="outline">{{languageSelected | uppercase}}</ion-button>
   </ion-buttons>
@@ -35,5 +38,5 @@
         </ion-list>
       </ion-content>
     </ng-template>
-    </ion-popover>  
+  </ion-popover>
 </ion-toolbar>

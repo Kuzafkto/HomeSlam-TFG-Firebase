@@ -50,7 +50,6 @@ export class TeamService {
             // Crear el objeto Team con los jugadores filtrados
             const payload: Team = {
               uuid: doc.id,
-              id: doc.data['id'],
               name: doc.data['name'],
               players: teamPlayers,
               trainers: doc.data['trainers'].map((trainer: { uuid: any; }) => ({ uuid: trainer.uuid })),
@@ -65,7 +64,7 @@ export class TeamService {
   }
 
 
-  public getAll(): Observable<Team[]> {
+  /*public getAll(): Observable<Team[]> {
     let teams: Team[] = [];
   
     return this.firebaseAuth.me().pipe(
@@ -127,7 +126,7 @@ export class TeamService {
         );
       })
     );
-  }
+  }*/
 
   public addTeam(team: Team): Observable<Team> {
     return from(this.firebaseSvc.createDocument("teams", team)).pipe(
