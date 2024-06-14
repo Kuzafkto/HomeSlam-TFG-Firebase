@@ -1,17 +1,62 @@
-#Tareas realizadas
+# Tareas Realizadas
 
-Nada a destacar, la mayoría fue realizado en el segundo trimestre [Home Slam segundo trimestre angular](https://github.com/Kuzafkto/home-slam-firebase)
+- Realizar mapeos en el CRUD de teams - May 18, 2024
+- Realizar mapeos en el CRUD de players - May 18, 2024
+- Modificar para que se traiga todos los players - May 18, 2024
+- Modificar para que se traiga todos los teams - May 19, 2024
+- Añadir campos faltantes al crud de teams - May 19, 2024
+- Cargar imagen en el picture selectable - May 19, 2024
+- Añadir campos faltantes al crud de players - May 22, 2024
+- Traerse partidos de la bbdd - May 22, 2024
+- Test cruds error teams no funciona create - May 22, 2024
+- Crear crud partidos - May 23, 2024
+- Detalles del Game detail boton onSubmit - May 23, 2024
+- Implementar descargar datos - May 25, 2024
+- Icono de la pagina - May 25, 2024
+- Implementar el esconder el userAdmin Page de los desarolladores no owner - May 26, 2024
+- Mejorar aspecto GameInfo - May 26, 2024
+- Los cruds de games deben de actualizar sus datos en tiempo real - May 26, 2024
+- Cambiar formato date en gameDetail en el submit - May 27, 2024
+- Crear pagina administrador de usuarios - May 27, 2024
+- Hacer sistema de login/register de admins crear pagina e implementar el servicio de users - May 28, 2024
+- Distinguir login de players del login de developers - May 29, 2024
+- Implementar el disable en el submitButton en gameDetail - May 29, 2024
+- Implementar la guarda de isOwner - May 31, 2024
+- Solucionar bug topApp bar el pop de cambiar idioma no aparece correctamente - Jun 2, 2024
+- Mejorar interfaz de team info - Jun 2, 2024
+- Mejorar interfaz de player detail - Jun 4, 2024
+- Mejorar interfaz de team detail - Jun 4, 2024
+- El boton de registrarse no aparece como valid - Jun 5, 2024
+- Mejorar interfaz game-info - Jun 5, 2024
+- Realizar script de python para leer el los archivos csv de la app - Jun 6, 2024
+- Opcion cambiar datos de usuario - Jun 6, 2024
+- Implementar el chequeo de passwords - Jun 8, 2024
+- Implementar guarda isOwner - Jun 9, 2024
+- Implementar Python y libreria pandas para leer el csv descargado y hacer modificaciones - Jun 10, 2024
+- Error mapeando equipos traidos desde la bbdd - Jun 11, 2024
+- Mejorar coeherencia en paleta de colores - Jun 12, 2024
+- Documentar código - Jun 13, 2024
 
-#Tareas a realizar
+# Documentación
 
-Tras hacer el pull del proyecto del segundo trimestre que es gran parte del proyecto realizar:
-
-Ligeros cambios en los campos que se pueden ingresar en los cruds (imagenes y la historia) y en los mapeos debido a las incongruencias con los tipos de datos en la app android, la bbdd y el proyecto angular
-
-Añadir 1 tipo mas de crud (partidos)
-
-Checkear en el login que users son admin
-
-Eliminar el sistema de filtrado por usuario y traer todos los datos de la bbdd
-
-Crear un administrador de admins
+- [Google Fonts Icons](https://fonts.google.com/icons)
+- [Angular - Guide to Form Validation](https://v17.angular.io/guide/form-validation)
+- [CSS-Tricks - A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Firebase - Get Started with Authentication](https://firebase.google.com/docs/auth/web/start?hl=es-419)
+- [Firebase - Password Authentication](https://firebase.google.com/docs/auth/web/password-auth?hl=es-419)
+- [Ionic - Button API](https://ionicframework.com/docs/api/button)
+- [Firebase - Upload Files](https://firebase.google.com/docs/storage/web/upload-files?hl=es-419)
+- [Medium - Auth Guards in Angular](https://medium.com/@jaydeepvpatil225/auth-guards-in-angular-6960950b3c6c)
+- [Github - Picture Selectable Component](https://github.com/juanarrow/angular-users/blob/feature-firebase/src/app/shared/components/picture-selectable/picture-selectable.component.ts)
+- [Github - Auth Guard](https://github.com/juanarrow/angular-users/blob/feature-firebase/src/app/core/guards/auth.guard.ts)
+- [Material Angular - CDK Drag and Drop](https://material.angular.io/cdk/drag-drop/overview)
+- [StackOverflow - Angular Drag and Drop](https://stackoverflow.com/questions/69246593/angular-drag-drop-cdkdrag-item-dropping-in-nested-cdkdroplists)
+- [Analytics Vidhya - Working with CSV file for Data Science](https://www.analyticsvidhya.com/blog/2021/08/python-tutorial-working-with-csv-file-for-data-science/)
+- [Real Python - Working with CSV Files in Python](https://realpython.com/python-csv/)
+- [Python Docs - CSV File Reading and Writing](https://docs.python.org/3/library/csv.html)
+- [W3Schools - Python Pandas Reading CSV](https://www.w3schools.com/python/pandas/pandas_csv.asp)
+- [Pandas - read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+- [StackOverflow - Create an Exception for Empty Dataframe in Pandas](https://stackoverflow.com/questions/72865655/create-an-exception-for-empty-dataframe-in-pandas)
+- [Pandas - DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
+- [Pandas - concat](https://pandas.pydata.org/docs/reference/api/pandas.concat.html)
+- [Pandas - dropna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html)
