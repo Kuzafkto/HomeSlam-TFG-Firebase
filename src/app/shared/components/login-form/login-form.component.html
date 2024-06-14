@@ -16,9 +16,6 @@
       </ion-button>
     </div>
   </div>
-  <div *ngIf="form.get('password')?.invalid && (form.get('password')?.touched || submitted)" class="error-message">
-    {{'login.pwdError' | translate}}
-  </div>
   <div *ngIf="form.get('username')?.invalid && (form.get('username')?.touched || submitted)" class="error-message">
     {{'login.userError' | translate}}
   </div>
