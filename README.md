@@ -59,5 +59,4 @@
 - [StackOverflow - Create an Exception for Empty Dataframe in Pandas](https://stackoverflow.com/questions/72865655/create-an-exception-for-empty-dataframe-in-pandas)
 - [Pandas - DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
 - [Pandas - concat](https://pandas.pydata.org/docs/reference/api/pandas.concat.html)
-- [Pandas - dropna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html)
-- - [Ion-Icons]([https://fonts.google.com/icons?icon.size=24&icon.color=%23e8eaed&icon.platform=web](https://ionic.io/ionicons?_gl=1*q30ne5*_ga*MjAyMTA1NjY2MS4xNzEyODI2Mjc5*_ga_REH9TJF6KF*MTcxNzI1OTM4Ni44LjAuMTcxNzI1OTM4Ni4wLjAuMA..))
+- [Ion-Icons]([https://fonts.google.com/icons?icon.size=24&icon.color=%23e8eaed&icon.platform=web](https://ionic.io/ionicons?_gl=1*q30ne5*_ga*MjAyMTA1NjY2MS4xNzEyODI2Mjc5*_ga_REH9TJF6KF*MTcxNzI1OTM4Ni44LjAuMTcxNzI1OTM4Ni4wLjAuMA..))
