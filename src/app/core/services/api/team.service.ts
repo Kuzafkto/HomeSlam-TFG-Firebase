@@ -128,6 +128,7 @@ export class TeamService {
         const playerUUIDs: string[] = [];
         
         // Recorrer los jugadores y agregar sus UUID al array
+        if(team.players)
         team.players.forEach(player => {
           if (player.uuid) {
             playerUUIDs.push(player.uuid);
