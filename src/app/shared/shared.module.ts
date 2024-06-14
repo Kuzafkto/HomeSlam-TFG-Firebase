@@ -14,23 +14,18 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PositionSelectorComponent } from './components/position-selector/position-selector.component';
 import { NamePipe } from './pipes/name.pipe';
 import { PositionImageDirective } from './directives/position-image.directive';
-import {TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from '../core/services/custom-translate.service';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
-
-
-
+import { createTranslateLoader } from '../core/services/custom-translate.service';
 
 @NgModule({
   declarations: [
-    //Directifes
-    //Pipes
-    //Components
+    // Components
     PictureSelectableComponent,
     PlayerDetailComponent,
     LoginFormComponent,
@@ -39,15 +34,18 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     TeamInfoComponent,
     AppToolbarComponent,
     PositionSelectorComponent,
-      RegisterFormComponent,
-      NamePipe,
-      PositionImageDirective,
-      GameInfoComponent,
-      GameDetailComponent,
-      UserInfoComponent,
-      ErrorModalComponent
-      
-      ],
+    RegisterFormComponent,
+    GameInfoComponent,
+    GameDetailComponent,
+    UserInfoComponent,
+    ErrorModalComponent,
+    
+    // Pipes
+    NamePipe,
+    
+    // Directives
+    PositionImageDirective
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -57,20 +55,18 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     DragDropModule,
     TranslateModule.forChild({
       loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
       }
-      }),
-    
+    })
   ],
-  exports:[
+  exports: [
     CommonModule, 
     IonicModule, 
     FormsModule,
-    //Directifes
-    //Pipes
-    //Components
+    
+    // Components
     PictureSelectableComponent,
     PlayerDetailComponent,
     AppToolbarComponent,
@@ -80,12 +76,19 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     TeamDetailComponent,
     TeamInfoComponent,
     PositionSelectorComponent,
-    PositionImageDirective,
-    TranslateModule,
     GameInfoComponent,
     GameDetailComponent,
     UserInfoComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    
+    // Pipes
+    NamePipe,
+    
+    // Directives
+    PositionImageDirective,
+    
+    // Modules
+    TranslateModule
   ]
 })
 export class SharedModule { }

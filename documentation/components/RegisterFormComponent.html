@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for displaying and handling a register form.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -213,6 +220,9 @@
                             <li>
                                 <a href="#onSubmit" >onSubmit</a>
                             </li>
+                            <li>
+                                <a href="#passwordMatchValidator" >passwordMatchValidator</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -250,12 +260,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for RegisterFormComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -264,6 +276,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +291,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>FormBuilder service for creating forms.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -307,9 +324,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:18</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event emitted when the form is submitted.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -340,14 +363,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:45</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that is called after data-bound properties are initialized.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -377,19 +402,97 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:51</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles form submission.
+Emits the form value and clears the password fields.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordMatchValidator"></a>
+                    <span class="name">
+                        <span ><b>passwordMatchValidator</b></span>
+                        <a href="#passwordMatchValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>passwordMatchValidator(formGroup: FormGroup)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Custom validator to check if password and confirmPassword fields match.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>formGroup</td>
+                                            <td>
+                                                        <code>FormGroup</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The form group to validate.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ mismatch: boolean; }</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An object if the validation fails, null otherwise.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -424,10 +527,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/shared/components/register-form/register-form.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Form group for the register form.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -441,74 +550,119 @@
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { UserRegisterInfo } from &#x27;../../../core/interfaces/user-register-info&#x27;;
 
+/**
+ * Component for displaying and handling a register form.
+ */
 @Component({
   selector: &#x27;app-register-form&#x27;,
   templateUrl: &#x27;./register-form.component.html&#x27;,
   styleUrls: [&#x27;./register-form.component.scss&#x27;],
 })
-export class RegisterFormComponent  implements OnInit {
+export class RegisterFormComponent implements OnInit {
+  
+  /**
+   * Event emitted when the form is submitted.
+   */
   @Output() onsubmit &#x3D; new EventEmitter&lt;UserRegisterInfo&gt;();
-  form:FormGroup|null &#x3D; null;
+
+  /**
+   * Form group for the register form.
+   */
+  form: FormGroup | null &#x3D; null;
+
+  /**
+   * Constructor for RegisterFormComponent.
+   * 
+   * @param formBuilder FormBuilder service for creating forms.
+   */
   constructor(
-    private formBuilder:FormBuilder
-  ) { 
+    private formBuilder: FormBuilder
+  ) {
     this.form &#x3D; this.formBuilder.group({
-      email:[&#x27;&#x27;, [Validators.required,Validators.email]],
-      name:[&#x27;&#x27;, [Validators.required,Validators.minLength(2)]],
-      password:[&#x27;&#x27;, [Validators.required,Validators.minLength(12)]],
-      nickname:[&#x27;&#x27;, [Validators.required,Validators.minLength(2)]]
-    });
+      email: [&#x27;&#x27;, [Validators.required, Validators.email]],
+      name: [&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      password: [&#x27;&#x27;, [Validators.required, Validators.minLength(12)]],
+      confirmPassword: [&#x27;&#x27;, [Validators.required, Validators.minLength(12)]],
+      nickname: [&#x27;&#x27;, [Validators.required, Validators.minLength(2)]]
+    }, { validator: this.passwordMatchValidator });
   }
+
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit() {}
 
-  onSubmit(){
+  /**
+   * Handles form submission.
+   * Emits the form value and clears the password fields.
+   */
+  onSubmit() {
     this.onsubmit.emit(this.form?.value);
     this.form?.controls[&#x27;password&#x27;].setValue(&#x27;&#x27;);
+    this.form?.controls[&#x27;confirmPassword&#x27;].setValue(&#x27;&#x27;);
+  }
+
+  /**
+   * Custom validator to check if password and confirmPassword fields match.
+   * @param formGroup The form group to validate.
+   * @returns An object if the validation fails, null otherwise.
+   */
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password &#x3D; formGroup.get(&#x27;password&#x27;)?.value;
+    const confirmPassword &#x3D; formGroup.get(&#x27;confirmPassword&#x27;)?.value;
+    return password &#x3D;&#x3D;&#x3D; confirmPassword ? null : { mismatch: true };
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form *ngIf&#x3D;&quot;form&quot; [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; (key.enter)&#x3D;&quot;onSubmit()&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form *ngIf&#x3D;&quot;form&quot; [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; (keyup.enter)&#x3D;&quot;onSubmit()&quot;&gt;
   &lt;ion-item&gt;
     &lt;ion-input labelPlacement&#x3D;&quot;stacked&quot; formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;email&quot;&gt;
-      {{&#x27;register.email&#x27;|translate}}
+      {{&#x27;register.email&#x27; | translate}}
     &lt;/ion-input&gt;
   &lt;/ion-item&gt;     
   &lt;ion-item&gt;
     &lt;ion-input labelPlacement&#x3D;&quot;stacked&quot; formControlName&#x3D;&quot;name&quot; type&#x3D;&quot;text&quot;&gt;
-      {{&#x27;register.name&#x27;|translate}}
+      {{&#x27;register.name&#x27; | translate}}
     &lt;/ion-input&gt;
   &lt;/ion-item&gt;
   &lt;ion-item&gt;
     &lt;ion-input labelPlacement&#x3D;&quot;stacked&quot; formControlName&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot;&gt;
-      {{&#x27;register.pwd&#x27;|translate}}
+      {{&#x27;register.pwd&#x27; | translate}}
+    &lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input labelPlacement&#x3D;&quot;stacked&quot; formControlName&#x3D;&quot;confirmPassword&quot; type&#x3D;&quot;password&quot;&gt;
+      {{&#x27;register.confirmPwd&#x27; | translate}}
     &lt;/ion-input&gt;
   &lt;/ion-item&gt;
   &lt;ion-item&gt;
     &lt;ion-input labelPlacement&#x3D;&quot;stacked&quot; formControlName&#x3D;&quot;nickname&quot; type&#x3D;&quot;text&quot;&gt;
-      {{&#x27;register.nickname&#x27;|translate}}
+      {{&#x27;register.nickname&#x27; | translate}}
     &lt;/ion-input&gt;
   &lt;/ion-item&gt;
 
   &lt;div class&#x3D;&quot;center-button&quot;&gt;
-    &lt;ion-button [disabled]&#x3D;&quot;!form.valid&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;{{ &#x27;register.submit&#x27;|translate }}&lt;/ion-button&gt;
+    &lt;ion-button [disabled]&#x3D;&quot;!form.valid&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;{{ &#x27;register.submit&#x27; | translate }}&lt;/ion-button&gt;
   &lt;/div&gt;
 
   &lt;div *ngIf&#x3D;&quot;form.get(&#x27;email&#x27;)?.invalid &amp;&amp; form.get(&#x27;email&#x27;)?.touched&quot; class&#x3D;&quot;error-message&quot;&gt;
-    {{&#x27;register.emailError&#x27;|translate}}
+    {{&#x27;register.emailError&#x27; | translate}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;form.get(&#x27;name&#x27;)?.invalid &amp;&amp; form.get(&#x27;name&#x27;)?.touched&quot; class&#x3D;&quot;error-message&quot;&gt;
-    {{&#x27;register.nameError&#x27;|translate}}
+    {{&#x27;register.nameError&#x27; | translate}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;form.get(&#x27;password&#x27;)?.invalid &amp;&amp; form.get(&#x27;password&#x27;)?.touched&quot; class&#x3D;&quot;error-message&quot;&gt;
-    {{&#x27;register.passwordError&#x27;|translate}}
+    {{&#x27;register.passwordError&#x27; | translate}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;form.get(&#x27;nickname&#x27;)?.invalid &amp;&amp; form.get(&#x27;nickname&#x27;)?.touched&quot; class&#x3D;&quot;error-message&quot;&gt;
-    {{&#x27;register.nickError&#x27;|translate}}
+    {{&#x27;register.nickError&#x27; | translate}}
   &lt;/div&gt;
-
+  &lt;div *ngIf&#x3D;&quot;form.errors &amp;&amp; form.errors[&#x27;mismatch&#x27;] &amp;&amp; form.get(&#x27;confirmPassword&#x27;)?.touched&quot; class&#x3D;&quot;error-message&quot;&gt;
+    {{&#x27;register.confirmPwdError&#x27; | translate}}
+  &lt;/div&gt;
 &lt;/form&gt;</code></pre>
     </div>
 
@@ -560,8 +714,8 @@ export class RegisterFormComponent  implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" (key.enter)="onSubmit()">  <ion-item>    <ion-input labelPlacement="stacked" formControlName="email" type="email">      {{\'register.email\'|translate}}    </ion-input>  </ion-item>       <ion-item>    <ion-input labelPlacement="stacked" formControlName="name" type="text">      {{\'register.name\'|translate}}    </ion-input>  </ion-item>  <ion-item>    <ion-input labelPlacement="stacked" formControlName="password" type="password">      {{\'register.pwd\'|translate}}    </ion-input>  </ion-item>  <ion-item>    <ion-input labelPlacement="stacked" formControlName="nickname" type="text">      {{\'register.nickname\'|translate}}    </ion-input>  </ion-item>  <div class="center-button">    <ion-button [disabled]="!form.valid" (click)="onSubmit()">{{ \'register.submit\'|translate }}</ion-button>  </div>  <div *ngIf="form.get(\'email\')?.invalid && form.get(\'email\')?.touched" class="error-message">    {{\'register.emailError\'|translate}}  </div>  <div *ngIf="form.get(\'name\')?.invalid && form.get(\'name\')?.touched" class="error-message">    {{\'register.nameError\'|translate}}  </div>  <div *ngIf="form.get(\'password\')?.invalid && form.get(\'password\')?.touched" class="error-message">    {{\'register.passwordError\'|translate}}  </div>  <div *ngIf="form.get(\'nickname\')?.invalid && form.get(\'nickname\')?.touched" class="error-message">    {{\'register.nickError\'|translate}}  </div></form></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+        var COMPONENT_TEMPLATE = '<div><form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">  <ion-item>    <ion-input labelPlacement="stacked" formControlName="email" type="email">      {{\'register.email\' | translate}}    </ion-input>  </ion-item>       <ion-item>    <ion-input labelPlacement="stacked" formControlName="name" type="text">      {{\'register.name\' | translate}}    </ion-input>  </ion-item>  <ion-item>    <ion-input labelPlacement="stacked" formControlName="password" type="password">      {{\'register.pwd\' | translate}}    </ion-input>  </ion-item>  <ion-item>    <ion-input labelPlacement="stacked" formControlName="confirmPassword" type="password">      {{\'register.confirmPwd\' | translate}}    </ion-input>  </ion-item>  <ion-item>    <ion-input labelPlacement="stacked" formControlName="nickname" type="text">      {{\'register.nickname\' | translate}}    </ion-input>  </ion-item>  <div class="center-button">    <ion-button [disabled]="!form.valid" (click)="onSubmit()">{{ \'register.submit\' | translate }}</ion-button>  </div>  <div *ngIf="form.get(\'email\')?.invalid && form.get(\'email\')?.touched" class="error-message">    {{\'register.emailError\' | translate}}  </div>  <div *ngIf="form.get(\'name\')?.invalid && form.get(\'name\')?.touched" class="error-message">    {{\'register.nameError\' | translate}}  </div>  <div *ngIf="form.get(\'password\')?.invalid && form.get(\'password\')?.touched" class="error-message">    {{\'register.passwordError\' | translate}}  </div>  <div *ngIf="form.get(\'nickname\')?.invalid && form.get(\'nickname\')?.touched" class="error-message">    {{\'register.nickError\' | translate}}  </div>  <div *ngIf="form.errors && form.errors[\'mismatch\'] && form.get(\'confirmPassword\')?.touched" class="error-message">    {{\'register.confirmPwdError\' | translate}}  </div></form></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'RegisterFormComponent'};
 </script>

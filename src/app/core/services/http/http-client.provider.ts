@@ -1,80 +1,78 @@
-// angular
 import { Injectable } from '@angular/core';
-
-// rxjs
 import { Observable } from 'rxjs';
 
-@Injectable({providedIn:'root'})
+/**
+ * Abstract class that provides a contract for HTTP client providers.
+ * Classes extending this abstract class must implement the specified methods for handling HTTP requests.
+ */
+@Injectable({ providedIn: 'root' })
 export abstract class HttpClientProvider {
 
-
     /**
-     * getImage
+     * Abstract method to get an image from the provided URL.
      *
-     * @param url http request url
-     * @param options http request options
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @returns Observable with HTTP response as Blob
      */
-     public abstract getImage(
-        url: string
-    ): Observable<Blob>;
+    public abstract getImage(url: string): Observable<Blob>;
 
     /**
-     * get
+     * Abstract method to make a GET request.
      *
-     * @param url http request url
-     * @param params http request params
-     * @param headers http request headers
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @param params HTTP request parameters
+     * @param headers HTTP request headers
+     * @returns Observable with HTTP response of type T
      */
     public abstract get<T>(url: string, params: any, headers: any): Observable<T>;
 
     /**
-     * post
+     * Abstract method to make a POST request.
      *
-     * @param url http request url
-     * @param body http request body
-     * @param headers http request headers
-     * @param urlEncoded http request as url encoded content-type
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @param body HTTP request body
+     * @param headers HTTP request headers
+     * @param urlEncoded HTTP request as URL encoded content-type
+     * @returns Observable with HTTP response of type T
      */
     public abstract post<T>(url: string, body: any, headers: any, urlEncoded?: boolean): Observable<T>;
 
     /**
-     * put
+     * Abstract method to make a PUT request.
      *
-     * @param url http request url
-     * @param body http request body
-     * @param headers http request headers
-     * @param urlEncoded http request as url encoded content-type
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @param body HTTP request body
+     * @param headers HTTP request headers
+     * @param urlEncoded HTTP request as URL encoded content-type
+     * @returns Observable with HTTP response of type T
      */
     public abstract put<T>(url: string, body: any, headers: any, urlEncoded?: boolean): Observable<T>;
 
     /**
-     * patch
+     * Abstract method to make a PATCH request.
      *
-     * @param url http request url
-     * @param body http request body
-     * @param headers http request headers
-     * @param urlEncoded http request as url encoded content-type
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @param body HTTP request body
+     * @param headers HTTP request headers
+     * @param urlEncoded HTTP request as URL encoded content-type
+     * @returns Observable with HTTP response of type T
      */
     public abstract patch<T>(url: string, body: any, headers: any, urlEncoded?: boolean): Observable<T>;
 
     /**
-     * delete
+     * Abstract method to make a DELETE request.
      *
-     * @param url http request url
-     * @param params http request params
-     * @param headers http request headers
-     * @returns observable with http response
+     * @param url HTTP request URL
+     * @param params HTTP request parameters
+     * @param headers HTTP request headers
+     * @returns Observable with HTTP response of type T
      */
     public abstract delete<T>(url: string, params: any, headers: any): Observable<T>;
 
     /**
-     * Sets the trust mode for the server
-     * @param mode server trust mode
+     * Abstract method to set the trust mode for the server.
+     * 
+     * @param mode Server trust mode
      */
     public abstract setServerTrustMode(mode: 'default' | 'nocheck' | 'pinned' | 'legacy'): void;
 }

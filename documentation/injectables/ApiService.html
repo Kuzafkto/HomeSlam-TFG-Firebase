@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles API requests to the backend.</p>
+
+            </p>
 
 
 
@@ -182,12 +189,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/api/api.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/api/api.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ApiService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -196,6 +205,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -210,6 +220,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The HTTP client provider.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>jwt</td>
@@ -222,6 +236,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The JWT service for handling tokens.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -257,14 +275,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:124</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes data via a DELETE request to the API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -276,6 +296,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -292,6 +313,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The API endpoint path.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>params</td>
@@ -307,6 +332,10 @@
                                                     <code>{}</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The query parameters (optional).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -316,7 +345,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the response.</p>
+
                             </div>
                 </td>
             </tr>
@@ -342,14 +372,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:75</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets data from the API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -361,6 +393,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -377,6 +410,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The API endpoint path.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>params</td>
@@ -392,6 +429,10 @@
                                                     <code>{}</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The query parameters (optional).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -401,7 +442,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -427,14 +469,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:64</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets data from a given URL.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -445,6 +489,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -459,6 +504,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The URL to get data from.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -468,7 +517,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -487,21 +537,23 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getHeader(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, accept: null, contentType: null)</code>
+<code>getHeader(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, accept: string | null, contentType: string | null)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:34</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets the headers for an API request.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -513,6 +565,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -529,11 +582,15 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The URL for the request.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>accept</td>
                                             <td>
-                                                        <code>null</code>
+                                                        <code>string | null</code>
                                             </td>
 
                                             <td>
@@ -544,11 +601,15 @@
                                                     <code>null</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The Accept header value (optional).</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>contentType</td>
                                             <td>
-                                                        <code>null</code>
+                                                        <code>string | null</code>
                                             </td>
 
                                             <td>
@@ -559,6 +620,10 @@
                                                     <code>null</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The Content-Type header value (optional).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -568,7 +633,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The headers object.</p>
+
                             </div>
                 </td>
             </tr>
@@ -594,14 +660,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets an image from the given URL.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -612,6 +680,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -626,6 +695,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The URL of the image.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -635,7 +708,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the image.</p>
+
                             </div>
                 </td>
             </tr>
@@ -661,14 +735,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:112</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates data via a PATCH request to the API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -680,6 +756,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -696,6 +773,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The API endpoint path.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>body</td>
@@ -711,6 +792,10 @@
                                                     <code>{}</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The request body.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -720,7 +805,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the response.</p>
+
                             </div>
                 </td>
             </tr>
@@ -739,21 +825,23 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>post(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, body: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, content_type: null)</code>
+<code>post(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, body: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, contentType: string | null)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates data via a POST request to the API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -765,6 +853,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -781,6 +870,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The API endpoint path.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>body</td>
@@ -796,11 +889,15 @@
                                                     <code>{}</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The request body.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
-                                                <td>content_type</td>
+                                                <td>contentType</td>
                                             <td>
-                                                        <code>null</code>
+                                                        <code>string | null</code>
                                             </td>
 
                                             <td>
@@ -811,6 +908,10 @@
                                                     <code>null</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The Content-Type header value (optional).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -820,7 +921,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the response.</p>
+
                             </div>
                 </td>
             </tr>
@@ -846,14 +948,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/core/services/api/api.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/core/services/api/api.service.ts:87</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates data via a PUT request to the API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -865,6 +969,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -881,6 +986,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The API endpoint path.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>body</td>
@@ -896,6 +1005,10 @@
                                                     <code>{}</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The request body.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -905,7 +1018,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the response.</p>
+
                             </div>
                 </td>
             </tr>
@@ -924,57 +1038,123 @@ import { environment } from &#x27;src/environments/environment&#x27;;
 import { HttpClientProvider } from &#x27;../http/http-client.provider&#x27;;
 import { JwtService } from &#x27;../jwt.service&#x27;;
 
-
-@Injectable({providedIn: &#x27;root&#x27;})
+/**
+ * This service handles API requests to the backend.
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
 export class ApiService {
+  /**
+   * Creates an instance of ApiService.
+   * 
+   * @param http The HTTP client provider.
+   * @param jwt The JWT service for handling tokens.
+   */
   constructor(
-    private http:HttpClientProvider,
-    private jwt:JwtService
-  ) {
-    this.http.get
-  }
-  
-  getHeader(url:string, accept &#x3D; null, contentType&#x3D;null){
-    var header:any &#x3D; {};
-    if(accept)
+    private http: HttpClientProvider,
+    private jwt: JwtService
+  ) {}
+
+  /**
+   * Gets the headers for an API request.
+   * 
+   * @param url The URL for the request.
+   * @param accept The Accept header value (optional).
+   * @param contentType The Content-Type header value (optional).
+   * @returns The headers object.
+   */
+  getHeader(url: string, accept: string | null &#x3D; null, contentType: string | null &#x3D; null): any {
+    var header: any &#x3D; {};
+    if (accept) {
       header[&#x27;Accept&#x27;] &#x3D; accept;
-    if(contentType)
-      header[&#x27;Content-Type&#x27;]&#x3D;contentType;
-    if(!url.includes(&#x27;auth&#x27;))
-      header[&#x27;Authorization&#x27;]&#x3D;&#x60;Bearer ${this.jwt.getToken()}&#x60;;
+    }
+    if (contentType) {
+      header[&#x27;Content-Type&#x27;] &#x3D; contentType;
+    }
+    if (!url.includes(&#x27;auth&#x27;)) {
+      header[&#x27;Authorization&#x27;] &#x3D; &#x60;Bearer ${this.jwt.getToken()}&#x60;;
+    }
     return header;
   }
 
-  getImage(url:string):Observable&lt;any&gt;{    
+  /**
+   * Gets an image from the given URL.
+   * 
+   * @param url The URL of the image.
+   * @returns An observable of the image.
+   */
+  getImage(url: string): Observable&lt;any&gt; {
     return this.http.getImage(url);
   }
 
-  getDataFromUrl(url:string):Observable&lt;any&gt;{    
+  /**
+   * Gets data from a given URL.
+   * 
+   * @param url The URL to get data from.
+   * @returns An observable of the data.
+   */
+  getDataFromUrl(url: string): Observable&lt;any&gt; {
     return this.http.get(url, {}, this.getHeader(url));
   }
 
-  get(path:string, params:any &#x3D; {}):Observable&lt;any&gt;{
+  /**
+   * Gets data from the API.
+   * 
+   * @param path The API endpoint path.
+   * @param params The query parameters (optional).
+   * @returns An observable of the data.
+   */
+  get(path: string, params: any &#x3D; {}): Observable&lt;any&gt; {
     var url &#x3D; &#x60;${environment.apiUrl}${path}&#x60;;
-    
     return this.http.get(url, params, this.getHeader(url));
   }
-  
+
+  /**
+   * Updates data via a PUT request to the API.
+   * 
+   * @param path The API endpoint path.
+   * @param body The request body.
+   * @returns An observable of the response.
+   */
   put(path: string, body: Object &#x3D; {}): Observable&lt;any&gt; {
     var url &#x3D; &#x60;${environment.apiUrl}${path}&#x60;;
-    return this.http.put(url,body, this.getHeader(url));
+    return this.http.put(url, body, this.getHeader(url));
   }
-  
-  post(path: string, body: Object &#x3D; {}, content_type&#x3D;null): Observable&lt;any&gt; {
+
+  /**
+   * Creates data via a POST request to the API.
+   * 
+   * @param path The API endpoint path.
+   * @param body The request body.
+   * @param contentType The Content-Type header value (optional).
+   * @returns An observable of the response.
+   */
+  post(path: string, body: Object &#x3D; {}, contentType: string | null &#x3D; null): Observable&lt;any&gt; {
     var url &#x3D; &#x60;${environment.apiUrl}${path}&#x60;;
-    return this.http.post(url,body, this.getHeader(url));
+    return this.http.post(url, body, this.getHeader(url));
   }
-   
+
+  /**
+   * Updates data via a PATCH request to the API.
+   * 
+   * @param path The API endpoint path.
+   * @param body The request body.
+   * @returns An observable of the response.
+   */
   patch(path: string, body: Object &#x3D; {}): Observable&lt;any&gt; {
     var url &#x3D; &#x60;${environment.apiUrl}${path}&#x60;;
     return this.http.patch(url, body, this.getHeader(url));
   }
 
-  delete(path:string, params:Object &#x3D; {}): Observable&lt;any&gt; {
+  /**
+   * Deletes data via a DELETE request to the API.
+   * 
+   * @param path The API endpoint path.
+   * @param params The query parameters (optional).
+   * @returns An observable of the response.
+   */
+  delete(path: string, params: Object &#x3D; {}): Observable&lt;any&gt; {
     var url &#x3D; &#x60;${environment.apiUrl}${path}&#x60;;
     return this.http.delete(url, params, this.getHeader(url));
   }

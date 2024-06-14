@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles operations related to games.</p>
+
+            </p>
 
 
 
@@ -197,12 +204,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/api/game.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/api/game.service.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of GameService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -211,6 +220,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -225,6 +235,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to interact with Firebase.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>teamsService</td>
@@ -237,6 +251,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to get details of the teams.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -274,14 +292,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/core/services/api/game.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/core/services/api/game.service.ts:99</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Adds a new game.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -292,6 +312,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -306,6 +327,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The game to add.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -315,7 +340,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the added game.</p>
+
                             </div>
                 </td>
             </tr>
@@ -343,14 +369,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/core/services/api/game.service.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/core/services/api/game.service.ts:136</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a game.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -361,6 +389,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -375,6 +404,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The game to delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -384,7 +417,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the deleted game.</p>
+
                             </div>
                 </td>
             </tr>
@@ -412,19 +446,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/core/services/api/game.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/core/services/api/game.service.ts:77</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves all games.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Game.html" target="_self" >Observable&lt;Game[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the list of games.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -451,14 +491,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/core/services/api/game.service.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/core/services/api/game.service.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a game by its UUID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -469,6 +511,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -483,6 +526,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The UUID of the game.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -492,7 +539,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the game.</p>
+
                             </div>
                 </td>
             </tr>
@@ -520,14 +568,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/core/services/api/game.service.ts:75</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/core/services/api/game.service.ts:114</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates an existing game.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -538,6 +588,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -552,6 +603,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The game to update.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -561,7 +616,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the update operation.</p>
+
                             </div>
                 </td>
             </tr>
@@ -598,10 +654,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/api/game.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/api/game.service.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>BehaviorSubject to track the list of games.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -630,10 +692,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/api/game.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/api/game.service.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the list of games.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -649,21 +717,43 @@ import { Game } from &#x27;../../interfaces/game&#x27;;
 import { FirebaseDocument, FirebaseService } from &#x27;../firebase/firebase.service&#x27;;
 import { TeamService } from &#x27;./team.service&#x27;;
 
+/**
+ * This service handles operations related to games.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class GameService {
 
+  /**
+   * BehaviorSubject to track the list of games.
+   */
   private _games: BehaviorSubject&lt;Game[]&gt; &#x3D; new BehaviorSubject&lt;Game[]&gt;([]);
+
+  /**
+   * Observable for the list of games.
+   */
   public games$: Observable&lt;Game[]&gt; &#x3D; this._games.asObservable();
 
+  /**
+   * Creates an instance of GameService.
+   * 
+   * @param firebaseSvc Service to interact with Firebase.
+   * @param teamsService Service to get details of the teams.
+   */
   constructor(
     private firebaseSvc: FirebaseService,
-    private teamsService: TeamService // Para obtener detalles de los equipos
+    private teamsService: TeamService
   ) {
-    this.games$&#x3D;this.firebaseSvc.games$;
+    this.games$ &#x3D; this.firebaseSvc.games$;
   }
 
+  /**
+   * Retrieves a game by its UUID.
+   * 
+   * @param uuid The UUID of the game.
+   * @returns An observable of the game.
+   */
   public getGame(uuid: string): Observable&lt;Game&gt; {
     return from(this.firebaseSvc.getDocument(&quot;games&quot;, uuid)).pipe(
       switchMap((doc: FirebaseDocument) &#x3D;&gt; {
@@ -692,6 +782,11 @@ export class GameService {
     );
   }
 
+  /**
+   * Retrieves all games.
+   * 
+   * @returns An observable of the list of games.
+   */
   public getAll(): Observable&lt;Game[]&gt; {
     return from(this.firebaseSvc.getDocuments(&quot;games&quot;)).pipe(
       switchMap((gameDocuments: FirebaseDocument[]) &#x3D;&gt; {
@@ -708,6 +803,12 @@ export class GameService {
     );
   }
 
+  /**
+   * Adds a new game.
+   * 
+   * @param game The game to add.
+   * @returns An observable of the added game.
+   */
   public addGame(game: Game): Observable&lt;Game&gt; {
     return from(this.firebaseSvc.createDocument(&quot;games&quot;, game)).pipe(
       map(createdDocId &#x3D;&gt; {
@@ -717,13 +818,19 @@ export class GameService {
     );
   }
 
+  /**
+   * Updates an existing game.
+   * 
+   * @param game The game to update.
+   * @returns An observable of the update operation.
+   */
   public updateGame(game: Game): Observable&lt;void&gt; {
     if (!game.uuid) {
       return throwError(new Error(&quot;Game does not have UUID&quot;));
     }
 
     const gameData &#x3D; { ...game };
-    delete gameData.uuid; // Eliminar UUID para no sobrescribir en Firestore
+    delete gameData.uuid; // Remove UUID to avoid overwriting in Firestore
 
     return from(this.firebaseSvc.updateDocument(&quot;games&quot;, gameData, game.uuid)).pipe(
       map(() &#x3D;&gt; {
@@ -733,6 +840,12 @@ export class GameService {
     );
   }
 
+  /**
+   * Deletes a game.
+   * 
+   * @param game The game to delete.
+   * @returns An observable of the deleted game.
+   */
   public deleteGame(game: Game): Observable&lt;Game&gt; {
     return new Observable&lt;Game&gt;(obs &#x3D;&gt; {
       if (!game.uuid) {
@@ -740,14 +853,14 @@ export class GameService {
         return;
       }
   
-      // Eliminar el juego de la colección &quot;games&quot;
+      // Delete the game from the &quot;games&quot; collection
       from(this.firebaseSvc.deleteDocument(&quot;games&quot;, game.uuid)).subscribe({
         next: () &#x3D;&gt; {
-          obs.next(game); // Devolver el juego eliminado en el observable
+          obs.next(game); // Return the deleted game in the observable
           obs.complete();
         },
         error: error &#x3D;&gt; {
-          obs.error(error); // Propagar cualquier error que ocurra durante el proceso
+          obs.error(error); // Propagate any error that occurs during the process
         }
       });
     });

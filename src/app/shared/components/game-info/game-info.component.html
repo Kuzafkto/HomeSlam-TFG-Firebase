@@ -1,11 +1,14 @@
-<ion-card>
+<ion-card (click)="onCardClick()">
   <ion-card-header>
-    <ion-card-title>{{ game?.local?.name }} vs {{ game?.visitor?.name }}</ion-card-title>
+    <ion-card-title>{{ game?.local?.name|name:8 }} vs {{ game?.visitor?.name|name:8 }}</ion-card-title>
+    <ion-button fill="clear" color="danger" class="delete-button" (click)="onDeleteClick($event)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
   </ion-card-header>
   <ion-card-content class="card-content">
     <div class="team-info-container">
       <div class="team-info">
-        <div class="team-name">{{ game?.local?.name }}</div>
+        <div class="team-name">{{ game?.local?.name|name:8 }}</div>
         <div class="team-image">
           <img *ngIf="game?.local?.imageUrl" [src]="game?.local?.imageUrl" alt="Local Team">
         </div>
@@ -13,27 +16,13 @@
       </div>
       <div class="vs-text">VS</div>
       <div class="team-info">
-        <div class="team-name">{{ game?.visitor?.name }}</div>
+        <div class="team-name">{{ game?.visitor?.name|name:8 }}</div>
         <div class="team-image">
           <img *ngIf="game?.visitor?.imageUrl" [src]="game?.visitor?.imageUrl" alt="Visitor Team">
         </div>
         <div class="team-runs">{{ game?.visitorRuns }}</div>
       </div>
     </div>
-    <p><strong>{{'games.date'|translate}}:</strong> {{ game?.gameDate | date }}</p>
+    <p class="games-date"><strong class="games-date">{{'games.date' | translate}}:</strong> {{ game?.gameDate | date }}</p>
   </ion-card-content>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="full" color="primary" (click)="onCardClick()">
-        <ion-icon slot="start" name="create-outline"></ion-icon>
-        Edit
-      </ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button expand="full" color="danger" (click)="onDeleteClick($event)">
-        <ion-icon slot="start" name="trash-outline"></ion-icon>
-        Delete
-      </ion-button>
-    </ion-col>
-  </ion-row>
 </ion-card>

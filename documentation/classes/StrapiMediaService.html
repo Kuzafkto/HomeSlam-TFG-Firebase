@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles media operations using Strapi. Note that this service is not currently being utilized.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -173,12 +180,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/api/strapi/strapi-media.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/core/services/api/strapi/strapi-media.service.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of StrapiMediaService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -187,6 +196,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -201,6 +211,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to make API requests.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -245,7 +259,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/MediaService.html#source" target="_self" >MediaService:20</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/MediaService.html#source" target="_self" >MediaService:34</a></code>
 </div>
                         </td>
                     </tr>
@@ -253,6 +267,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Uploads a media file to Strapi.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -263,6 +279,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -277,6 +294,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The media file as a Blob.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -286,7 +307,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the uploaded media IDs.</p>
+
                             </div>
                 </td>
             </tr>
@@ -313,23 +335,37 @@ import { StrapiArrayResponse, StrapiExtendedUser, StrapiLoginPayload, StrapiLogi
 import { User } from &#x27;../../../interfaces/user&#x27;;
 import { MediaService } from &#x27;../media.service&#x27;;
 
-export class StrapiMediaService extends MediaService{
+/**
+ * This service handles media operations using Strapi. Note that this service is not currently being utilized.
+ */
+export class StrapiMediaService extends MediaService {
 
+  /**
+   * Creates an instance of StrapiMediaService.
+   * 
+   * @param apiSvc Service to make API requests.
+   */
   constructor(
-    private apiSvc:ApiService
+    private apiSvc: ApiService
   ) { 
     super();
   }
 
-  public upload(blob:Blob):Observable&lt;number[]&gt;{
+  /**
+   * Uploads a media file to Strapi.
+   * 
+   * @param blob The media file as a Blob.
+   * @returns An observable of the uploaded media IDs.
+   */
+  public upload(blob: Blob): Observable&lt;number[]&gt; {
     const formData &#x3D; new FormData();
     formData.append(&#x27;files&#x27;, blob);
-    return this.apiSvc.post(&#x27;/upload&#x27;, formData).pipe(map((response:StrapiUploadResponse)&#x3D;&gt;{
-      return response.map(media&#x3D;&gt;media.id);
+    return this.apiSvc.post(&#x27;/upload&#x27;, formData).pipe(map((response: StrapiUploadResponse) &#x3D;&gt; {
+      return response.map(media &#x3D;&gt; media.id);
     }));
   }
-
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a player.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -213,6 +220,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The media object representing the player&#39;s image (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -246,6 +259,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the player.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -279,6 +298,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The positions the player can play, represented by an array of position IDs.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -317,6 +342,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier of the player (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -324,21 +355,48 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NumberSymbol } from &quot;@angular/common&quot;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NumberSymbol } from &quot;@angular/common&quot;;
 import { Media } from &quot;./media&quot;;
 
+/**
+ * Interface representing a player.
+ */
 export interface Player {
+    /**
+     * The name of the player.
+     */
     name: string;
+
+    /**
+     * The positions the player can play, represented by an array of position IDs.
+     */
     positions: number[];
-    imageUrl?:Media|undefined,
+
+    /**
+     * The media object representing the player&#x27;s image (optional).
+     */
+    imageUrl?: Media | undefined;
+
+    /**
+     * The unique identifier of the player (optional).
+     */
     uuid?: string;
 }
 
+/**
+ * Interface representing a position.
+ */
 export interface Position {
-    id: number,
-    name: &quot;firstBase&quot; | &quot;secondBase&quot; | &quot;thirdBase&quot; | &quot;pitcher&quot; | &quot;catcher&quot; | &quot;shortstop&quot; | &quot;leftField&quot; | &quot;centerField&quot; | &quot;rightField&quot; | &quot;designatedHitter&quot;
-}
+    /**
+     * The unique identifier of the position.
+     */
+    id: number;
 
+    /**
+     * The name of the position.
+     */
+    name: &quot;firstBase&quot; | &quot;secondBase&quot; | &quot;thirdBase&quot; | &quot;pitcher&quot; | &quot;catcher&quot; | &quot;shortstop&quot; | &quot;leftField&quot; | &quot;centerField&quot; | &quot;rightField&quot; | &quot;designatedHitter&quot;;
+}
 </code></pre>
     </div>
 </div>

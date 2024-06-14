@@ -1,107 +1,193 @@
-ion-button {
-    --background: #009a44;
-    --background-hover: #009a44;
-    --background-activated: #03ca5a;
-    --background-focused: #03ca5a;
-    --font-size: 2.5rem !important;
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    height: calc(100% - 100px);
-    overflow-y: auto;
-  }
-  
-  .page-container {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
-  
-  .input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    max-width: 50%;
-    margin: 0 auto;
-  }
-  
-  ion-input {
-    font-size: 1.5rem;
-    margin-left: 2%;
-  }
-  
-  ion-label {
-    font-size: 1.4rem !important;
-  }
-  
-  ion-title {
+ion-header, ion-content, ion-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toolbar{
+  text-align: center;
+}
+.toolbar{
+  ion-title{
     font-size: 2.5rem;
-    text-align: center;
+    margin: 1%;
+    font-family: 'titlesFont'; 
   }
+} 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-wrapper {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5%;
+}
+
   
-  .submitButton {
+.input-title {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  color:var(--ion-color-textColor);
+
+}
+
+.team-images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.team-info {
+  text-align: center;
+  flex: 1;
+}
+
+.team-name {
+  font-size: 2rem;
+  margin-bottom: 1%;
+  font-family: 'titlesFont'; 
+
+}
+
+.team-image img {
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.team-runs {
+  margin-top: 1%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.vs-text {
+  font-size: 2.5rem;
+  font-family: 'titlesFont'; 
+}
+
+.winner-votes-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.winner-votes-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.team-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-votes {
+  font-size: 1.2rem;
+}
+
+ion-button.submitButton {
+  font-size: 2rem;
+  --background: #009a44;
+  --background-hover: #009a44;
+  --background-activated: #03ca5a;
+  --background-focused: #03ca5a;
+  transition: box-shadow 0.3s ease;
+}
+
+ion-button.submitButton:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+}
+
+ion-input {
+  text-align: center;
+}
+
+.story-textarea {
+  height: auto;
+  width: 100%;
+  min-height: 150px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: justify;
+  overflow: hidden;
+  resize: none;
+  padding: 1%;
+}
+
+.story-item {
+  width: 100%;
+  max-width: 80%;
+}
+
+h2{
+  color:var(--ion-color-textColor)
+}
+.team-votes{
+  color: var(--ion-color-textColor);
+}
+.team-name{
+  color: var(--ion-color-textColor);
+}
+ion-toolbar{
+  --background: var(--ion-color-secondaryGreen);
+}
+ion-footer{
+  background-color: var(--ion-color-primaryGreen);
+  box-shadow: none;
+}
+
+ion-content {
+  --background: var(--ion-color-primaryGreen);
+}
+
+.input{
+  color:var(--ion-color-textColor); 
+}
+ion-item{
+  --background: var(--ion-color-secondaryGreen);
+  color: var(--ion-color-textColor);
+}
+ion-button.button {
+  color:var(--ion-color-textColorDark);
+  --background: var(--ion-color-mediumEndCallToAction);
+  --background-hover: var(--ion-color-callToActionGreen);
+  --background-activated: var(--ion-color-callToActionGreen);
+  --background-focused: var(--ion-color-callToActionGreen);
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+  }
+  ion-button.button:hover {
+  --background: var(--ion-color-callToActionGreen);
+  color:var(--ion-color-textColorDark);
+  }
+
+  ion-button.submit {
     font-size: 2rem;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 1.2rem;
-    margin-top: 2%;
-    text-align: center;
-  }
-  
-  .team-images-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .team-info {
-    text-align: center;
-  }
-  
-  .team-name {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-  
-  .team-image img {
-    width: 30%;
-    height: 30%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .vs-text {
-    margin: 0 10px;
-    font-size: 24px;
+    transition: box-shadow 0.3s ease;
+    --background: var(--ion-color-callToActionGreen);
+    color: var(--ion-color-textColorDark);
+    margin-bottom: 1%;
+    margin-top: 1%;
     font-weight: bold;
   }
   
-  .winner-votes-section {
-    margin-top: 30px;
-    text-align: center;
+  ion-button.submit:hover {
+    box-shadow: 0 0 20px var(--ion-color-callToActionGreen);
   }
-  
-  .winner-votes-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .team-vote {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .team-votes {
-    font-size: 1.2rem;
-  }
-  

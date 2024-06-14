@@ -4,27 +4,53 @@ import { ModalController } from '@ionic/angular';
 import { Player, Position } from 'src/app/core/interfaces/player';
 import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
+/**
+ * Component for managing player details, including their positions and personal information.
+ */
 @Component({
   selector: 'app-player-detail',
   templateUrl: './player-detail.component.html',
   styleUrls: ['./player-detail.component.scss'],
 })
 export class PlayerDetailComponent implements OnInit {
+  imageUrl: string = "";
 
+  /**
+   * Define the form group for the player detail form
+   */
   form: FormGroup;
+  
+  /**
+   * Mode to determine if the form is for creating a new player or editing an existing one
+   */
   mode: 'New' | 'Edit' = 'New';
 
-  //Tenmos dos sets (los sets son como listas pero los valores no se pueden repetir) para las posiciones para ir chequeando si el inicial es igual que el que el usuario irá modificando
+  /**
+   * Sets to track selected positions for comparison
+   */
   selectedPositions = new Set<number>();
   initialSelectedPositions = new Set<number>();
+
+  /**
+   * Name of the player
+   */
   name: string = "";
-  uuid:string="";
+
+  /**
+   * UUID of the player
+   */
+  uuid: string = "";
+
+  /**
+   * Input to set the player details
+   */
   @Input() set player(_player: Player | null) {
     if (_player) {
       this.mode = 'Edit';
       this.form.controls['name'].setValue(_player.name);
       if (_player.imageUrl) {
         this.form.controls['imageUrl'].setValue(_player.imageUrl);
+        this.imageUrl = _player.imageUrl.toString();
       }
       if (_player.uuid) {
         this.uuid = _player.uuid;
@@ -37,11 +63,10 @@ export class PlayerDetailComponent implements OnInit {
       this.initialSelectedPositions = new Set(this.selectedPositions);
     }
   }
-  
 
-
-  //Array con todas las posiciones para mostrar en el template
-
+  /**
+   * Array with all possible positions for display in the template
+   */
   allPositions: Position[] = [
     { id: 1, name: 'pitcher' },
     { id: 2, name: 'catcher' },
@@ -54,103 +79,139 @@ export class PlayerDetailComponent implements OnInit {
     { id: 9, name: 'rightField' },
   ];
 
-  // Chequea si la posicion esta seleccionada (se usa para los botones)
-  isPositionSelected(positionId: number): boolean {
-    return this.selectedPositions.has(positionId);
-  }
-  //Obtiene el formArray de positions y la borra o añade la posicion dependiendo de si ya estaba o no en el Set, se activa cuando un usuario hace click en cualquiera de los botones de posicion
-  togglePosition(positionId: number): void {
-
-    //obtiene una referencia (por lo que no es una copia, sino que se vincula) al FormArray de tu formGroup
-    const positionsArray = this.form.get('positions') as FormArray;
-    //si lo tiene saca el index y borralo del set y el FormArray
-    if (this.selectedPositions.has(positionId)) {
-      const index = positionsArray.controls.findIndex(control => control.value === positionId);
-      positionsArray.removeAt(index);
-      this.selectedPositions.delete(positionId);
-    } else {
-      //Sino metelo dentro del formArray y el Set
-      positionsArray.push(new FormControl(positionId));
-      this.selectedPositions.add(positionId);
-    }
-  }
-
+  /**
+   * Constructor for PlayerDetailComponent.
+   * 
+   * @param _modal ModalController for handling modals.
+   * @param formBuilder FormBuilder for creating form groups and controls.
+   * @param firebaseService FirebaseService for handling image uploads.
+   */
   constructor(
     private _modal: ModalController,
     private formBuilder: FormBuilder,
-    private firebaseService: FirebaseService // Asegúrate de inyectar tu servicio de Firebase
-
+    private firebaseService: FirebaseService // Ensure to inject your Firebase service
   ) {
     this.form = this.formBuilder.group({
       id: [null],
       name: ['', [Validators.required]],
       positions: this.formBuilder.array([]),
-      imageUrl: [''] 
+      imageUrl: ['']
     });
   }
-  
 
+  /**
+   * Angular lifecycle hook called after data-bound properties are initialized.
+   * Initialize the name property.
+   */
   ngOnInit() {
     this.name = this.form.get('name')?.value;
   }
 
+  /**
+   * Check if a position is selected
+   * @param positionId The ID of the position to check
+   * @returns True if the position is selected, false otherwise
+   */
+  isPositionSelected(positionId: number): boolean {
+    return this.selectedPositions.has(positionId);
+  }
+
+  /**
+   * Toggle the selection of a position
+   * @param positionId The ID of the position to toggle
+   */
+  togglePosition(positionId: number): void {
+    const positionsArray = this.form.get('positions') as FormArray;
+    if (this.selectedPositions.has(positionId)) {
+      const index = positionsArray.controls.findIndex(control => control.value === positionId);
+      positionsArray.removeAt(index);
+      this.selectedPositions.delete(positionId);
+    } else {
+      positionsArray.push(new FormControl(positionId));
+      this.selectedPositions.add(positionId);
+    }
+  }
+
+  /**
+   * Handle the cancel action
+   * Dismisses the modal without saving changes
+   */
   onCancel() {
     this._modal.dismiss(null, 'cancel');
   }
 
+  /**
+   * Handle the submit action
+   * Dismisses the modal and saves changes
+   */
   onSubmit() {
-     // Agregar el uuid al objeto del formulario antes de descartarlo
-     const formWithUUID = { ...this.form.value, uuid: this.uuid };
-     console.log(formWithUUID);
-     this._modal.dismiss(formWithUUID, 'ok');
+    const formWithUUID = { ...this.form.value, uuid: this.uuid };
+    console.log(formWithUUID);
+    this._modal.dismiss(formWithUUID, 'ok');
   }
 
+  /**
+   * Handle the delete action
+   * Dismisses the modal and deletes the player
+   */
   onDelete() {
     this._modal.dismiss(this.form.value, 'delete');
   }
 
+  /**
+   * Check if a control has a specific error
+   * @param control The form control name
+   * @param error The error to check for
+   * @returns True if the control has the specified error, false otherwise
+   */
   hasError(control: string, error: string): boolean {
     let errors = this.form.controls[control].errors;
     return errors != null && error in errors;
-
   }
 
+  /**
+   * Update the selected positions
+   * @param set The set of selected positions
+   */
   updateSelected(set: Set<number>) {
     this.selectedPositions = set;
   }
 
-  //chequea si el formulario esta sucio, es necesario esta funcion porque el .dirty por defecto no tiene en cuenta los formArray por lo que chequearemos si los sets de las posiciones iniciales y las "cambiadas" son los mismos
+  /**
+   * Check if the form is dirty
+   * @returns True if the form is dirty, false otherwise
+   */
   get isFormDirty(): boolean {
-    return (this.form.get('name')?.value != this.name || !this.areSetsEqual(this.selectedPositions, this.initialSelectedPositions));
+    return (this.form.get('name')?.value != this.name || !this.areSetsEqual(this.selectedPositions, this.initialSelectedPositions) || this.imageUrl != this.form.get('imageUrl')?.value);
   }
 
-
-
-  //esta fumada chequea si dos sets de tipo string son iguales
+  /**
+   * Check if two sets are equal
+   * @param setA The first set to compare
+   * @param setB The second set to compare
+   * @returns True if the sets are equal, false otherwise
+   */
   areSetsEqual(setA: Set<number>, setB: Set<number>) {
-    //si los dos sets no tienen el mismo tamaño entonces no pueden ser iguales, return false
     if (setA.size !== setB.size) return false;
-    //ahora chequeamos por cada item del setA, si el setB no lo tiene, return false
     for (let item of setA) {
       if (!setB.has(item)) {
         return false;
       }
     }
-    //en caso de que no haya devuelto false, entonces son iguales y devuelve true
     return true;
   }
+
+  /**
+   * Handle the image change event
+   * @param event The image change event
+   */
   onImageChange(event: any) {
     const file = event.target.files[0];
     if (file) {
       this.firebaseService.imageUpload(file).then((url: string) => {
         this.form.controls['imageUrl'].setValue(url);
+        this.imageUrl = url; // Update the imageUrl to mark the form as dirty
       });
     }
   }
 }
-
-
-
-
-
-

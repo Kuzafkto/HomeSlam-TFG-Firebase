@@ -1,31 +1,31 @@
-.page-container {
+ion-header, ion-content, ion-footer {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
+}
+
+.toolbar-title {
+  padding-right: 5%;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  height: calc(100% - 20px);
-  overflow-y: auto;
-}
-
-.input-container {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 50px;
-  max-width: 70%; /* Reducido para que ocupe menos ancho */
-  margin: 0 auto;
+  width: 100%;
 }
 
-ion-input,
-ion-textarea {
-  font-size: 1.2rem;
-  margin-left: 2%;
-  width: 100%; /* Asegura que ocupen el ancho completo del contenedor */
+.picture-container {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.input-wrapper {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
 }
 
 .image-container {
@@ -45,20 +45,42 @@ ion-textarea {
   display: flex;
   flex-direction: row;
   flex: 1;
-  height: 100%;
   overflow: hidden;
   margin: 2%;
+  border: 2px solid var(--ion-color-textColor);
+  border-radius: 10px;
 }
 
 .players-list,
 .team-list {
   flex: 1;
   overflow-y: auto;
+  max-height: 100vh;
   padding: 10px;
-  max-height: 300px; /* Limita la altura y permite el desplazamiento */
   display: flex;
+  min-width: 400px;
   flex-wrap: wrap;
   justify-content: center;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.list-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.list-title {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--ion-color-textColor);
+  padding: 5px 0;
 }
 
 .dragging {
@@ -71,22 +93,10 @@ ion-title {
   text-align: center;
 }
 
-ion-button {
-  --background: #009a44;
-  --background-hover: #009a44;
-  --background-activated: #03ca5a;
-  --background-focused: #03ca5a;
-  --font-size: 2.5rem !important;
-}
-
-.submitButton {
-  font-size: 2rem;
-}
-
 .divider-line {
   width: 5px;
   height: 100vh;
-  background-color: #009a44;
+  background-color: var(--ion-color-textColor);
 }
 
 .main-background {
@@ -95,8 +105,6 @@ ion-button {
 }
 
 .rounde {
-  background-color: #fff;
-  color: #fff;
   height: 5vh;
   width: 4vw;
   margin: 2%;
@@ -119,13 +127,22 @@ ion-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 70%;
+  max-width: 80%;
   margin: 20px auto;
 }
 
 .story-container ion-textarea {
   width: 100%;
+  height: auto;
+  min-height: 150px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
   font-size: 1.2rem;
+  text-align: justify;
+  overflow: hidden;
+  resize: none;
 }
 
 .player-card {
@@ -134,4 +151,80 @@ ion-icon {
   max-width: 120px;
   max-height: 150px;
   margin: 10px;
+}
+
+.story-item {
+  width: 100%;
+  max-width: 80%;
+}
+.story-textarea {
+  height: auto;
+  width: 100%;
+  min-height: 150px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: justify;
+  overflow: hidden;
+  resize: none;
+  padding: 1%;
+}
+ion-input {
+  text-align: center;
+}
+ion-toolbar{
+  --background: var(--ion-color-secondaryGreen);
+}
+ion-footer{
+  background-color: var(--ion-color-primaryGreen);
+  box-shadow: none;
+}
+
+ion-content {
+  --background: var(--ion-color-primaryGreen);
+}
+
+.input{
+  color:var(--ion-color-textColor); 
+}
+ion-item{
+  --background: var(--ion-color-secondaryGreen);
+  color: var(--ion-color-textColor);
+}
+ion-button.button {
+  color:var(--ion-color-textColorDark);
+  --background: var(--ion-color-mediumEndCallToAction);
+  --background-hover: var(--ion-color-callToActionGreen);
+  --background-activated: var(--ion-color-callToActionGreen);
+  --background-focused: var(--ion-color-callToActionGreen);
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+  }
+  ion-button.button:hover {
+  --background: var(--ion-color-callToActionGreen);
+  color:var(--ion-color-textColorDark);
+  }
+
+  ion-button.submit {
+    font-size: 2rem;
+    transition: box-shadow 0.3s ease;
+    --background: var(--ion-color-callToActionGreen);
+    color: var(--ion-color-textColorDark);
+    margin-bottom: 1%;
+    margin-top: 1%;
+    font-weight: bold;
+  }
+  
+  ion-button.submit:hover {
+    box-shadow: 0 0 20px var(--ion-color-callToActionGreen);
+  }
+  
+.input-title {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  color:var(--ion-color-textColor);
+
 }

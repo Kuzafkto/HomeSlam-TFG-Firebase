@@ -1,21 +1,28 @@
 <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
   <ion-item>
     <ion-input labelPlacement="stacked" formControlName="username" type="text">
-      {{'login.user'|translate}}
+      {{'login.user' | translate}}
     </ion-input>
   </ion-item>
   <ion-item>
-    <ion-input labelPlacement="stacked" formControlName="password" type="password">{{'login.pwd'|translate}}</ion-input>
+    <ion-input labelPlacement="stacked" formControlName="password" type="password">
+      {{'login.pwd' | translate}}
+    </ion-input>
   </ion-item>
   <div class="ion-text-end">
     <div class="center-button">
-      <button type="submit" [disabled]="!form.valid" (click)="onSubmit()">{{'login.submit'|translate}}</button>
+      <ion-button type="submit" [disabled]="!form.valid" (click)="onSubmit()" class="submitButton">
+        {{'login.submit' | translate}}
+      </ion-button>
     </div>
   </div>
-  <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error-message">
-    {{'login.pwdError'|translate}}
+  <div *ngIf="form.get('password')?.invalid && (form.get('password')?.touched || submitted)" class="error-message">
+    {{'login.pwdError' | translate}}
   </div>
-  <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched" class="error-message">
-    {{'login.userError'|translate}}
+  <div *ngIf="form.get('username')?.invalid && (form.get('username')?.touched || submitted)" class="error-message">
+    {{'login.userError' | translate}}
+  </div>
+  <div *ngIf="submitted" class="error-message">
+    {{'login.submitError' | translate}}
   </div>
 </form>

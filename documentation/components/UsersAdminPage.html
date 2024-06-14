@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for managing the users admin page.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -238,12 +245,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:19</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of UsersAdminPage.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -252,6 +261,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -266,6 +276,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to manage user data.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>modal</td>
@@ -278,6 +292,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Controller to handle modal dialogs.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toast</td>
@@ -290,6 +308,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Controller to show toast notifications.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -329,14 +351,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:37</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that is called after data-bound properties are initialized.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -377,10 +401,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicates if the page is currently loading.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -404,10 +434,15 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/users-admin/users-admin.page.ts:29</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Service to manage user data.</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -422,6 +457,9 @@ import { ModalController, ToastController, ToastOptions } from &#x27;@ionic/angu
 import { User } from &#x27;src/app/core/interfaces/user&#x27;;
 import { UsersService } from &#x27;src/app/core/services/api/users.service&#x27;;
 
+/**
+ * Component for managing the users admin page.
+ */
 @Component({
   selector: &#x27;app-users-admin&#x27;,
   templateUrl: &#x27;./users-admin.page.html&#x27;,
@@ -429,17 +467,33 @@ import { UsersService } from &#x27;src/app/core/services/api/users.service&#x27;
 })
 export class UsersAdminPage implements OnInit {
 
+  /**
+   * Indicates if the page is currently loading.
+   */
   public loading: boolean &#x3D; false;
 
+  /**
+   * Creates an instance of UsersAdminPage.
+   * 
+   * @param users Service to manage user data.
+   * @param modal Controller to handle modal dialogs.
+   * @param toast Controller to show toast notifications.
+   */
   constructor(
     public users: UsersService,
     private modal: ModalController,
     private toast: ToastController
   ) { }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit(): void {
     this.loading &#x3D; true;
-    this.loading &#x3D; false;
+    // Simulate loading process
+    setTimeout(() &#x3D;&gt; {
+      this.loading &#x3D; false;
+    }, 1000); // Adjust the timeout as needed
   }
 }
 </code></pre>
@@ -534,7 +588,9 @@ export class UsersAdminPage implements OnInit {
     top: 5px;
     right: 5px;
   }
-  </code></pre>
+  ion-content {
+    --background: var(--ion-color-primaryGreen);
+  }</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -563,7 +619,7 @@ export class UsersAdminPage implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true" class="main-background">  <ion-header [translucent]="true">    <app-toolbar></app-toolbar>  </ion-header>   <div class="users-panel">    <ion-row>      <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let user of (users.users$ | async); let i = index">        <app-user-info          [user]="user">        </app-user-info>      </ion-col>    </ion-row>  </div>  <ion-loading [isOpen]="loading" class="custom-loading" message="Loading..."></ion-loading></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'UsersAdminPage'};
 </script>

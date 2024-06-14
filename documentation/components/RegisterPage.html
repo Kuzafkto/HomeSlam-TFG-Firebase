@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for managing the user registration page.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -225,12 +232,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/register/register.page.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/register/register.page.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of RegisterPage.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -239,6 +248,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -253,6 +263,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to manage authentication.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -265,6 +279,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to handle navigation.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -304,14 +322,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/pages/register/register.page.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/pages/register/register.page.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the login page.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -341,14 +361,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/pages/register/register.page.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/pages/register/register.page.ts:31</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that is called after data-bound properties are initialized.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -378,14 +400,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/pages/register/register.page.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/pages/register/register.page.ts:39</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles the user registration.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -396,6 +420,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -410,6 +435,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The registration information provided by the user.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -437,6 +466,9 @@ import { ModalController } from &#x27;@ionic/angular&#x27;;
 import { UserRegisterInfo } from &#x27;../../core/interfaces/user-register-info&#x27;;
 import { AuthService } from &#x27;../../core/services/api/auth.service&#x27;;
 
+/**
+ * Component for managing the user registration page.
+ */
 @Component({
   selector: &#x27;app-register&#x27;,
   templateUrl: &#x27;./register.page.html&#x27;,
@@ -444,17 +476,32 @@ import { AuthService } from &#x27;../../core/services/api/auth.service&#x27;;
 })
 export class RegisterPage implements OnInit {
 
+  /**
+   * Creates an instance of RegisterPage.
+   * 
+   * @param auth Service to manage authentication.
+   * @param router Service to handle navigation.
+   */
   constructor(
     private auth: AuthService,
     private router: Router,
   ) { }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit() {
   }
 
+  /**
+   * Handles the user registration.
+   * 
+   * @param registerInfo The registration information provided by the user.
+   */
   onRegister(registerInfo: UserRegisterInfo) {
     this.auth.register(registerInfo).subscribe({
       next: data &#x3D;&gt; {
+        // Registration successful
       },
       error: err &#x3D;&gt; {
         console.log(err);
@@ -463,6 +510,9 @@ export class RegisterPage implements OnInit {
     this.router.navigate([&#x27;home&#x27;]);
   }
 
+  /**
+   * Navigates to the login page.
+   */
   goToLoginPage() {
     this.router.navigate([&#x27;/login&#x27;]);
   }
@@ -587,7 +637,7 @@ ion-content {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <div class="container">    <ion-card>      <ion-card-header>        <div class="logo">          <ion-thumbnail class="logo-thumbnail">            <img alt="logo of home slam" src="../../../assets/imgs/homeslam.logo.png" />          </ion-thumbnail>          <ion-text class="logo-text">{{\'register.access\'|translate}}</ion-text>        </div>      </ion-card-header>      <ion-card-content>        <div class="ion-text-center">          <ion-button fill="clear" (click)="goToLoginPage()">            {{ \'register.login\'|translate }}          </ion-button>        </div>        <app-register-form (onsubmit)="onRegister($event)"></app-register-form>      </ion-card-content>    </ion-card>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'RegisterPage'};
 </script>

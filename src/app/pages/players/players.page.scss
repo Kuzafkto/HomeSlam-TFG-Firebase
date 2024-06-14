@@ -1,11 +1,6 @@
-.main-background {
-    background-color: #7e4d32;
-    color: #fff;
-  }
+
   
   .round {
-    background-color: #fff;
-    color: #fff;
     height: 5vh;
     width: 4vw;
     margin:2%;
@@ -15,10 +10,33 @@
   .custom-loading {
     --ion-color-primary: #7e4d32;
   }
-  ion-content{
-    --ion-background-color:#005625;
+
+ion-content{
+    --background: var(--ion-color-primaryGreen);
 }
-ion-icon{
-    --ion-background-color:#009a44;
+
+Ion-icon {
+  color:var(--ion-color-textColorDark);
+  font-weight: bold;
 }
-//009a44
+
+ion-button.button {
+color:var(--ion-color-textColorDark);
+--background: var(--ion-color-mediumEndCallToAction);
+--background-hover: var(--ion-color-callToActionGreen);
+--background-activated: var(--ion-color-callToActionGreen);
+--background-focused: var(--ion-color-callToActionGreen);
+transition: box-shadow 0.3s ease;
+font-weight: bold;
+}
+ion-button.button:hover {
+--background: var(--ion-color-callToActionGreen);
+color:var(--ion-color-textColorDark);
+box-shadow: 0 0 20px var(--ion-color-callToActionGreen);
+}
+.rounde {
+  height: 5vh;
+  width: 4vw;
+  margin: 2%;
+  border-radius: 50px;
+}

@@ -10,6 +10,9 @@ import { PlayerDetailComponent } from 'src/app/shared/components/player-detail/p
 import { CsvService } from 'src/app/core/services/api/csv.service';
 import { take } from 'rxjs/operators';
 
+/**
+ * Component for managing the players page.
+ */
 @Component({
   selector: 'app-players',
   templateUrl: './players.page.html',
@@ -17,22 +20,43 @@ import { take } from 'rxjs/operators';
 })
 export class PlayersPage implements OnInit {
 
+  /**
+   * Indicates if the page is currently loading.
+   */
   public loading: boolean = false;
 
+  /**
+   * Creates an instance of PlayersPage.
+   * 
+   * @param router Service to handle navigation.
+   * @param toast Controller to show toast notifications.
+   * @param players Service to manage player data.
+   * @param modal Controller to handle modal dialogs.
+   * @param media Service to manage media uploads.
+   * @param csvService Service to generate CSV files.
+   */
   constructor(
     private router: Router,
     private toast: ToastController,
     public players: PlayersService,
     private modal: ModalController,
     private media: MediaService,
-    private csvService: CsvService // Inyecta el servicio CSV
+    private csvService: CsvService // Inject the CSV service
   ) {}
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit(): void {
     this.loading = true;
     this.loading = false;
   }
 
+  /**
+   * Handles the deletion of a player.
+   * 
+   * @param player The player to be deleted.
+   */
   public onDeleteClicked(player: Player) {
     var _player: Player = { ...player };
 
@@ -65,6 +89,11 @@ export class PlayersPage implements OnInit {
     );
   }
 
+  /**
+   * Handles the click event on a player card.
+   * 
+   * @param player The player that was clicked.
+   */
   public async onCardClicked(player: Player) {
     var onDismiss = (info: any) => {
       switch(info.role){
@@ -126,6 +155,12 @@ export class PlayersPage implements OnInit {
     this.presentForm(player, onDismiss);
   }
 
+  /**
+   * Presents a form in a modal for creating or editing a player.
+   * 
+   * @param data The initial data to populate the form with.
+   * @param onDismiss Callback to handle the result when the modal is dismissed.
+   */
   async presentForm(data: any | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
       component: PlayerDetailComponent,
@@ -139,12 +174,12 @@ export class PlayersPage implements OnInit {
     
     if (result && result.data) {
       if (result.data.imageUrl) {
-        // Comparar la URL de la imagen actual con la URL de la imagen anterior
+        // Compare the current image URL with the previous image URL
         if (data && data.imageUrl === result.data.imageUrl) {
-          // Si las URLs son iguales, no realizar la conversión
+          // If the URLs are the same, do not perform the conversion
           onDismiss(result);
         } else {
-          // Si la URL es diferente, convertir la imagen actual a Blob
+          // If the URL is different, convert the current image to Blob
           dataURLtoBlob(result.data.imageUrl, (blob: Blob) => {
             this.media.upload(blob).subscribe((media: number[]) => {
               result.data.imageUrl = media[0];
@@ -172,6 +207,9 @@ export class PlayersPage implements OnInit {
     }
   }
 
+  /**
+   * Handles the creation of a new player.
+   */
   onNewPlayer(){
     var onDismiss = (info: any) => {
       switch(info.role){
@@ -208,6 +246,9 @@ export class PlayersPage implements OnInit {
     this.presentForm(null, onDismiss);
   }
 
+  /**
+   * Downloads the players data as a CSV file.
+   */
   downloadPlayersCSV() {
     this.players.players$.pipe(take(1)).subscribe((players) => {
       const formattedPlayers = players.map(player => {

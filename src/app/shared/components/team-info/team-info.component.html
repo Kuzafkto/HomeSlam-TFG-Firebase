@@ -1,23 +1,26 @@
 <ion-card appHighLight button (click)="onCardClick()" class="team-card-container">
   <ion-button class="close-button" fill="clear" aria-label="Delete" (click)="onDeleteClick($event)">
-    <ion-icon slot="icon-only"  color="primary" name="trash" aria-hidden="true"></ion-icon>
+    <ion-icon slot="icon-only" color="danger" name="trash" aria-hidden="true"></ion-icon>
   </ion-button>
 
   <div class="card-container">
     <ion-card-header>
       <div class="team-name-container">
+        <div class="team-image-container" *ngIf="team?.imageUrl">
+          <img [src]="team?.imageUrl" alt="{{ team?.name }}" class="team-image" />
+        </div>
         <div class="ion-margin-start team-name">{{team?.name | name:12}}</div>
       </div>
     </ion-card-header>
     <ion-card-content>
-    <h3>{{'teams.players'|translate}}</h3>
-    <div class="players-container">
-      <ng-container *ngFor="let player of players">
-        <div class="player-container">
-          <ion-text color="medium" class="player-name">{{ player.name|name:8}}</ion-text>
-        </div>
-      </ng-container>
-    </div>
+      <ion-title>{{'teams.players' | translate}}</ion-title>
+      <div class="players-container">
+        <ng-container *ngFor="let player of players">
+          <div class="player-container">
+            <ion-text color="medium" class="player-name">{{ player.name | name:8 }}</ion-text>
+          </div>
+        </ng-container>
+      </div>
     </ion-card-content>
   </div>
 </ion-card>

@@ -1,52 +1,237 @@
-ion-button{
-  --background: #009a44;
-  --background-hover: #009a44;
-  --background-activated: #03ca5a;
-  --background-focused: #03ca5a;
-  --font-size:2.5rem !important;
-//009a44
+ion-header, ion-content, ion-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toolbar-title {
+  padding-right: 5%;
 }
 
 .form-container {
   display: flex;
-  flex-direction: column; // alinear horizontal, para vertical poner column
-  flex: 1; // ocupa toda la row
-  height: calc(100% - 100px); //altura=100%-50px para el boton y 50 para el label
-  overflow-y: auto;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-.page-container {
+
+.picture-container {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.input-wrapper {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1%;
+  margin-top: 2%;
+}
+
+.input-title {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  color:var(--ion-color-textColor);
+
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.dragAndDrop {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  margin: 2%;
+  border: 2px solid white;
+  border-radius: 10px;
 }
 
+.players-list,
+.team-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 10px;
+  display: flex;
+  min-width: 400px;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: max-height 0.3s ease-in-out;
+}
 
-.input-container {
+.list-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+
+}
+
+.list-title {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  padding: 5px 0;
+}
+
+.dragging {
+  opacity: 0.5;
+  border: 2px dashed #000;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.divider-line {
+  width: 5px;
+  height: 100vh;
+  background-color: #009a44;
+}
+
+.main-background {
+  background-color: #7e4d32;
+  color: #fff;
+}
+
+.rounde {
+  height: 5vh;
+  width: 4vw;
+  margin: 2%;
+  border-radius: 50px;
+}
+
+.custom-loading {
+  --ion-color-primary: #7e4d32;
+}
+
+ion-content {
+  --background: var(--ion-color-primaryGreen);
+}
+
+ion-icon {
+  --ion-background-color: #009a44;
+}
+
+.story-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  max-width: 50%;
-  margin: 0 auto;
+  max-width: 80%;
+  margin: 20px auto;
 }
 
-ion-input{
-  font-size: 2rem;
-  margin-left:2%;
-}
-ion-label{
-  font-size: 1.4rem !important;
-}
-ion-title{
-  font-size: 2.5rem;
-  text-align: center;
-}
-.submitButton{
-  font-size: 2rem;
-}
-.error-message {
-  color: red;
+.story-container ion-textarea {
+  width: 100%;
+  height: auto;
+  min-height: 150px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
   font-size: 1.2rem;
-  margin-top: 2%;
+  text-align: justify;
+  overflow: hidden;
+  resize: none;
+}
+
+.player-card {
+  width: 100%;
+  height: 100%;
+  max-width: 120px;
+  max-height: 150px;
+  margin: 10px;
+}
+
+.story-item {
+  width: 100%;
+  max-width: 80%;
+}
+.story-textarea {
+  height: auto;
+  width: 100%;
+  min-height: 150px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: justify;
+  overflow: hidden;
+  resize: none;
+  padding: 1%;
+}
+ion-input {
   text-align: center;
+  font-size: 1.5rem;
+}
+position-selector{
+  margin-bottom: 0.5%;
+}
+
+ion-footer{
+  background-color: var(--ion-color-primaryGreen);
+  box-shadow: none;
+}
+Ion-icon {
+  color:var(--ion-color-textColorDark);
+  font-weight: bold;
+}
+ion-button.button {
+color:var(--ion-color-textColorDark);
+--background: var(--ion-color-mediumEndCallToAction);
+--background-hover: var(--ion-color-callToActionGreen);
+--background-activated: var(--ion-color-callToActionGreen);
+--background-focused: var(--ion-color-callToActionGreen);
+transition: box-shadow 0.3s ease;
+font-weight: bold;
+}
+ion-button.button:hover {
+--background: var(--ion-color-callToActionGreen);
+color:var(--ion-color-textColorDark);
+}
+ion-item{
+  height: 10vh;
+  --background: var(--ion-color-secondaryGreen);
+
+}
+ion-toolbar{
+  --background: var(--ion-color-secondaryGreen);
+}
+.input{
+  height: 10vh;
+  color:var(--ion-color-textColor); 
+}
+ion-button.submit {
+  font-size: 2rem;
+  transition: box-shadow 0.3s ease;
+  --background: var(--ion-color-callToActionGreen);
+  color: var(--ion-color-textColorDark);
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+
+ion-button.submit:hover {
+  box-shadow: 0 0 20px var(--ion-color-callToActionGreen);
 }

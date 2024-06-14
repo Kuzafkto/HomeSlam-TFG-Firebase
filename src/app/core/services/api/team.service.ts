@@ -1,37 +1,62 @@
 import { Injectable } from '@angular/core';
 import { Unsubscribe } from 'firebase/firestore';
-import { BehaviorSubject, from, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject, from, map, Observable, switchMap } from 'rxjs';
 import { Player } from '../../interfaces/player';
 import { Team } from '../../interfaces/team';
-import { User } from '../../interfaces/user';
 import { FirebaseDocument, FirebaseService } from '../firebase/firebase.service';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { FirebaseAuthService } from './firebase/firebase-auth.service';
 import { PlayersService } from './player.service';
-import { AuthStrapiService } from './strapi/auth-strapi.service';
-AuthStrapiService
 
+/**
+ * This service handles operations related to teams.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
 
+  /**
+   * BehaviorSubject to track the list of teams.
+   */
   private _teams: BehaviorSubject<any[]> = new BehaviorSubject<Team[]>([]);
-  public teams$: Observable<any[]> = this._teams.asObservable();
-  private unsubscribe:Unsubscribe|null = null;
 
+  /**
+   * Observable for the list of teams.
+   */
+  public teams$: Observable<any[]> = this._teams.asObservable();
+
+  /**
+   * Unsubscribe function for Firebase listeners.
+   */
+  private unsubscribe: Unsubscribe | null = null;
+
+  /**
+   * Creates an instance of TeamService.
+   * 
+   * @param api Service to make API requests.
+   * @param auth Service to handle authentication.
+   * @param firebaseSvc Service to interact with Firebase.
+   * @param players Service to handle player operations.
+   * @param firebaseAuth Service to handle Firebase authentication.
+   */
   constructor(
     private api: ApiService,
     private auth: AuthService,
-    private firebaseSvc:FirebaseService,
-    private players:PlayersService,
-    private firebaseAuth:FirebaseAuthService
+    private firebaseSvc: FirebaseService,
+    private players: PlayersService,
+    private firebaseAuth: FirebaseAuthService
   ) {
-    this.teams$=this.firebaseSvc.teams$;
-   }
+    this.teams$ = this.firebaseSvc.teams$;
+  }
 
-
+  /**
+   * Retrieves a team by its UUID.
+   * 
+   * @param uuid The UUID of the team.
+   * @returns An observable of the team.
+   */
   public getTeam(uuid: string): Observable<Team> {
     return from(this.firebaseSvc.getDocument("teams", uuid)).pipe(
       switchMap((doc: FirebaseDocument) => {
@@ -63,71 +88,12 @@ export class TeamService {
     );
   }
 
-
-  /*public getAll(): Observable<Team[]> {
-    let teams: Team[] = [];
-  
-    return this.firebaseAuth.me().pipe(
-      switchMap(user => {
-        // Paso 1: Obtener todos los jugadores
-        return from(this.firebaseSvc.getDocuments("players")).pipe(
-          switchMap((playerDocuments: FirebaseDocument[]) => {
-            // Paso 2: Obtener todos los equipos
-            return from(this.firebaseSvc.getDocuments("teams")).pipe(
-              switchMap((teamDocuments: FirebaseDocument[]) => {
-                // Iterar sobre los documentos de equipos y mapearlos a objetos Team
-                const userTeamsIds: string[] = user.teams || [];
-  
-                // Paso 4: Filtrar los documentos de players que pertenecen al usuario
-                const userTeams = teamDocuments.filter(doc => userTeamsIds.includes(doc.id));
-                userTeams.forEach(teamDoc => {
-                  let teamData = teamDoc.data as Team;
-                  teamData.uuid = teamDoc.id;
-                  
-                  // Inicializar el arreglo de jugadores para este equipo
-                  let playersFiltered: Player[]=[];
-                  
-                  // Iterar sobre los UUID de los jugadores asociados a este equipo
-                  teamData.players.forEach(playerUUID => {
-                    // Verificar que playerUUID sea una cadena
-                    if (typeof playerUUID === 'string') {
-                        // Buscar el jugador correspondiente en el arreglo de documentos de jugadores
-                        const playerDoc = playerDocuments.find(playerDocument => playerDocument.id === playerUUID);
-                        if (playerDoc) {
-                            // Obtener los datos del jugador del documento
-                            const playerDataFromDocument = playerDoc.data as Player;
-                            // Crear un nuevo objeto Player con los datos del documento y el UUID
-                            const playerData: Player = {
-                                ...playerDataFromDocument,
-                                uuid: playerUUID
-                            };
-                            // Agregar el jugador al arreglo de jugadores del equipo
-                            playersFiltered.push(playerData);
-                        }
-                    }
-                });
-                
-                
-                
-                
-                  teamData.players=playersFiltered;
-                  // Agregar el equipo al arreglo de equipos
-                  teams.push(teamData);
-                });
-  
-                // Actualizar el subject con los equipos
-                this._teams.next(teams);
-                
-                // Emitir el arreglo de equipos
-                return of(teams);
-              })
-            );
-          })
-        );
-      })
-    );
-  }*/
-
+  /**
+   * Adds a new team.
+   * 
+   * @param team The team to add.
+   * @returns An observable of the added team.
+   */
   public addTeam(team: Team): Observable<Team> {
     return from(this.firebaseSvc.createDocument("teams", team)).pipe(
       switchMap((createdDocId: string) => {
@@ -148,13 +114,13 @@ export class TeamService {
       })
     );
   }
-  
-  
-  
-  
-  
-  
-  
+
+  /**
+   * Updates an existing team.
+   * 
+   * @param team The team to update.
+   * @returns An observable of the update operation.
+   */
   public updateTeam(team: Team): Observable<string[]> {
     return new Observable<string[]>(obs => {
       if (team.uuid) {
@@ -190,10 +156,13 @@ export class TeamService {
         obs.error(new Error("Team does not have UUID"));
     });
   }
-  
-  
-  
 
+  /**
+   * Deletes a team.
+   * 
+   * @param team The team to delete.
+   * @returns An observable of the deleted team.
+   */
   public deleteTeam(team: Team): Observable<Team> {
     return new Observable<Team>(obs => {
       if (!team.uuid) {
@@ -213,5 +182,4 @@ export class TeamService {
       });
     });
   }
-  
 }

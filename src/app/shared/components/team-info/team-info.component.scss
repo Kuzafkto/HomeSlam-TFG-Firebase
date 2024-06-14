@@ -2,20 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* Add relative positioning */
+  --background: var(--ion-color-secondaryGreen);
 }
 
 .close-button {
-  margin: 2%;
+  position: absolute;
+  top: 0;
+  right: 0; /* Position it to the top right corner */
+  margin: 8px;
+  z-index: 1; /* Ensure it is above other content */
 }
 
 .team-name {
   font-size: 2.5rem;
   font-family: 'titlesFont', sans-serif;
-  color: #009a44
+  color: var(--ion-color-textColor);
 }
 
 h3 {
   color: var(--ion-color-primary);
+  text-align: center;
 }
 
 .ion-margin-start {
@@ -27,29 +34,38 @@ h3 {
   text-align: center;
 }
 
+.team-image-container {
+  margin-bottom: 10px;
+}
+
+.team-image {
+  max-width: 30vh;
+  height: auto;
+  border-radius: 50%;
+}
+
 .player-container {
-  display: inline-block; 
+  display: inline-block;
   border-radius: 5%;
-  background-color: #7e4d32;
+  background-color: var(--ion-color-mediumEndCallToAction);
   margin: 10px;
   padding: 2%;
   overflow: hidden;
 }
 
 ion-text.player-name {
-  color: white;
+  color: var(--ion-color-textColorDark);
   text-align: center;
   font-size: 1.5rem;
-  white-space: nowrap;//espacios en blanco no hagan wrap pls
+  white-space: nowrap;
 }
 
 .player-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; 
+  width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #009A44; 
   margin: 5px;
 }

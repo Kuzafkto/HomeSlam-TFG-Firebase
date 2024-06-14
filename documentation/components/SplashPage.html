@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for managing the splash page.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -219,12 +226,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/splash/splash.page.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/splash/splash.page.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of SplashPage.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -233,6 +242,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -247,6 +257,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to manage authentication.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -259,6 +273,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to handle navigation.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>route</td>
@@ -271,6 +289,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to handle route information.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -310,14 +332,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/pages/splash/splash.page.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/pages/splash/splash.page.ts:34</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that is called after data-bound properties are initialized.
+This method sets up a delay and then checks if the user is logged in to determine the next navigation route.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -339,6 +364,9 @@ import { AuthService } from &#x27;src/app/core/services/api/auth.service&#x27;;
 import { delay, switchMap } from &#x27;rxjs/operators&#x27;;
 import { of } from &#x27;rxjs&#x27;;
 
+/**
+ * Component for managing the splash page.
+ */
 @Component({
   selector: &#x27;app-splash&#x27;,
   templateUrl: &#x27;./splash.page.html&#x27;,
@@ -346,22 +374,34 @@ import { of } from &#x27;rxjs&#x27;;
 })
 export class SplashPage implements OnInit {
 
+  /**
+   * Creates an instance of SplashPage.
+   * 
+   * @param authService Service to manage authentication.
+   * @param router Service to handle navigation.
+   * @param route Service to handle route information.
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   * This method sets up a delay and then checks if the user is logged in to determine the next navigation route.
+   */
   ngOnInit() {
     of(&#x27;&#x27;).pipe(delay(2000)).subscribe(() &#x3D;&gt; {
-      //chequea el islogged
+      // Check if the user is logged in
       this.authService.isLogged$.pipe(
         switchMap(logged &#x3D;&gt; {
-          // si no autentica redirige a inicio o a la que se paso 
+          // If logged in, navigate to the home page or the specified redirect URL
           if (logged) {
             const redirectUrl &#x3D; this.route.snapshot.queryParams[&#x27;redirectUrl&#x27;] || &#x27;/home&#x27;;
             return this.router.navigateByUrl(redirectUrl);
           } else {
+            // If not logged in, navigate to the login page
             return this.router.navigate([&#x27;/login&#x27;]);
           }
         })
@@ -375,7 +415,7 @@ export class SplashPage implements OnInit {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
-  &lt;div style&#x3D;&quot;display:flex;width:100%;height:100%;justify-content:center;align-items:center&quot;&gt;
+  &lt;div class&#x3D;&quot;splash-screen&quot;&gt;
     &lt;img src&#x3D;&quot;assets/imgs/homeslam.logo.png&quot;&gt;
   &lt;/div&gt;
   &lt;/ion-content&gt;</code></pre>
@@ -385,7 +425,14 @@ export class SplashPage implements OnInit {
                 <p class="comment">
                     <code>./splash.page.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
+                <pre class="line-numbers"><code class="language-scss">.splash-screen{
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+    overflow-y: hidden;
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -413,8 +460,8 @@ export class SplashPage implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <div style="display:flex;width:100%;height:100%;justify-content:center;align-items:center">    <img src="assets/imgs/homeslam.logo.png">  </div>  </ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <div class="splash-screen">    <img src="assets/imgs/homeslam.logo.png">  </div>  </ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'SplashPage'};
 </script>

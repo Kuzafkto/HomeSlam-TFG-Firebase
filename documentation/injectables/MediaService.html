@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This abstract service handles media-related operations. It should be extended by other services to implement specific media handling logic.</p>
+
+            </p>
 
 
 
@@ -181,14 +188,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/core/services/api/media.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/core/services/api/media.service.ts:18</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Uploads a media file.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -199,6 +208,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -213,6 +223,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The media file as a Blob.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -222,7 +236,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the uploaded media.</p>
+
                             </div>
                 </td>
             </tr>
@@ -237,15 +252,23 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 
-
-
-
+/**
+ * This abstract service handles media-related operations. It should be extended by other services to implement specific media handling logic.
+ */
 @Injectable({
     providedIn: &#x27;root&#x27;
 })
 export abstract class MediaService {  
-    public abstract upload(blob:Blob):Observable&lt;any[]&gt;;
-}</code></pre>
+    
+    /**
+     * Uploads a media file.
+     * 
+     * @param blob The media file as a Blob.
+     * @returns An observable of the uploaded media.
+     */
+    public abstract upload(blob: Blob): Observable&lt;any[]&gt;;
+}
+</code></pre>
     </div>
 
 </div>

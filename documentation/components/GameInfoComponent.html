@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for displaying game information.</p>
+
+    </p>
 
 
 
@@ -247,10 +254,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:27</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of GameInfoComponent.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -273,9 +286,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:17</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The game data to display.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -297,9 +316,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:22</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event emitted when the game card is clicked.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -318,9 +343,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:27</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event emitted when the delete button is clicked.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -351,14 +382,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:37</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles the click event on the game card.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -388,14 +421,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/shared/components/game-info/game-info.component.ts:46</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles the click event on the delete button.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -406,6 +441,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -420,6 +456,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The click event.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -444,23 +484,49 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { Game } from &#x27;src/app/core/interfaces/game&#x27;;
 
+/**
+ * Component for displaying game information.
+ */
 @Component({
   selector: &#x27;app-game-info&#x27;,
   templateUrl: &#x27;./game-info.component.html&#x27;,
   styleUrls: [&#x27;./game-info.component.scss&#x27;],
 })
 export class GameInfoComponent {
-  @Input() game: Game | undefined;
-  @Output() onCardClicked:EventEmitter&lt;void&gt; &#x3D; new EventEmitter&lt;void&gt;();
-  @Output() onDeleteClicked:EventEmitter&lt;void&gt; &#x3D; new EventEmitter&lt;void&gt;();
 
+  /**
+   * The game data to display.
+   */
+  @Input() game: Game | undefined;
+
+  /**
+   * Event emitted when the game card is clicked.
+   */
+  @Output() onCardClicked: EventEmitter&lt;void&gt; &#x3D; new EventEmitter&lt;void&gt;();
+
+  /**
+   * Event emitted when the delete button is clicked.
+   */
+  @Output() onDeleteClicked: EventEmitter&lt;void&gt; &#x3D; new EventEmitter&lt;void&gt;();
+
+  /**
+   * Creates an instance of GameInfoComponent.
+   */
   constructor() {}
 
+  /**
+   * Handles the click event on the game card.
+   */
   onCardClick() {
     this.onCardClicked.emit();
   }
 
-  onDeleteClick(event:any) {
+  /**
+   * Handles the click event on the delete button.
+   * 
+   * @param event The click event.
+   */
+  onDeleteClick(event: any) {
     this.onDeleteClicked.emit();
     event.stopPropagation();
   }
@@ -469,14 +535,17 @@ export class GameInfoComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ion-card&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ion-card (click)&#x3D;&quot;onCardClick()&quot;&gt;
   &lt;ion-card-header&gt;
-    &lt;ion-card-title&gt;{{ game?.local?.name }} vs {{ game?.visitor?.name }}&lt;/ion-card-title&gt;
+    &lt;ion-card-title&gt;{{ game?.local?.name|name:8 }} vs {{ game?.visitor?.name|name:8 }}&lt;/ion-card-title&gt;
+    &lt;ion-button fill&#x3D;&quot;clear&quot; color&#x3D;&quot;danger&quot; class&#x3D;&quot;delete-button&quot; (click)&#x3D;&quot;onDeleteClick($event)&quot;&gt;
+      &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;trash&quot;&gt;&lt;/ion-icon&gt;
+    &lt;/ion-button&gt;
   &lt;/ion-card-header&gt;
   &lt;ion-card-content class&#x3D;&quot;card-content&quot;&gt;
     &lt;div class&#x3D;&quot;team-info-container&quot;&gt;
       &lt;div class&#x3D;&quot;team-info&quot;&gt;
-        &lt;div class&#x3D;&quot;team-name&quot;&gt;{{ game?.local?.name }}&lt;/div&gt;
+        &lt;div class&#x3D;&quot;team-name&quot;&gt;{{ game?.local?.name|name:8 }}&lt;/div&gt;
         &lt;div class&#x3D;&quot;team-image&quot;&gt;
           &lt;img *ngIf&#x3D;&quot;game?.local?.imageUrl&quot; [src]&#x3D;&quot;game?.local?.imageUrl&quot; alt&#x3D;&quot;Local Team&quot;&gt;
         &lt;/div&gt;
@@ -484,29 +553,15 @@ export class GameInfoComponent {
       &lt;/div&gt;
       &lt;div class&#x3D;&quot;vs-text&quot;&gt;VS&lt;/div&gt;
       &lt;div class&#x3D;&quot;team-info&quot;&gt;
-        &lt;div class&#x3D;&quot;team-name&quot;&gt;{{ game?.visitor?.name }}&lt;/div&gt;
+        &lt;div class&#x3D;&quot;team-name&quot;&gt;{{ game?.visitor?.name|name:8 }}&lt;/div&gt;
         &lt;div class&#x3D;&quot;team-image&quot;&gt;
           &lt;img *ngIf&#x3D;&quot;game?.visitor?.imageUrl&quot; [src]&#x3D;&quot;game?.visitor?.imageUrl&quot; alt&#x3D;&quot;Visitor Team&quot;&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;team-runs&quot;&gt;{{ game?.visitorRuns }}&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;p&gt;&lt;strong&gt;{{&#x27;games.date&#x27;|translate}}:&lt;/strong&gt; {{ game?.gameDate | date }}&lt;/p&gt;
+    &lt;p class&#x3D;&quot;games-date&quot;&gt;&lt;strong class&#x3D;&quot;games-date&quot;&gt;{{&#x27;games.date&#x27; | translate}}:&lt;/strong&gt; {{ game?.gameDate | date }}&lt;/p&gt;
   &lt;/ion-card-content&gt;
-  &lt;ion-row&gt;
-    &lt;ion-col&gt;
-      &lt;ion-button expand&#x3D;&quot;full&quot; color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;onCardClick()&quot;&gt;
-        &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;create-outline&quot;&gt;&lt;/ion-icon&gt;
-        Edit
-      &lt;/ion-button&gt;
-    &lt;/ion-col&gt;
-    &lt;ion-col&gt;
-      &lt;ion-button expand&#x3D;&quot;full&quot; color&#x3D;&quot;danger&quot; (click)&#x3D;&quot;onDeleteClick($event)&quot;&gt;
-        &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;trash-outline&quot;&gt;&lt;/ion-icon&gt;
-        Delete
-      &lt;/ion-button&gt;
-    &lt;/ion-col&gt;
-  &lt;/ion-row&gt;
 &lt;/ion-card&gt;
 </code></pre>
     </div>
@@ -516,48 +571,80 @@ export class GameInfoComponent {
                     <code>./game-info.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.team-info {
+  text-align: center;
+  margin: 0 16px;
+}
+
+.team-name {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--ion-color-textColor);
+}
+
+.team-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.team-runs {
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.vs-text {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 16px;
+  color: var(--ion-color-textColor);
+}
+
+ion-card-title {
+  text-align: center;
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* Hover effect for ion-card */
+:host {
+  ion-card {
+    cursor: pointer;
+
+    &amp;:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
   }
-  
-  .team-info-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-  
-  .team-info {
-    text-align: center;
-    margin: 0 16px;
-  }
-  
-  .team-name {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-  
-  .team-image img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .team-runs {
-    font-size: 1rem;
-    margin-top: 8px;
-  }
-  
-  .vs-text {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 16px;
-  }
-  ion-card-title{
-    text-align: center;
-  }</code></pre>
+}
+
+ion-card{
+  background-color: var(--ion-color-secondaryGreen);
+}
+ion-card-title{
+  color: var(--ion-color-textColor);
+}
+.games-date{
+  color: var(--ion-color-textColor);
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -585,8 +672,8 @@ export class GameInfoComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-card>  <ion-card-header>    <ion-card-title>{{ game?.local?.name }} vs {{ game?.visitor?.name }}</ion-card-title>  </ion-card-header>  <ion-card-content class="card-content">    <div class="team-info-container">      <div class="team-info">        <div class="team-name">{{ game?.local?.name }}</div>        <div class="team-image">          <img *ngIf="game?.local?.imageUrl" [src]="game?.local?.imageUrl" alt="Local Team">        </div>        <div class="team-runs">{{ game?.localRuns }}</div>      </div>      <div class="vs-text">VS</div>      <div class="team-info">        <div class="team-name">{{ game?.visitor?.name }}</div>        <div class="team-image">          <img *ngIf="game?.visitor?.imageUrl" [src]="game?.visitor?.imageUrl" alt="Visitor Team">        </div>        <div class="team-runs">{{ game?.visitorRuns }}</div>      </div>    </div>    <p><strong>{{\'games.date\'|translate}}:</strong> {{ game?.gameDate | date }}</p>  </ion-card-content>  <ion-row>    <ion-col>      <ion-button expand="full" color="primary" (click)="onCardClick()">        <ion-icon slot="start" name="create-outline"></ion-icon>        Edit      </ion-button>    </ion-col>    <ion-col>      <ion-button expand="full" color="danger" (click)="onDeleteClick($event)">        <ion-icon slot="start" name="trash-outline"></ion-icon>        Delete      </ion-button>    </ion-col>  </ion-row></ion-card></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+        var COMPONENT_TEMPLATE = '<div><ion-card (click)="onCardClick()">  <ion-card-header>    <ion-card-title>{{ game?.local?.name|name:8 }} vs {{ game?.visitor?.name|name:8 }}</ion-card-title>    <ion-button fill="clear" color="danger" class="delete-button" (click)="onDeleteClick($event)">      <ion-icon slot="icon-only" name="trash"></ion-icon>    </ion-button>  </ion-card-header>  <ion-card-content class="card-content">    <div class="team-info-container">      <div class="team-info">        <div class="team-name">{{ game?.local?.name|name:8 }}</div>        <div class="team-image">          <img *ngIf="game?.local?.imageUrl" [src]="game?.local?.imageUrl" alt="Local Team">        </div>        <div class="team-runs">{{ game?.localRuns }}</div>      </div>      <div class="vs-text">VS</div>      <div class="team-info">        <div class="team-name">{{ game?.visitor?.name|name:8 }}</div>        <div class="team-image">          <img *ngIf="game?.visitor?.imageUrl" [src]="game?.visitor?.imageUrl" alt="Visitor Team">        </div>        <div class="team-runs">{{ game?.visitorRuns }}</div>      </div>    </div>    <p class="games-date"><strong class="games-date">{{\'games.date\' | translate}}:</strong> {{ game?.gameDate | date }}</p>  </ion-card-content></ion-card></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'GameInfoComponent'};
 </script>

@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles data operations using Strapi. Note that this service is not currently being utilized.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -189,12 +196,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/core/services/api/strapi/strapi-data.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/core/services/api/strapi/strapi-data.service.ts:11</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of StrapiDataService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -203,6 +212,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -217,6 +227,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to make API requests.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -261,7 +275,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:42</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:84</a></code>
 </div>
                         </td>
                     </tr>
@@ -277,6 +291,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a resource from the Strapi API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -287,6 +303,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -301,6 +318,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The resource to delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -310,7 +331,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the deleted resource data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -344,7 +366,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:24</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:46</a></code>
 </div>
                         </td>
                     </tr>
@@ -360,6 +382,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets a single resource from the Strapi API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -370,6 +394,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -384,6 +409,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The resource to get.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -393,7 +422,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the resource data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -427,7 +457,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:30</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:59</a></code>
 </div>
                         </td>
                     </tr>
@@ -443,6 +473,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Posts a new resource to the Strapi API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -453,6 +485,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -467,6 +500,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The resource to post.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>data</td>
@@ -479,6 +516,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The data to post.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -488,7 +529,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the posted resource data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -522,7 +564,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:36</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:72</a></code>
 </div>
                         </td>
                     </tr>
@@ -538,6 +580,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates a resource in the Strapi API.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -548,6 +592,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -562,6 +607,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The resource to update.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>data</td>
@@ -574,6 +623,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The data to update.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -583,7 +636,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the updated resource data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -617,7 +671,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:16</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/DataService.html#source" target="_self" >DataService:31</a></code>
 </div>
                         </td>
                     </tr>
@@ -633,6 +687,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Queries the Strapi API for a list of resources with the given parameters.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -643,6 +699,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -657,6 +714,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The resource to query.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>params</td>
@@ -669,6 +730,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The query parameters.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -678,7 +743,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the paginated data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -701,46 +767,89 @@ import { ApiService } from &#x27;../api.service&#x27;;
 import { DataService } from &#x27;../data.service&#x27;;
 import { PaginatedData } from &#x27;../../../interfaces/data&#x27;;
 
-export class StrapiDataService extends DataService{
+/**
+ * This service handles data operations using Strapi. Note that this service is not currently being utilized.
+ */
+export class StrapiDataService extends DataService {
 
+  /**
+   * Creates an instance of StrapiDataService.
+   * 
+   * @param api Service to make API requests.
+   */
   constructor(
-    protected api:ApiService
-  ){
+    protected api: ApiService
+  ) {
     super();
   }
 
-  public query&lt;T&gt;(resource:string, params:any):Observable&lt;PaginatedData&lt;T&gt;&gt;{
-    return this.api.get(&#x60;/${resource}&#x60;, params).pipe(map((response:StrapiArrayResponse&lt;T&gt;)&#x3D;&gt;{
+  /**
+   * Queries the Strapi API for a list of resources with the given parameters.
+   * 
+   * @param resource The resource to query.
+   * @param params The query parameters.
+   * @returns An observable of the paginated data.
+   */
+  public query&lt;T&gt;(resource: string, params: any): Observable&lt;PaginatedData&lt;T&gt;&gt; {
+    return this.api.get(&#x60;/${resource}&#x60;, params).pipe(map((response: StrapiArrayResponse&lt;T&gt;) &#x3D;&gt; {
       return {
-        data: response.data.map(data&#x3D;&gt;{return {...(data.attributes), id:data.id};}), 
-        pagination: response.meta.pagination!};
+        data: response.data.map(data &#x3D;&gt; { return { ...(data.attributes), id: data.id }; }),
+        pagination: response.meta.pagination!
+      };
     }));
   }
 
-  public get&lt;T&gt;(resource:string):Observable&lt;T&gt;{
-    return this.api.get(&#x60;/${resource}&#x60;).pipe(map((response:StrapiResponse&lt;T&gt;)&#x3D;&gt;{
-      return {id:response.data.id, ...(response.data.attributes)};
+  /**
+   * Gets a single resource from the Strapi API.
+   * 
+   * @param resource The resource to get.
+   * @returns An observable of the resource data.
+   */
+  public get&lt;T&gt;(resource: string): Observable&lt;T&gt; {
+    return this.api.get(&#x60;/${resource}&#x60;).pipe(map((response: StrapiResponse&lt;T&gt;) &#x3D;&gt; {
+      return { id: response.data.id, ...(response.data.attributes) };
     }));
   }
 
-  public post&lt;T&gt;(resource:string, data:any):Observable&lt;T&gt;{
-    return this.api.post(&#x60;/${resource}&#x60;, {data:data} as Object).pipe(map((response:StrapiResponse&lt;T&gt;)&#x3D;&gt;{
-      return {id:response.data.id, ...response.data.attributes};
+  /**
+   * Posts a new resource to the Strapi API.
+   * 
+   * @param resource The resource to post.
+   * @param data The data to post.
+   * @returns An observable of the posted resource data.
+   */
+  public post&lt;T&gt;(resource: string, data: any): Observable&lt;T&gt; {
+    return this.api.post(&#x60;/${resource}&#x60;, { data: data } as Object).pipe(map((response: StrapiResponse&lt;T&gt;) &#x3D;&gt; {
+      return { id: response.data.id, ...response.data.attributes };
     }));
   }
 
-  public put&lt;T&gt;(resource:string, data:any):Observable&lt;T&gt;{
-    return this.api.put(&#x60;/${resource}&#x60;, {data:data}).pipe(map((response:StrapiResponse&lt;T&gt;)&#x3D;&gt;{
-      return {id:response.data.id, ...response.data.attributes};
+  /**
+   * Updates a resource in the Strapi API.
+   * 
+   * @param resource The resource to update.
+   * @param data The data to update.
+   * @returns An observable of the updated resource data.
+   */
+  public put&lt;T&gt;(resource: string, data: any): Observable&lt;T&gt; {
+    return this.api.put(&#x60;/${resource}&#x60;, { data: data }).pipe(map((response: StrapiResponse&lt;T&gt;) &#x3D;&gt; {
+      return { id: response.data.id, ...response.data.attributes };
     }));
   }
 
-  public delete&lt;T&gt;(resource:string):Observable&lt;T&gt;{
-    return this.api.delete(&#x60;/${resource}&#x60;).pipe(map((response:StrapiResponse&lt;T&gt;)&#x3D;&gt;{
-      return {id:response.data.id, ...response.data.attributes};
+  /**
+   * Deletes a resource from the Strapi API.
+   * 
+   * @param resource The resource to delete.
+   * @returns An observable of the deleted resource data.
+   */
+  public delete&lt;T&gt;(resource: string): Observable&lt;T&gt; {
+    return this.api.delete(&#x60;/${resource}&#x60;).pipe(map((response: StrapiResponse&lt;T&gt;) &#x3D;&gt; {
+      return { id: response.data.id, ...response.data.attributes };
     }));
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

@@ -9,7 +9,7 @@
     </ion-button>
     <ion-button *ngIf="!isDisabled"
       style="position:absolute;top:40px;right:0;--background:rgba(var(--ion-color-danger-rgb), 0.7);"
-      expand="full" (click)="onDeletePicture($event)">
+      expand="block" (click)="onDeletePicture($event)">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-button>
   </ng-container>
@@ -17,6 +17,6 @@
   <ion-button color="medium" *ngIf="!isDisabled && !hasValue"
   style="height:100%;width:100%"
   expand="full" fill="clear" (click)="onChangePicture($event, fileLoader)">
-    <ion-icon name="image" style="width:50vw;height:50vh"></ion-icon>
+    <ion-icon name="image" style="width:40vw;height:40vh"></ion-icon>
   </ion-button>
 </div>

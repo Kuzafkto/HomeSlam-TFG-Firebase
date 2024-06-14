@@ -63,4 +63,6 @@
     top: 5px;
     right: 5px;
   }
-  
+  ion-content {
+    --background: var(--ion-color-primaryGreen);
+  }

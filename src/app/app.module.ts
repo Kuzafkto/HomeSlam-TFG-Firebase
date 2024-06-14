@@ -1,6 +1,6 @@
 import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy, Router } from '@angular/router';
+import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy, Platform } from '@ionic/angular';
 
@@ -25,27 +25,41 @@ import { FirebaseAuthService } from './core/services/api/firebase/firebase-auth.
 import { environment } from 'src/environments/environment';
 import { AuthStrapiService } from './core/services/api/strapi/auth-strapi.service';
 import { FirebaseMediaService } from './core/services/api/firebase/firebase-media.service';
-//import { FirebaseMappingService } from './core/services/api/firebase/firebase-mapping.service';
 
-
-
+/**
+ * Factory function to create an instance of MediaService based on the backend configuration.
+ *
+ * @param backend The backend to use ('Strapi' or 'Firebase').
+ * @param api The ApiService instance.
+ * @param firebase The FirebaseService instance.
+ * @returns An instance of MediaService.
+ */
 export function MediaServiceFactory(
-  backend:string,
-  api:ApiService,
-  firebase:FirebaseService){
-    switch(backend){
-      case 'Strapi':
-        return new StrapiMediaService(api);
-      case 'Firebase':
-        return new FirebaseMediaService(firebase);
-      default:
-        throw new Error("Not implemented");
+  backend: string,
+  api: ApiService,
+  firebase: FirebaseService
+) {
+  switch (backend) {
+    case 'Strapi':
+      return new StrapiMediaService(api);
+    case 'Firebase':
+      return new FirebaseMediaService(firebase);
+    default:
+      throw new Error("Not implemented");
   }
 }
 
+/**
+ * Factory function to create an instance of DataService based on the backend configuration.
+ *
+ * @param backend The backend to use ('Strapi').
+ * @param api The ApiService instance.
+ * @returns An instance of DataService.
+ */
 export function DataServiceFactory(
   backend: string,
-  api: ApiService) {
+  api: ApiService
+) {
   switch (backend) {
     case 'Strapi':
       return new StrapiDataService(api);
@@ -53,12 +67,30 @@ export function DataServiceFactory(
       throw new Error("Not implemented");
   }
 }
+
+/**
+ * Factory function to create an instance of HttpClientProvider.
+ *
+ * @param http The HttpClient instance.
+ * @param platform The Platform instance.
+ * @returns An instance of HttpClientProvider.
+ */
 export function httpProviderFactory(
   http: HttpClient,
-  platform: Platform) {
+  platform: Platform
+) {
   return new HttpClientWebProvider(http);
 }
 
+/**
+ * Factory function to create an instance of AuthService based on the backend configuration.
+ *
+ * @param backend The backend to use ('Strapi' or 'Firebase').
+ * @param jwt The JwtService instance.
+ * @param api The ApiService instance.
+ * @param firebase The FirebaseService instance.
+ * @returns An instance of AuthService.
+ */
 export function AuthServiceFactory(
   backend: string,
   jwt: JwtService,
@@ -85,7 +117,7 @@ export function AuthServiceFactory(
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
+        useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
     }),
@@ -116,7 +148,6 @@ export function AuthServiceFactory(
       provide: 'splash',
       useValue: '/splash'
     },
-
     {
       provide: HttpClientProvider,
       deps: [HttpClient, Platform],
@@ -135,11 +166,9 @@ export function AuthServiceFactory(
     {
       provide: MediaService,
       deps: ['backend', ApiService, FirebaseService],
-      useFactory: MediaServiceFactory,  
+      useFactory: MediaServiceFactory,
     },
-
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-
   ],
   bootstrap: [AppComponent],
 })

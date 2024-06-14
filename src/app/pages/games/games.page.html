@@ -2,15 +2,14 @@
   <ion-header [translucent]="true">
     <app-toolbar></app-toolbar>
   </ion-header>
-  <ion-button fill="clear" aria-label="New Game" (click)="onNewGame()" class="rounde">
-    <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
+  <ion-button fill="clear" aria-label="New Game" (click)="onNewGame()" shape="round" class="rounde button">
+    <ion-icon slot="icon-only" name="add" aria-hidden="true"></ion-icon>
   </ion-button>
-  <ion-button fill="solid" color="primary" (click)="downloadVotesCSV()">
-    Download Votes CSV
+  <ion-button fill="solid" (click)="downloadVotesCSV()" class="button">
+    {{ 'games.downloadVotesCsv' | translate }}
   </ion-button>
-  <ion-button fill="solid" color="primary" (click)="downloadGamesCSV()">
-    Download Games CSV
-  </ion-button>
+  <ion-button fill="solid" (click)="downloadGamesCSV()" class="button">
+    {{ 'games.downloadGamesCsv' | translate }}  </ion-button>
   <ion-row>
     <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let game of (games$ | async); let i = index">
       <app-game-info

@@ -16,14 +16,40 @@ import { Position } from 'src/app/core/interfaces/player';
 })
 export class PositionSelectorComponent implements ControlValueAccessor {
 
+  /**
+   * Input set of positions selected.
+   */
   @Input() inputPositions: Set<number> = new Set<number>();
+
+  /**
+   * Event emitted when the positions change.
+   */
   @Output() positionsChange = new EventEmitter<Set<number>>();
 
+  /**
+   * Array of positions selected.
+   */
   positionsSelected: number[] = Array.from(this.inputPositions);
+
+  /**
+   * Checker set for positions.
+   */
   setChecker: Set<number> = this.inputPositions;
+
+  /**
+   * Callback function when the value changes.
+   */
   onChangeCb?: (position: Position) => void;
+
+  /**
+   * Callback function when the control is touched.
+   */
   onTouchedCb?: () => void;
-  allPositions= [
+
+  /**
+   * Array of all available positions.
+   */
+  allPositions = [
     { id: 1, name: 'Pitcher' },
     { id: 2, name: 'Catcher' },
     { id: 3, name: 'First Base' },
@@ -34,9 +60,14 @@ export class PositionSelectorComponent implements ControlValueAccessor {
     { id: 8, name: 'Center Field' },
     { id: 9, name: 'Right Field' },
   ];
+
   constructor() { }
 
-
+  /**
+   * Adds or removes a position from the selected positions.
+   * 
+   * @param position The position to add or remove.
+   */
   addPosition(position: any): void {
     this.setChecker.clear();
     const index = this.positionsSelected.indexOf(position.id);
@@ -47,7 +78,6 @@ export class PositionSelectorComponent implements ControlValueAccessor {
         this.positionsSelected.push(position.id);
       } else {
         this.positionsSelected.splice(0, 1);
-        //this.positionsSelected.pop();
         this.positionsSelected.push(position.id);
       }
     }
@@ -55,18 +85,35 @@ export class PositionSelectorComponent implements ControlValueAccessor {
       this.setChecker.add(pos);
     });
     this.positionsChange.emit(this.setChecker);
-    this.onChangeCb && this.onChangeCb(position);
+    if (this.onChangeCb) {
+      this.onChangeCb(position);
+    }
   }
 
+  /**
+   * Writes the selected positions to the component.
+   * 
+   * @param positions The positions to write.
+   */
   writeValue(positions: number[]): void {
     this.positionsSelected = positions;
   }
+
+  /**
+   * Registers a callback function for when the value changes.
+   * 
+   * @param fn The callback function.
+   */
   registerOnChange(fn: any): void {
     this.onChangeCb = fn;
   }
+
+  /**
+   * Registers a callback function for when the control is touched.
+   * 
+   * @param fn The callback function.
+   */
   registerOnTouched(fn: any): void {
     this.onTouchedCb = fn;
   }
-
-
 }

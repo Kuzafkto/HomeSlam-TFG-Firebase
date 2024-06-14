@@ -95,7 +95,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >numericValidator</li>
+  <li class="breadcrumb-item" >NumericValidator</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A class containing numeric validation logic for Angular forms.</p>
+
+            </p>
 
 
 
@@ -185,14 +192,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="5"
-                                    class="link-to-prism">src/app/core/validators/numeric.ts:5</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/app/core/validators/numeric.ts:15</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a ValidatorFn that checks if the control&#39;s value is a valid number.
+This validator supports both positive and negative numbers, with up to two decimal places.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -204,6 +214,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -221,6 +232,10 @@
                                                     <code>&#x27;&#x27;</code>
                                             </td>
 
+                                            <td>
+                                                    <p>The name of the form control to validate (optional). Useful for FormGroup.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -230,7 +245,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A ValidatorFn that returns validation errors or null if the control&#39;s value is valid.</p>
+
                             </div>
                 </td>
             </tr>
@@ -248,27 +264,46 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from &#x27;@angular/forms&#x27;;
 
+/**
+ * A class containing numeric validation logic for Angular forms.
+ */
+export class NumericValidator {
 
-export class numericValidator{
-    public static numericProto(formControlName:string&#x3D;&#x27;&#x27;): ValidatorFn{
+    /**
+     * Creates a ValidatorFn that checks if the control&#x27;s value is a valid number.
+     * This validator supports both positive and negative numbers, with up to two decimal places.
+     *
+     * @param formControlName The name of the form control to validate (optional). Useful for FormGroup.
+     * @returns A ValidatorFn that returns validation errors or null if the control&#x27;s value is valid.
+     */
+    public static numericProto(formControlName: string &#x3D; &#x27;&#x27;): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
             let value &#x3D; &#x27;&#x27;;
-            if(control instanceof FormControl)
+
+            // Get the value from the control, supporting both FormControl and FormGroup
+            if (control instanceof FormControl) {
                 value &#x3D; control?.value;
-            else
+            } else {
                 value &#x3D; control.get(formControlName)?.value;
-            let errors &#x3D; control?.errors;
-            // Si el campo está vacío o es un número válido, se considera que la validación pasa
-            if (value &#x3D;&#x3D;&#x3D; null || value &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
-                return errors; // Considerar no retornar null si el campo es obligatorio
             }
-            // Usa una expresión regular para validar solo números
+
+            let errors &#x3D; control?.errors;
+
+            // If the field is empty, consider the validation passed (unless the field is required)
+            if (value &#x3D;&#x3D;&#x3D; null || value &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+                return errors; // May need to handle required validation separately
+            }
+
+            // Regular expression to validate only numbers, allowing up to two decimal places
             const regex &#x3D; /^[-+]?[0-9]*\.?[0-9]{0,2}$/;
             const valid &#x3D; regex.test(value);
+
+            // Return validation result
             return valid ? null : { &#x27;numeric&#x27;: true };
         }
     }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 
@@ -306,7 +341,7 @@ export class numericValidator{
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'numericValidator.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'NumericValidator.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a user.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -234,6 +241,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The email of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -272,6 +285,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier of the user (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -305,6 +324,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if the user is an admin.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -338,6 +363,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if the user is an owner.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -371,6 +402,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -409,6 +446,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The nickname of the user (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -447,6 +490,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The URL of the user&#39;s picture (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -485,6 +534,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique UUID of the user (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -496,19 +551,55 @@
 import { Media } from &quot;./media&quot;;
 import { Player } from &quot;./player&quot;;
 
+/**
+ * Interface representing a user.
+ */
 export interface User {
-    id?:number,
-    email:string,
-    name:string,
-    nickname?:string
-    picture?:string|undefined,
-    uuid?:string,
-    isAdmin:boolean,
-    isOwner:boolean
+    /**
+     * The unique identifier of the user (optional).
+     */
+    id?: number;
+
+    /**
+     * The email of the user.
+     */
+    email: string;
+
+    /**
+     * The name of the user.
+     */
+    name: string;
+
+    /**
+     * The nickname of the user (optional).
+     */
+    nickname?: string;
+
+    /**
+     * The URL of the user&#x27;s picture (optional).
+     */
+    picture?: string | undefined;
+
+    /**
+     * The unique UUID of the user (optional).
+     */
+    uuid?: string;
+
+    /**
+     * Indicates if the user is an admin.
+     */
+    isAdmin: boolean;
+
+    /**
+     * Indicates if the user is an owner.
+     */
+    isOwner: boolean;
 }
 
+/**
+ * Type alias for paginated users data.
+ */
 export type PaginatedUsers &#x3D; PaginatedData&lt;User&gt;;
-
 </code></pre>
     </div>
 </div>

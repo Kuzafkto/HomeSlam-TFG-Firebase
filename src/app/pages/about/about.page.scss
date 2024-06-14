@@ -11,11 +11,13 @@
   
   .about-title {
     font-size: 2.5rem;
+    color: var(--ion-color-textColor);
   }
   
   .about-description {
     font-size: 1.5rem;
     text-align: center;
+    color: var(--ion-color-textColor);
   }
   
   .about-buttons {
@@ -30,12 +32,28 @@
     flex: 1;
   }
   
-  .about-button {
-    font-size: 1.5rem;
-    border-radius: 5px; //no funciona :c
-  }
-
-  ion-button{
-    border-radius: 5px; //no funciona :c
-  }
   
+ion-content{
+  --background: var(--ion-color-primaryGreen);
+}
+
+Ion-icon {
+  color:var(--ion-color-textColorDark);
+  font-weight: bold;
+}
+
+ion-button.button {
+font-size: 1.2rem;
+margin: 2%;
+color:var(--ion-color-textColorDark);
+--background: var(--ion-color-mediumEndCallToAction);
+--background-hover: var(--ion-color-callToActionGreen);
+--background-activated: var(--ion-color-callToActionGreen);
+--background-focused: var(--ion-color-callToActionGreen);
+transition: box-shadow 0.3s ease;
+font-weight: bold;
+}
+ion-button.button:hover {
+--background: var(--ion-color-callToActionGreen);
+color:var(--ion-color-textColorDark);
+}

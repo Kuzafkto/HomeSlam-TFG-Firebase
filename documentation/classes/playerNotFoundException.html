@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Exception thrown when a player is not found.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -154,10 +161,16 @@ import { User } from &#x27;../../interfaces/user&#x27;;
 import { FirebaseDocument, FirebaseService } from &#x27;../firebase/firebase.service&#x27;;
 import { FirebaseAuthService } from &#x27;./firebase/firebase-auth.service&#x27;;
 
+/**
+ * Exception thrown when a player is not found.
+ */
 export class playerNotFoundException extends Error {
   // . declare any additional properties or methods .
 }
 
+/**
+ * This service handles operations related to players.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -166,10 +179,27 @@ export class PlayersService {
     throw new Error(&#x27;Method not implemented.&#x27;);
   }
 
+  /**
+   * BehaviorSubject to track the list of players.
+   */
   private _players: BehaviorSubject&lt;Player[]&gt; &#x3D; new BehaviorSubject&lt;Player[]&gt;([]);
+
+  /**
+   * Observable for the list of players.
+   */
   public players$: Observable&lt;Player[]&gt; &#x3D; this._players.asObservable();
+
+  /**
+   * Unsubscribe function for Firebase listeners.
+   */
   private unsubscribe: Unsubscribe | null &#x3D; null;
 
+  /**
+   * Creates an instance of PlayersService.
+   * 
+   * @param firebaseSvc Service to interact with Firebase.
+   * @param firebaseAuth Service to handle Firebase authentication.
+   */
   constructor(
     private firebaseSvc: FirebaseService,
     private firebaseAuth: FirebaseAuthService
@@ -178,6 +208,12 @@ export class PlayersService {
     this.players$ &#x3D; this.firebaseSvc.players$;
   }
 
+  /**
+   * Maps a Firebase document to a Player object.
+   * 
+   * @param doc The Firebase document.
+   * @returns The mapped Player object.
+   */
   mapPlayers(doc: FirebaseDocument): Player {
     console.log(this.firebaseSvc.user?.uid);
     this.firebaseAuth.user$.subscribe(user &#x3D;&gt; {
@@ -187,19 +223,28 @@ export class PlayersService {
     return {
       name: doc.data[&#x27;name&#x27;],
       positions: doc.data[&#x27;positions&#x27;],
-      imageUrl: doc.data[&#x27;imageUrl&#x27;],  // Nuevo campo
+      imageUrl: doc.data[&#x27;imageUrl&#x27;],
       uuid: doc.id
     };
   }
 
-
+  /**
+   * Adds a new player.
+   * 
+   * @param player The player to add.
+   * @returns An observable of the added player.
+   */
   public addPlayer(player: Player): Observable&lt;Player&gt; {
     return from(this.firebaseSvc.createDocument(&quot;players&quot;, player)).pipe(
-      map(() &#x3D;&gt; player) // devolver el jugador creado después de la creación del documento
+      map(() &#x3D;&gt; player) // Return the created player after document creation
     );
   }
-  
 
+  /**
+   * Retrieves all players.
+   * 
+   * @returns An observable of the list of players.
+   */
   public getAll(): Observable&lt;Player[]&gt; {
     return from(this.firebaseSvc.getDocuments(&quot;players&quot;)).pipe(
       map((documents: FirebaseDocument[]) &#x3D;&gt; {
@@ -218,6 +263,12 @@ export class PlayersService {
     );
   }
 
+  /**
+   * Retrieves a player by their UUID.
+   * 
+   * @param uuid The UUID of the player.
+   * @returns An observable of the player.
+   */
   public getPlayer(uuid: string): Observable&lt;Player&gt; {
     return from(this.firebaseSvc.getDocument(&quot;players&quot;, uuid)).pipe(switchMap((doc: FirebaseDocument) &#x3D;&gt; {
       return new Observable&lt;Player&gt;(player &#x3D;&gt; {
@@ -225,13 +276,19 @@ export class PlayersService {
           uuid: doc.id,
           name: doc.data[&#x27;name&#x27;],
           positions: doc.data[&#x27;positions&#x27;],
-          imageUrl: doc.data[&#x27;imageUrl&#x27;]  // Nuevo campo
+          imageUrl: doc.data[&#x27;imageUrl&#x27;]
         };
         player.next(payload);
       });
     }));
   }
 
+  /**
+   * Updates an existing player.
+   * 
+   * @param player The player to update.
+   * @returns An observable of the updated player.
+   */
   public updatePlayer(player: Player): Observable&lt;Player&gt; {
     return new Observable&lt;Player&gt;(obs &#x3D;&gt; {
       if (player.uuid) {
@@ -243,6 +300,12 @@ export class PlayersService {
     });
   }
 
+  /**
+   * Deletes a player.
+   * 
+   * @param player The player to delete.
+   * @returns An observable of the deleted player.
+   */
   public deletePlayer(player: Player): Observable&lt;Player&gt; {
     return new Observable&lt;Player&gt;(obs &#x3D;&gt; {
       if (!player.uuid) {
@@ -266,6 +329,11 @@ export class PlayersService {
     });
   }
 
+  /**
+   * Deletes all players.
+   * 
+   * @returns An observable of the delete operation.
+   */
   public deleteAll(): Observable&lt;void&gt; {
     return new Observable(observer &#x3D;&gt; {
       setTimeout(() &#x3D;&gt; {

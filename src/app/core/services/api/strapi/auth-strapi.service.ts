@@ -8,41 +8,58 @@ import { AuthService } from '../auth.service';
 import { StrapiArrayResponse, StrapiExtendedUser, StrapiLoginPayload, StrapiLoginResponse, StrapiMe, StrapiRegisterPayload, StrapiRegisterResponse, StrapiResponse, StrapiUser } from '../../../interfaces/strapi';
 import { User } from '../../../interfaces/user';
 import { Router } from '@angular/router';
+
+/**
+ * This service handles authentication using Strapi. Note that this service is not currently being utilized.
+ */
 @Injectable({
   providedIn: 'root'
 })
-export class AuthStrapiService extends AuthService{
+export class AuthStrapiService extends AuthService {
+  updateUser(user: User): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
   override update(extended: { data: any; }): any {
   }
 
+  /**
+   * Creates an instance of AuthStrapiService.
+   * 
+   * @param jwtSvc Service to handle JWT tokens.
+   * @param apiSvc Service to make API requests.
+   */
   constructor(
-    private jwtSvc:JwtService,
-    private apiSvc:ApiService
-    
+    private jwtSvc: JwtService,
+    private apiSvc: ApiService
   ) { 
     super();
-    this.jwtSvc.loadToken().subscribe(token=>{
-      if(token){
-        this.me().subscribe(user=>{
+    this.jwtSvc.loadToken().subscribe(token => {
+      if (token) {
+        this.me().subscribe(user => {
           this._logged.next(true);
           this._user.next(user);
-        })
-      }else{
+        });
+      } else {
         this._logged.next(false);
         this._user.next(null);
       }
     });
   }
 
- 
-  public login(credentials:UserCredentials):Observable<User>{
-    return new Observable<User>(obs=>{
-      const _credentials:StrapiLoginPayload = {
-        identifier:credentials.username,
-        password:credentials.password
+  /**
+   * Logs in a user with the provided credentials.
+   * 
+   * @param credentials The user's login credentials.
+   * @returns An observable of the logged-in user.
+   */
+  public login(credentials: UserCredentials): Observable<User> {
+    return new Observable<User>(obs => {
+      const _credentials: StrapiLoginPayload = {
+        identifier: credentials.username,
+        password: credentials.password
       };
       this.apiSvc.post("/auth/local", _credentials).subscribe({
-        next:async (data:StrapiLoginResponse)=>{
+        next: async (data: StrapiLoginResponse) => {
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
           try {
             const user = await lastValueFrom(this.me());
@@ -54,32 +71,42 @@ export class AuthStrapiService extends AuthService{
             obs.error(error);
           }
         },
-        error:err=>{
+        error: err => {
           obs.error(err);
         }
       });
     });
   }
 
-  logout():Observable<void>{
-    return this.jwtSvc.destroyToken().pipe(map(_=>{
+  /**
+   * Logs out the current user.
+   * 
+   * @returns An observable of the logout result.
+   */
+  logout(): Observable<void> {
+    return this.jwtSvc.destroyToken().pipe(map(_ => {
       this._logged.next(false);
       return;
     }));
   }
 
-  register(info:UserRegisterInfo):Observable<User>{
-    return new Observable<User>(obs=>{
-      const _info:StrapiRegisterPayload = {
-        email:info.email,
-        username:info.nickname,
-        password:info.password
-      }
+  /**
+   * Registers a new user with the provided information.
+   * 
+   * @param info The user's registration information.
+   * @returns An observable of the registered user.
+   */
+  register(info: UserRegisterInfo): Observable<User> {
+    return new Observable<User>(obs => {
+      const _info: StrapiRegisterPayload = {
+        email: info.email,
+        username: info.nickname,
+        password: info.password
+      };
       this.apiSvc.post("/auth/local/register", _info).subscribe({
-        next:async (data:StrapiRegisterResponse)=>{
-          
+        next: async (data: StrapiRegisterResponse) => {
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
-          const _extended_user:StrapiExtendedUser= {
+          const _extended_user: StrapiExtendedUser = {
             name: info.name,
             surname: info.surname,
             user_id: data.user.id,
@@ -91,9 +118,9 @@ export class AuthStrapiService extends AuthService{
               teams: [],
               trainers: []
             }
-          }
+          };
           try {
-            await lastValueFrom(this.apiSvc.post("/extended-users", {data:_extended_user}));
+            await lastValueFrom(this.apiSvc.post("/extended-users", { data: _extended_user }));
             const user = await lastValueFrom(this.me());
             this._user.next(user);
             this._logged.next(true);
@@ -102,31 +129,31 @@ export class AuthStrapiService extends AuthService{
           } catch (error) {
             obs.error(error);
           }
-          
         },
-        error:err=>{
+        error: err => {
           obs.error(err);
         }
       });
     });
   }
 
+  /**
+   * Retrieves the current user's information.
+   * 
+   * @returns An observable of the current user's information.
+   */
   public me(): Observable<any> {
-    //obtiene el users me ,lo encadenamos con un pipe y hacemos un switchmap para mapear el valor del observable obteniendo el extended que también mapearemos
+    // Obtiene el usuario y lo encadena con un pipe y hace un switchMap para mapear el valor del observable obteniendo el extended user que también mapearemos
     return this.apiSvc.get('/users/me').pipe(
       switchMap((user: StrapiUser) => {
-        // Realiza la segunda llamada a la api y le hacemos un pipe, dentro un Map
+        // Realiza la segunda llamada a la API y le hacemos un pipe, dentro un map
         return this.apiSvc.get(`/extended-users?filters[users_permissions_user]=${user.id}&populate=players&populate=teams&populate=trainers`).pipe(
           map(extended_user_response => {
-            //para simplificar el mapeo creamos extended_user que es el contenido dentro de la posicion 0 del array response.data
+            // Para simplificar el mapeo, creamos extended_user que es el contenido dentro de la posición 0 del array response.data
             let extended_user = extended_user_response.data[0];
-            //ahora para cada tipo de valor que tiene el extended user que está contenido dentro de un array (players,teams, y trainers) hacemos un condicional en el que si existe lo mapeamos con su id, de lo contrario tenemos un array vacio
-
-            //lo hacemos con players
+            // Mapeamos los arrays de players, teams y trainers
             let players = extended_user.attributes.players ? extended_user.attributes.players.data.map((p: any) => p.id) : [];
-            //teams
             let teams = extended_user.attributes.teams ? extended_user.attributes.teams.data.map((t: any) => t.id) : [];
-            //y trainers
             let trainers = extended_user.attributes.trainers ? extended_user.attributes.trainers.data.map((t: any) => t.id) : [];
 
             // Construye el objeto 'ret' con la información combinada
@@ -141,7 +168,7 @@ export class AuthStrapiService extends AuthService{
               teams: teams,
               trainers: trainers
             };
-            //devolvemos el objeto con toda la informacion combinada
+            // Devuelve el objeto con toda la información combinada
             return ret;
           })
         );

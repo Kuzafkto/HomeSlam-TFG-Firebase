@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service to handle media operations using Firebase.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -173,12 +180,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/core/services/api/firebase/firebase-media.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/api/firebase/firebase-media.service.ts:10</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of FirebaseMediaService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -187,6 +196,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -201,6 +211,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to interact with Firebase.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -245,7 +259,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/MediaService.html#source" target="_self" >MediaService:15</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/MediaService.html#source" target="_self" >MediaService:29</a></code>
 </div>
                         </td>
                     </tr>
@@ -253,6 +267,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Uploads a media file to Firebase.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -263,6 +279,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -277,6 +294,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The media file as a Blob.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -286,7 +307,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the uploaded media.</p>
+
                             </div>
                 </td>
             </tr>
@@ -308,31 +330,46 @@ import { FirebaseService } from &quot;../../firebase/firebase.service&quot;;
 import { error, info } from &quot;console&quot;;
 import { Media } from &quot;src/app/core/interfaces/media&quot;;
 
-export class FirebaseMediaService extends MediaService{
+/**
+ * Service to handle media operations using Firebase.
+ */
+export class FirebaseMediaService extends MediaService {
 
+    /**
+     * Creates an instance of FirebaseMediaService.
+     * 
+     * @param firebase Service to interact with Firebase.
+     */
     constructor(
-        private  firebase: FirebaseService
-    ){
+        private firebase: FirebaseService
+    ) {
         super();
     }
 
-    public upload(blob:Blob):Observable&lt;Media[]&gt;{
-        return new Observable(obs&#x3D;&gt;{
-            this.firebase.imageUpload(blob).then(data&#x3D;&gt;{
-            var imgs &#x3D; [];
-            var media:Media&#x3D; {
-                id:0,
-                url_large:data.file,
-                url_medium:data.file,
-                url_thumbnail:data.file,
-                url_small:data.file
-            };
-            imgs.push(media);
-            obs.next(imgs);
-            }).catch(error&#x3D;&gt;obs.error(error))
+    /**
+     * Uploads a media file to Firebase.
+     * 
+     * @param blob The media file as a Blob.
+     * @returns An observable of the uploaded media.
+     */
+    public upload(blob: Blob): Observable&lt;Media[]&gt; {
+        return new Observable(obs &#x3D;&gt; {
+            this.firebase.imageUpload(blob).then(data &#x3D;&gt; {
+                var imgs &#x3D; [];
+                var media: Media &#x3D; {
+                    id: 0,
+                    url_large: data.file,
+                    url_medium: data.file,
+                    url_thumbnail: data.file,
+                    url_small: data.file
+                };
+                imgs.push(media);
+                obs.next(imgs);
+            }).catch(error &#x3D;&gt; obs.error(error));
         });
     }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

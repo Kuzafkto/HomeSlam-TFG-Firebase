@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing the information required for user registration.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -212,6 +219,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The email of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -245,6 +258,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -278,6 +297,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The nickname of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -311,6 +336,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The password of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -344,6 +375,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The surname of the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -351,13 +388,33 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface UserRegisterInfo{
-    email:string,
-    name:string,
-    surname:string,
-    password:string,
-    nickname:string
-}</code></pre>
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface UserRegisterInfo {
+    /**
+     * The email of the user.
+     */
+    email: string;
+
+    /**
+     * The name of the user.
+     */
+    name: string;
+
+    /**
+     * The surname of the user.
+     */
+    surname: string;
+
+    /**
+     * The password of the user.
+     */
+    password: string;
+
+    /**
+     * The nickname of the user.
+     */
+    nickname: string;
+}
+</code></pre>
     </div>
 </div>
 

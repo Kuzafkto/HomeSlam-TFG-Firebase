@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for displaying information about the user.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -236,12 +243,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pages/about/about.page.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/about/about.page.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for AboutPage component.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -250,6 +259,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -264,6 +274,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Injected HttpClientProvider service for making HTTP requests.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -303,14 +317,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/app/pages/about/about.page.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/pages/about/about.page.ts:30</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that runs after the component&#39;s view has been initialized.
+Here we make an HTTP GET request to fetch user data from GitHub API.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -340,14 +357,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/pages/about/about.page.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/pages/about/about.page.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Opens a link in a new browser tab.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -358,6 +377,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -372,6 +392,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The URL to open.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -417,10 +441,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/about/about.page.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/about/about.page.ts:17</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL of the user&#39;s avatar.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -433,6 +463,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { HttpClientProvider } from &#x27;src/app/core/services/http/http-client.provider&#x27;;
 
+/**
+ * Component for displaying information about the user.
+ */
 @Component({
   selector: &#x27;app-about&#x27;,
   templateUrl: &#x27;./about.page.html&#x27;,
@@ -440,17 +473,38 @@ import { HttpClientProvider } from &#x27;src/app/core/services/http/http-client.
 })
 export class AboutPage implements OnInit {
 
-  constructor(
-    private http:HttpClientProvider,
-  ) { }
-userUrl&#x3D;&quot;&quot;;
+  /**
+   * URL of the user&#x27;s avatar.
+   */
+  userUrl &#x3D; &quot;&quot;;
+
+  /**
+   * Constructor for AboutPage component.
+   *
+   * @param http Injected HttpClientProvider service for making HTTP requests.
+   */
+  constructor(private http: HttpClientProvider) { }
+
+  /**
+   * Angular lifecycle hook that runs after the component&#x27;s view has been initialized.
+   * Here we make an HTTP GET request to fetch user data from GitHub API.
+   */
   ngOnInit() {
-   this.http.get(&quot;https://api.github.com/search/users?q&#x3D;Kuzafkto+in%3Ausername&quot;,null,null).subscribe((result:any)&#x3D;&gt;{
-    this.userUrl&#x3D;result.items[0].avatar_url;
-   });
+    // Fetch user data from GitHub API
+    this.http.get(&quot;https://api.github.com/search/users?q&#x3D;Kuzafkto+in%3Ausername&quot;, null, null)
+      .subscribe((result: any) &#x3D;&gt; {
+        // Set the URL of the user&#x27;s avatar
+        this.userUrl &#x3D; result.items[0].avatar_url;
+      });
   }
-  openLink(link:string){
-    window.open(link,&#x27;_blank&#x27;)
+
+  /**
+   * Opens a link in a new browser tab.
+   *
+   * @param link The URL to open.
+   */
+  openLink(link: string) {
+    window.open(link, &#x27;_blank&#x27;);
   }
 }
 </code></pre>
@@ -474,21 +528,26 @@ userUrl&#x3D;&quot;&quot;;
 
     &lt;ion-row class&#x3D;&quot;about-buttons&quot;&gt;
       &lt;ion-col size&#x3D;&quot;6&quot; class&#x3D;&quot;about-button-col&quot;&gt;
-        &lt;ion-button expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://github.com/kuzafkto&#x27;)&quot; class&#x3D;&quot;about-button&quot;&gt;
+        &lt;ion-button shape&#x3D;&quot;round&quot; expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://github.com/kuzafkto&#x27;)&quot; class&#x3D;&quot;button&quot;&gt;
           &lt;ion-icon name&#x3D;&quot;logo-github&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
-          GitHub
+          GitHub (Kuza)
         &lt;/ion-button&gt;
       &lt;/ion-col&gt;
-
       &lt;ion-col size&#x3D;&quot;6&quot; class&#x3D;&quot;about-button-col&quot;&gt;
-        &lt;ion-button expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://www.linkedin.com/in/marco-valente-2b5a3224a/&#x27;)&quot; class&#x3D;&quot;about-button&quot;&gt;
+        &lt;ion-button shape&#x3D;&quot;round&quot; expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://github.com/Kuzafkto/HomeSlam-TFG-Firebase&#x27;)&quot; class&#x3D;&quot;button&quot;&gt;
+          &lt;ion-icon name&#x3D;&quot;logo-github&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+          GitHub (repo)
+        &lt;/ion-button&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;6&quot; class&#x3D;&quot;about-button-col&quot;&gt;
+        &lt;ion-button shape&#x3D;&quot;round&quot; expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://www.linkedin.com/in/marco-valente-2b5a3224a/&#x27;)&quot; class&#x3D;&quot;button&quot;&gt;
           &lt;ion-icon name&#x3D;&quot;logo-linkedin&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
           LinkedIn
         &lt;/ion-button&gt;
       &lt;/ion-col&gt;
 
       &lt;ion-col size&#x3D;&quot;6&quot; class&#x3D;&quot;about-button-col&quot;&gt;
-        &lt;ion-button expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://twitter.com/KuzaFkto&#x27;)&quot; class&#x3D;&quot;about-button&quot;&gt;
+        &lt;ion-button expand&#x3D;&quot;full&quot; (click)&#x3D;&quot;openLink(&#x27;https://twitter.com/KuzaFkto&#x27;)&quot; shape&#x3D;&quot;round&quot; class&#x3D;&quot;button&quot;&gt;
           &lt;ion-icon name&#x3D;&quot;logo-twitter&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
           Twitter (X)
         &lt;/ion-button&gt;
@@ -516,11 +575,13 @@ userUrl&#x3D;&quot;&quot;;
   
   .about-title {
     font-size: 2.5rem;
+    color: var(--ion-color-textColor);
   }
   
   .about-description {
     font-size: 1.5rem;
     text-align: center;
+    color: var(--ion-color-textColor);
   }
   
   .about-buttons {
@@ -535,15 +596,31 @@ userUrl&#x3D;&quot;&quot;;
     flex: 1;
   }
   
-  .about-button {
-    font-size: 1.5rem;
-    border-radius: 5px; //no funciona :c
-  }
+  
+ion-content{
+  --background: var(--ion-color-primaryGreen);
+}
 
-  ion-button{
-    border-radius: 5px; //no funciona :c
-  }
-  </code></pre>
+Ion-icon {
+  color:var(--ion-color-textColorDark);
+  font-weight: bold;
+}
+
+ion-button.button {
+font-size: 1.2rem;
+margin: 2%;
+color:var(--ion-color-textColorDark);
+--background: var(--ion-color-mediumEndCallToAction);
+--background-hover: var(--ion-color-callToActionGreen);
+--background-activated: var(--ion-color-callToActionGreen);
+--background-focused: var(--ion-color-callToActionGreen);
+transition: box-shadow 0.3s ease;
+font-weight: bold;
+}
+ion-button.button:hover {
+--background: var(--ion-color-callToActionGreen);
+color:var(--ion-color-textColorDark);
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -571,8 +648,8 @@ userUrl&#x3D;&quot;&quot;;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <ion-header [translucent]="true">    <app-toolbar></app-toolbar>  </ion-header>  <ion-header collapse="condense">    <ion-toolbar>      <ion-title size="large">KuzaFkto</ion-title>    </ion-toolbar>  </ion-header>  <div class="about-container">    <img src="{{userUrl}}" alt="Descripción" class="about-image">    <ion-title class="about-title">KuzaFkto</ion-title>    <ion-label class="about-description">{{\'about.description\'|translate}}</ion-label>    <ion-row class="about-buttons">      <ion-col size="6" class="about-button-col">        <ion-button expand="full" (click)="openLink(\'https://github.com/kuzafkto\')" class="about-button">          <ion-icon name="logo-github" slot="start"></ion-icon>          GitHub        </ion-button>      </ion-col>      <ion-col size="6" class="about-button-col">        <ion-button expand="full" (click)="openLink(\'https://www.linkedin.com/in/marco-valente-2b5a3224a/\')" class="about-button">          <ion-icon name="logo-linkedin" slot="start"></ion-icon>          LinkedIn        </ion-button>      </ion-col>      <ion-col size="6" class="about-button-col">        <ion-button expand="full" (click)="openLink(\'https://twitter.com/KuzaFkto\')" class="about-button">          <ion-icon name="logo-twitter" slot="start"></ion-icon>          Twitter (X)        </ion-button>      </ion-col>    </ion-row>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <ion-header [translucent]="true">    <app-toolbar></app-toolbar>  </ion-header>  <ion-header collapse="condense">    <ion-toolbar>      <ion-title size="large">KuzaFkto</ion-title>    </ion-toolbar>  </ion-header>  <div class="about-container">    <img src="{{userUrl}}" alt="Descripción" class="about-image">    <ion-title class="about-title">KuzaFkto</ion-title>    <ion-label class="about-description">{{\'about.description\'|translate}}</ion-label>    <ion-row class="about-buttons">      <ion-col size="6" class="about-button-col">        <ion-button shape="round" expand="full" (click)="openLink(\'https://github.com/kuzafkto\')" class="button">          <ion-icon name="logo-github" slot="start"></ion-icon>          GitHub (Kuza)        </ion-button>      </ion-col>      <ion-col size="6" class="about-button-col">        <ion-button shape="round" expand="full" (click)="openLink(\'https://github.com/Kuzafkto/HomeSlam-TFG-Firebase\')" class="button">          <ion-icon name="logo-github" slot="start"></ion-icon>          GitHub (repo)        </ion-button>      </ion-col>      <ion-col size="6" class="about-button-col">        <ion-button shape="round" expand="full" (click)="openLink(\'https://www.linkedin.com/in/marco-valente-2b5a3224a/\')" class="button">          <ion-icon name="logo-linkedin" slot="start"></ion-icon>          LinkedIn        </ion-button>      </ion-col>      <ion-col size="6" class="about-button-col">        <ion-button expand="full" (click)="openLink(\'https://twitter.com/KuzaFkto\')" shape="round" class="button">          <ion-icon name="logo-twitter" slot="start"></ion-icon>          Twitter (X)        </ion-button>      </ion-col>    </ion-row>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'AboutPage'};
 </script>

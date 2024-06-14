@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a team.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -225,6 +232,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The media object representing the team&#39;s image (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -258,6 +271,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the team.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -291,6 +310,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The array of players in the team.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -324,6 +349,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The story or description of the team.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -357,6 +388,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The array of trainers in the team.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -395,6 +432,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier of the team (optional).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -406,15 +449,41 @@
 import { Player } from &quot;./player&quot;;
 import { Trainer } from &quot;./trainer&quot;;
 
+/**
+ * Interface representing a team.
+ */
 export interface Team {
+    /**
+     * The story or description of the team.
+     */
     story: string;
-    imageUrl?:Media|undefined,
+
+    /**
+     * The media object representing the team&#x27;s image (optional).
+     */
+    imageUrl?: Media | undefined;
+
+    /**
+     * The name of the team.
+     */
     name: string;
-    players: Player[],
-    trainers: Trainer[],
+
+    /**
+     * The array of players in the team.
+     */
+    players: Player[];
+
+    /**
+     * The array of trainers in the team.
+     */
+    trainers: Trainer[];
+
+    /**
+     * The unique identifier of the team (optional).
+     */
     uuid?: string;
-  }
-  </code></pre>
+}
+</code></pre>
     </div>
 </div>
 

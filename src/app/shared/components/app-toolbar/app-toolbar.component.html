@@ -13,30 +13,23 @@
     <ion-button fill="clear" aria-label="Games" (click)="goToGames()" class="round-button">
       <ion-icon slot="icon-only" name="trophy-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
+
+  </ion-buttons>
+
+  <!-- Aquí va el nombre del usuario y el botón de logout con el slot end para que estén al final -->
+  <ion-buttons slot="end">
+    <ion-title class="user-name">{{ nickname$ | async }}</ion-title>
     <ion-button fill="clear" aria-label="About" (click)="goToAbout()" class="round-button">
       <ion-icon slot="icon-only" name="person" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
     <ion-button *ngIf="isOwner$ | async" fill="clear" aria-label="UsersAdmin" (click)="goToUsersAdmin()" class="round-button">
       <ion-icon slot="icon-only" name="book" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
-  </ion-buttons>
-
-  <!-- Aquí va el nombre del usuario y el botón de logout con el slot end para que estén al final -->
-  <ion-buttons slot="end">
-    <ion-title class="user-name">{{ username$ | async }}</ion-title>
+    <ion-button fill="clear" aria-label="Settings" (click)="goToSettings()" class="round-button">
+      <ion-icon slot="icon-only" name="settings" aria-hidden="true" class="button-icon"></ion-icon>
+    </ion-button>
     <ion-button fill="clear" aria-label="Logout" (click)="onLogout()" class="round-button">
       <ion-icon slot="icon-only" name="log-out-outline" aria-hidden="true" class="button-icon"></ion-icon>
     </ion-button>
-    <ion-button id="language-trigger" shape="round" color="primary" fill="outline">{{languageSelected | uppercase}}</ion-button>
   </ion-buttons>
-
-  <ion-popover trigger="language-trigger" triggeraction="click" aria-modal="true" [dismissOnSelect]="true">
-    <ng-template>
-      <ion-content>
-        <ion-list>
-          <ion-item [disabled]="language==languageSelected" *ngFor="let language of languages" [button]="true" (click)="setLanguage(language)" [detail]="false">{{language | uppercase}} - {{'header.languages.'+language | translate}}</ion-item>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-popover>
 </ion-toolbar>

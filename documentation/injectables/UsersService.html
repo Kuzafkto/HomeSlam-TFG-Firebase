@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles operations related to users.</p>
+
+            </p>
 
 
 
@@ -197,12 +204,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/api/users.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/core/services/api/users.service.ts:22</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of UsersService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -211,6 +220,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -225,6 +235,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to interact with Firebase.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -262,14 +276,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/core/services/api/users.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/core/services/api/users.service.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Adds a new user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -280,6 +296,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -294,6 +311,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user to add.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -303,7 +324,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the add operation.</p>
+
                             </div>
                 </td>
             </tr>
@@ -331,14 +353,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/core/services/api/users.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/core/services/api/users.service.ts:87</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -349,6 +373,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -363,6 +388,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user to delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -372,7 +401,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the delete operation.</p>
+
                             </div>
                 </td>
             </tr>
@@ -400,19 +430,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/core/services/api/users.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/core/services/api/users.service.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves all users.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the list of users.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -439,14 +475,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/core/services/api/users.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/core/services/api/users.service.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a user by their UUID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -457,6 +495,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -471,6 +510,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The UUID of the user.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -480,7 +523,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -508,14 +552,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/core/services/api/users.service.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/core/services/api/users.service.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates an existing user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -526,6 +572,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -540,6 +587,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user to update.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -549,7 +600,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the update operation.</p>
+
                             </div>
                 </td>
             </tr>
@@ -590,6 +642,12 @@
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>BehaviorSubject to track the list of users.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -618,10 +676,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/api/users.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/core/services/api/users.service.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the list of users.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -637,19 +701,40 @@ import { PaginatedUsers, User } from &#x27;src/app/core/interfaces/user&#x27;;
 import { FirebaseService } from &#x27;../firebase/firebase.service&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 
+/**
+ * This service handles operations related to users.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class UsersService {
+  /**
+   * BehaviorSubject to track the list of users.
+   */
+  private _users: BehaviorSubject&lt;User[]&gt; &#x3D; new BehaviorSubject&lt;User[]&gt;([]);
+
+  /**
+   * Observable for the list of users.
+   */
+  public users$: Observable&lt;User[]&gt; &#x3D; this._users.asObservable();
+
+  /**
+   * Creates an instance of UsersService.
+   * 
+   * @param firebaseSvc Service to interact with Firebase.
+   */
   constructor(
     private firebaseSvc: FirebaseService
   ) {
-    this.users$&#x3D;this.firebaseSvc.users$;
-   }
+    this.users$ &#x3D; this.firebaseSvc.users$;
+  }
 
-  private _users: BehaviorSubject&lt;User[]&gt; &#x3D; new BehaviorSubject&lt;User[]&gt;([]);
-  public users$: Observable&lt;User[]&gt; &#x3D; this._users.asObservable();
-
+  /**
+   * Adds a new user.
+   * 
+   * @param user The user to add.
+   * @returns An observable of the add operation.
+   */
   public addUser(user: User): Observable&lt;any&gt; {
     return from(this.firebaseSvc.createDocument(&quot;users&quot;, {
       name: user.name,
@@ -657,30 +742,52 @@ export class UsersService {
     }));
   }
 
+  /**
+   * Retrieves all users.
+   * 
+   * @returns An observable of the list of users.
+   */
   public getAll(): Observable&lt;any&gt; {
     return this.users$;
   }
 
+  /**
+   * Retrieves a user by their UUID.
+   * 
+   * @param uuid The UUID of the user.
+   * @returns An observable of the user.
+   */
   public getUser(uuid: string): Observable&lt;any&gt; {
     return from(this.firebaseSvc.getDocument(&quot;users&quot;, uuid));
   }
 
+  /**
+   * Updates an existing user.
+   * 
+   * @param user The user to update.
+   * @returns An observable of the update operation.
+   */
   public updateUser(user: User): Observable&lt;any&gt; {
     if (user.uuid) {
       return from(this.firebaseSvc.updateDocument(&quot;users&quot;, user, user.uuid));
     } else {
-      throw new Error(&quot;user does not have UUID&quot;);
+      throw new Error(&quot;User does not have UUID&quot;);
     }
   }
 
+  /**
+   * Deletes a user.
+   * 
+   * @param user The user to delete.
+   * @returns An observable of the delete operation.
+   */
   public deleteUser(user: User): Observable&lt;any&gt; {
     if (user.uuid) {
       return from(this.firebaseSvc.deleteDocument(&quot;users&quot;, user.uuid));
     } else {
-      throw new Error(&quot;User does not have uuid&quot;);
+      throw new Error(&quot;User does not have UUID&quot;);
     }
   }
-
 }
 </code></pre>
     </div>

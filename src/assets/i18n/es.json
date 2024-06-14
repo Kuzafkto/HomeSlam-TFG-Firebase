@@ -9,7 +9,9 @@
         "submit":"Acceder",
         "access":"Acceder a Home Slam",
         "pwdError":"La contraseña debe contener al menos 12 caracteres",
-        "userError":"El nombre debe tener al menos 2 caracteres"
+        "userError":"El nombre debe tener al menos 2 caracteres",
+        "submitError":"Email o contraseña incorrecta"
+
     },
     "register":{
         "email":"Email",
@@ -27,21 +29,12 @@
         "passwordError":"La contraseña debe contener al menos 12 caracteres",
         "nickError":"Ingrese un apodo (minimo 2 caracteres)"
     },
-    "header":{
-        "user":{
-            "profile":"Mi perfil",
-            "signout":"Cerrar sesión"
-        },
-        "languages":{
-            "es":"Español",
-            "en":"Inglés"
-        }
-    },
     
     "menu":{
         "players":"Jugadores",
         "players-alt":"Ir a Jugadores",
         "about":"Sobre Kuza",
+        "games":"Juegos",
         "about-alt":"Saber mas sobre Kuza",
         "teams":"Equipos",
         "teams-alt":"Ir a Equipos"
@@ -55,8 +48,8 @@
         "save":"Guardar",
         "ageError":"La edad debe ser al menos de 18 ",
         "title":"Jugadores",
-        "submit":"Confirmar"
-
+        "submit":"Confirmar",
+        "downloadPlayersCsv":"Descargar CSV jugadores"
     },
     "teams":{
         "new":"Equipo nuevo",
@@ -64,7 +57,12 @@
         "name":"Nombre: ",
         "players":"Jugadores",
         "title":"Equipos",
-        "submit":"Confirmar"
+        "playerAssignator": "Administrador de jugadores",
+        "availablePlayers":"Jugadores disponibles",
+        "currentTeam": "Jugadores en equipo actual",
+        "submit":"Confirmar",
+        "downloadTeamsCsv":"Descargar CSV equipos"
+
     },
     "games":{
         "date":"Fecha",
@@ -74,7 +72,11 @@
         "visitorRuns":"Carreras equipo visitante",
         "story":"Historia",
         "runs":"Carreras",
-        "submit":"Confirmar"
+        "votes":"votos",
+        "votesTitle":"Votaciones de equipo ganador",
+        "submit":"Confirmar",
+        "downloadVotesCsv":"Descargar votos CSV",
+        "downloadGamesCsv":"Descargar juegos CSV"
     },
     "errors":{
         "accessDeniedTitle":"Acceso denegado",
@@ -82,5 +84,18 @@
     },
     "users":{
         "isAdmin":"Admin"
-    }
+    },
+        "settings": {
+          "title": "Configuración",
+          "language": "Idioma",
+          "nickname":"Apodo de usuario",
+          "update":"Actualizar usuario"
+        },
+        "header": {
+          "languages": {
+            "es": "Español",
+            "en": "Inglés"
+          }
+        }
+      
 }

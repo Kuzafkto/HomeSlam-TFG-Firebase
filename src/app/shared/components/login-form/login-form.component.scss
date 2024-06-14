@@ -1,17 +1,26 @@
 .center-button {
-    text-align: center;
-  }
-  
-  .center-button ion-button {
-    --background:#009a44;
-    --color: #ffffff;
-    text-transform: none;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 2%;
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
+.submitButton {
+  --background: #009a44;
+  --background-hover: #03ca5a;
+  --color: #ffffff;
+  width: 60%;
+  height: 50px;
+  font-size: 1rem;
+  margin-top: 20px;
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.submitButton:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 2%;
+  text-align: center;
+}

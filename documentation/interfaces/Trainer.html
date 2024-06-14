@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a trainer, not implemented yet</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -206,6 +213,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The age of the trainer.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -239,6 +252,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier of the trainer.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -272,6 +291,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the trainer.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -305,6 +330,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The surname of the trainer.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -312,13 +343,28 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Trainer{
-        id:number,
-        name:string,
-        surname:string,
-        age:number
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Trainer {
+        /**
+         * The unique identifier of the trainer.
+         */
+        id: number;
     
-}</code></pre>
+        /**
+         * The name of the trainer.
+         */
+        name: string;
+    
+        /**
+         * The surname of the trainer.
+         */
+        surname: string;
+    
+        /**
+         * The age of the trainer.
+         */
+        age: number;
+    }
+    </code></pre>
     </div>
 </div>
 

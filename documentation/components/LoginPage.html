@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for handling user login.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -220,6 +227,10 @@
                             <li>
                                 <a href="#onLogin" >onLogin</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showToast" >showToast</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -238,17 +249,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, route: ActivatedRoute)</code>
+<code>constructor(auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, route: ActivatedRoute, toastController: ToastController)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/login/login.page.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/login/login.page.ts:21</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for LoginPage component.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -257,6 +270,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -271,6 +285,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>AuthService for handling authentication.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -283,6 +303,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Router for navigating between routes.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>route</td>
@@ -295,6 +321,30 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>ActivatedRoute for accessing route parameters.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>ToastController for displaying toast notifications.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -336,14 +386,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/pages/login/login.page.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/pages/login/login.page.ts:51</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Activates vibration with custom options using the Capacitor Haptics API.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -373,14 +425,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/pages/login/login.page.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/pages/login/login.page.ts:99</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the registration page.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -410,14 +464,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/pages/login/login.page.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/pages/login/login.page.ts:42</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Angular lifecycle hook that is called after data-bound properties are initialized.
+Subscribes to query parameters to set the error message.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -447,14 +504,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/pages/login/login.page.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/pages/login/login.page.ts:83</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles user login by calling the AuthService login method with the provided credentials.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -465,6 +524,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -479,12 +539,96 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The user&#39;s login credentials.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showToast"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>showToast</b></span>
+                        <a href="#showToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showToast(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/pages/login/login.page.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Displays a toast notification with the specified message.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The message to display in the toast notification.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -524,10 +668,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/login/login.page.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/login/login.page.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Error message to display on the login page.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -539,107 +689,105 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
-import { ModalController } from &#x27;@ionic/angular&#x27;;
+import { ToastController } from &#x27;@ionic/angular&#x27;;
 import { UserCredentials } from &#x27;src/app/core/interfaces/user-credentials&#x27;;
-import { UserRegisterInfo } from &#x27;src/app/core/interfaces/user-register-info&#x27;;
 import { AuthService } from &#x27;src/app/core/services/api/auth.service&#x27;;
-import { LoginFormComponent } from &#x27;src/app/shared/components/login-form/login-form.component&#x27;;
-import { Haptics, ImpactStyle } from &#x27;@capacitor/haptics&#x27;;
+import { Haptics } from &#x27;@capacitor/haptics&#x27;;
 
+/**
+ * Component for handling user login.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.page.html&#x27;,
   styleUrls: [&#x27;./login.page.scss&#x27;],
 })
 export class LoginPage implements OnInit {
+  
+  /**
+   * Error message to display on the login page.
+   */
   errorMessage: string | null &#x3D; null;
 
-  async activateVibrationWithOptions() {
-    try {
-      const options &#x3D; {
-        duration: 300, // Duración de la vibración en milisegundos
-        intensity: 0.5 // Intensidad de la vibración, un valor entre 0.1 y 1.0
-      }; //por ahora no usamos las options para vibrate
-  
-      //await Haptics.vibrate();
-      await Haptics.notification()
-      console.log(&#x27;Vibración activada con éxito con opciones personalizadas&#x27;);
-    } catch (error) {
-      console.error(&#x27;Error al activar la vibración:&#x27;, error);
-    }
-  }
+  /**
+   * Constructor for LoginPage component.
+   *
+   * @param auth - AuthService for handling authentication.
+   * @param router - Router for navigating between routes.
+   * @param route - ActivatedRoute for accessing route parameters.
+   * @param toastController - ToastController for displaying toast notifications.
+   */
   constructor(
     private auth: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private toastController: ToastController
+  ) {}
 
-
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   * Subscribes to query parameters to set the error message.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params &#x3D;&gt; {
       this.errorMessage &#x3D; params[&#x27;error&#x27;] || null;
     });
   }
 
+  /**
+   * Activates vibration with custom options using the Capacitor Haptics API.
+   */
+  async activateVibrationWithOptions() {
+    try {
+      const options &#x3D; {
+        duration: 300,
+        intensity: 0.5
+      };
+      await Haptics.notification();
+      console.log(&#x27;Vibration activated successfully with custom options&#x27;);
+    } catch (error) {
+      console.error(&#x27;Error activating vibration:&#x27;, error);
+    }
+  }
+
+  /**
+   * Displays a toast notification with the specified message.
+   *
+   * @param message - The message to display in the toast notification.
+   */
+  async showToast(message: string) {
+    const toast &#x3D; await this.toastController.create({
+      message,
+      duration: 2000,
+      position: &#x27;top&#x27;
+    });
+    toast.present();
+  }
+
+  /**
+   * Handles user login by calling the AuthService login method with the provided credentials.
+   *
+   * @param credentials - The user&#x27;s login credentials.
+   */
   onLogin(credentials: UserCredentials) {
     this.auth.login(credentials).subscribe({
       next: data &#x3D;&gt; {
-        this.router.navigate([&#x27;/home&#x27;])
+        this.router.navigate([&#x27;/home&#x27;]);
         console.log(data);
       },
       error: err &#x3D;&gt; {
         console.log(err);
+        this.showToast(&#x27;Login failed. Please try again.&#x27;);
       }
     });
   }
 
+  /**
+   * Navigates to the registration page.
+   */
   goToRegisterPage() {
     this.router.navigate([&#x27;/register&#x27;]);
   }
-
-  
-  
-  
-  /*intento fallido de hacer que el register con su form estén dentro de Login
-  
-  onRegister(registerInfo: UserRegisterInfo) {
-
-    var onDismiss &#x3D; (info: any) &#x3D;&gt; {
-      console.log(info)
-      if (info.form.value) {
-        this.auth.register(registerInfo).subscribe({
-          next: data &#x3D;&gt; {
-            console.log(&quot;Enviado&quot;)
-          },  
-          error: err &#x3D;&gt; {
-            console.log(err);
-          }
-        })
-      }
-    }
-    console.log(&quot;Register formm&quot;);
-    this.presentForm(onDismiss);
-
-  }
-
-
-  async presentForm(onDismiss: (result: any) &#x3D;&gt; void) {
-
-    const modal &#x3D; await this.modal.create({
-      component: LoginFormComponent,
-      cssClass: &quot;modal-full-right-side&quot;
-    }
-    );
-    modal.present();
-    modal.onDidDismiss().then(result &#x3D;&gt; {
-      if (result &amp;&amp; result.data) {
-        onDismiss(result);
-      }
-    });
-
-  }
-*/
-
 }
 </code></pre>
     </div>
@@ -769,7 +917,7 @@ ion-content {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true">  <div class="container">    <ion-card>      <ion-card-header>        <div class="logo">          <ion-thumbnail class="logo-thumbnail">            <img alt="logo of home slam" src="../../../assets/imgs/homeslam.logo.png" />          </ion-thumbnail>          <ion-text class="logo-text">{{\'login.access\' | translate}}</ion-text>        </div>      </ion-card-header>      <ion-card-content>        <div class="ion-text-center">          <ion-button fill="clear" (click)="goToRegisterPage()">            {{\'login.noAccount\' | translate}}          </ion-button>        </div>        <div *ngIf="errorMessage" class="error-message">          {{ errorMessage }}        </div>        <app-login-form (onsubmit)="onLogin($event)"></app-login-form>      </ion-card-content>    </ion-card>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'LoginPage'};
 </script>

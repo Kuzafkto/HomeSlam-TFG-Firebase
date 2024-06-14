@@ -9,6 +9,9 @@ import { TeamDetailComponent } from 'src/app/shared/components/team-detail/team-
 import { take } from 'rxjs/operators';
 import { CsvService } from 'src/app/core/services/api/csv.service';
 
+/**
+ * Component for managing the teams page.
+ */
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.page.html',
@@ -16,20 +19,38 @@ import { CsvService } from 'src/app/core/services/api/csv.service';
 })
 export class TeamsPage implements OnInit {
 
+  /**
+   * Indicates if the page is currently loading.
+   */
   public loading: boolean = false;
 
+  /**
+   * Creates an instance of TeamsPage.
+   * 
+   * @param teams Service to manage team data.
+   * @param toast Controller to show toast notifications.
+   * @param modal Controller to handle modal dialogs.
+   * @param media Service to manage media uploads.
+   * @param csvService Service to generate CSV files.
+   */
   constructor(
     public teams: TeamService,
     private toast: ToastController,
     private modal: ModalController,
     private media: MediaService,
-    private csvService: CsvService // Inyecta el servicio CSV
+    private csvService: CsvService
   ) { }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit() {
     this.loading = false;
   }
 
+  /**
+   * Handles the creation of a new team.
+   */
   onNewteam() {
     var onDismiss = (info: any) => {
       switch (info.role) {
@@ -52,6 +73,11 @@ export class TeamsPage implements OnInit {
     this.presentForm(null, onDismiss);
   }
 
+  /**
+   * Handles the click event on a team card.
+   * 
+   * @param team The team that was clicked.
+   */
   public async onCardClicked(team: Team) {
     var onDismiss = (info: any) => {
       switch (info.role) {
@@ -90,6 +116,11 @@ export class TeamsPage implements OnInit {
     this.presentForm(team, onDismiss);
   }
 
+  /**
+   * Handles the deletion of a team.
+   * 
+   * @param team The team to be deleted.
+   */
   public onDeleteClicked(team: Team) {
     var _team: Team = { ...team };
 
@@ -111,6 +142,12 @@ export class TeamsPage implements OnInit {
     });
   }
 
+  /**
+   * Presents a form in a modal for creating or editing a team.
+   * 
+   * @param data The initial data to populate the form with.
+   * @param onDismiss Callback to handle the result when the modal is dismissed.
+   */
   async presentForm(data: any | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
       component: TeamDetailComponent,
@@ -144,6 +181,9 @@ export class TeamsPage implements OnInit {
     }
   }
 
+  /**
+   * Downloads the teams data as a CSV file.
+   */
   downloadTeamsCSV() {
     this.teams.teams$.pipe(take(1)).subscribe((teams) => {
       const formattedTeams = teams.map(team => {

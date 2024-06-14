@@ -1255,15 +1255,14 @@ export class GamesPage implements OnInit {
   &lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
     &lt;app-toolbar&gt;&lt;/app-toolbar&gt;
   &lt;/ion-header&gt;
-  &lt;ion-button fill&#x3D;&quot;clear&quot; aria-label&#x3D;&quot;New Game&quot; (click)&#x3D;&quot;onNewGame()&quot; class&#x3D;&quot;rounde&quot;&gt;
-    &lt;ion-icon slot&#x3D;&quot;icon-only&quot; color&#x3D;&quot;primary&quot; name&#x3D;&quot;add-outline&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/ion-icon&gt;
+  &lt;ion-button fill&#x3D;&quot;clear&quot; aria-label&#x3D;&quot;New Game&quot; (click)&#x3D;&quot;onNewGame()&quot; shape&#x3D;&quot;round&quot; class&#x3D;&quot;rounde button&quot;&gt;
+    &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;add&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/ion-icon&gt;
   &lt;/ion-button&gt;
-  &lt;ion-button fill&#x3D;&quot;solid&quot; color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;downloadVotesCSV()&quot;&gt;
-    Download Votes CSV
+  &lt;ion-button fill&#x3D;&quot;solid&quot; (click)&#x3D;&quot;downloadVotesCSV()&quot; class&#x3D;&quot;button&quot;&gt;
+    {{ &#x27;games.downloadVotesCsv&#x27; | translate }}
   &lt;/ion-button&gt;
-  &lt;ion-button fill&#x3D;&quot;solid&quot; color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;downloadGamesCSV()&quot;&gt;
-    Download Games CSV
-  &lt;/ion-button&gt;
+  &lt;ion-button fill&#x3D;&quot;solid&quot; (click)&#x3D;&quot;downloadGamesCSV()&quot; class&#x3D;&quot;button&quot;&gt;
+    {{ &#x27;games.downloadGamesCsv&#x27; | translate }}  &lt;/ion-button&gt;
   &lt;ion-row&gt;
     &lt;ion-col size&#x3D;&quot;12&quot; size-md&#x3D;&quot;6&quot; size-lg&#x3D;&quot;4&quot; size-xl&#x3D;&quot;3&quot; *ngFor&#x3D;&quot;let game of (games$ | async); let i &#x3D; index&quot;&gt;
       &lt;app-game-info
@@ -1282,14 +1281,9 @@ export class GamesPage implements OnInit {
                 <p class="comment">
                     <code>./games.page.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.main-background {
-    background-color: #7e4d32;
-    color: #fff;
-  }
+                <pre class="line-numbers"><code class="language-scss">
   
   .rounde {
-    background-color: #fff;
-    color: #fff;
     height: 5vh;
     width: 4vw;
     margin: 2%;
@@ -1301,13 +1295,27 @@ export class GamesPage implements OnInit {
   }
   
   ion-content {
-    --ion-background-color: #005625;
+    --background: var(--ion-color-primaryGreen);
   }
   
-  ion-icon {
-    --ion-background-color: #009a44;
+  Ion-icon {
+    color:var(--ion-color-textColorDark);
+    font-weight: bold;
   }
-  </code></pre>
+ion-button.button {
+  color:var(--ion-color-textColorDark);
+  --background: var(--ion-color-mediumEndCallToAction);
+  --background-hover: var(--ion-color-callToActionGreen);
+  --background-activated: var(--ion-color-callToActionGreen);
+  --background-focused: var(--ion-color-callToActionGreen);
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+}
+ion-button.button:hover {
+  --background: var(--ion-color-callToActionGreen);
+  color:var(--ion-color-textColorDark);
+  box-shadow: 0 0 20px var(--ion-color-callToActionGreen);
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -1335,8 +1343,8 @@ export class GamesPage implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true" class="main-background">  <ion-header [translucent]="true">    <app-toolbar></app-toolbar>  </ion-header>  <ion-button fill="clear" aria-label="New Game" (click)="onNewGame()" class="rounde">    <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>  </ion-button>  <ion-button fill="solid" color="primary" (click)="downloadVotesCSV()">    Download Votes CSV  </ion-button>  <ion-button fill="solid" color="primary" (click)="downloadGamesCSV()">    Download Games CSV  </ion-button>  <ion-row>    <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let game of (games$ | async); let i = index">      <app-game-info        [game]="game"        (onCardClicked)="onCardClicked(game)"        (onDeleteClicked)="onDeleteClicked(game)">      </app-game-info>    </ion-col>  </ion-row>  <ion-loading [isOpen]="loading" class="custom-loading" message="Loading..."></ion-loading></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
+        var COMPONENT_TEMPLATE = '<div><ion-content [fullscreen]="true" class="main-background">  <ion-header [translucent]="true">    <app-toolbar></app-toolbar>  </ion-header>  <ion-button fill="clear" aria-label="New Game" (click)="onNewGame()" shape="round" class="rounde button">    <ion-icon slot="icon-only" name="add" aria-hidden="true"></ion-icon>  </ion-button>  <ion-button fill="solid" (click)="downloadVotesCSV()" class="button">    {{ \'games.downloadVotesCsv\' | translate }}  </ion-button>  <ion-button fill="solid" (click)="downloadGamesCSV()" class="button">    {{ \'games.downloadGamesCsv\' | translate }}  </ion-button>  <ion-row>    <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let game of (games$ | async); let i = index">      <app-game-info        [game]="game"        (onCardClicked)="onCardClicked(game)"        (onDeleteClicked)="onDeleteClicked(game)">      </app-game-info>    </ion-col>  </ion-row>  <ion-loading [isOpen]="loading" class="custom-loading" message="Loading..."></ion-loading></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppToolbarComponent', 'selector': 'app-toolbar'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GameDetailComponent', 'selector': 'app-game-detail'},{'name': 'GameInfoComponent', 'selector': 'app-game-info'},{'name': 'GamesPage', 'selector': 'app-games'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerDetailComponent', 'selector': 'app-player-detail'},{'name': 'PlayerInfoComponent', 'selector': 'app-player-info'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectorComponent', 'selector': 'app-position-selector'},{'name': 'RegisterFormComponent', 'selector': 'app-register-form'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'TeamDetailComponent', 'selector': 'app-team-detail'},{'name': 'TeamInfoComponent', 'selector': 'app-team-info'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UserInfoComponent', 'selector': 'app-user-info'},{'name': 'UsersAdminPage', 'selector': 'app-users-admin'}];
     var DIRECTIVES = [{'name': 'PositionImageDirective', 'selector': '[positionImage]'}];
     var ACTUAL_COMPONENT = {'name': 'GamesPage'};
 </script>

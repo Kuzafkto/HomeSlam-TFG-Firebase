@@ -1,16 +1,27 @@
 .selected {
-    --background: #009a44;
-    --color: var(--ion-color-primary-contrast);
-    }
+  --background: var(--ion-color-mediumEndCallToAction);
+  color:var(--ion-color-textColorDark);
+}
     .not-selected{
-      --background: var(--ion-color-light);
-      --color: #009a44;
+      --background: var(--ion-color-secondaryGreen);
+      color:var(--ion-color-textColor);
     } 
 
-    ion-button{
-      font-size: 2rem;
-    }
+      ion-button.not-selected:hover {
+      --background: var(--ion-color-mediumEndCallToAction);
+      color:var(--ion-color-textColorDark);
+      box-shadow: 0 0 20px var(--ion-color-mediumEndCallToAction);
+      }
+      ion-button.selected:hover {
+        --background: var(--ion-color-secondaryGreen);
+      color:var(--ion-color-textColor);
+      box-shadow: 0 0 20px var(--ion-color-secondaryGreen);
+        }
 
+        ion-button{
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
     .position-selector-container {
       display: flex;
       height: 100%;
@@ -18,3 +29,5 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    

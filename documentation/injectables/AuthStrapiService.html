@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles authentication using Strapi. Note that this service is not currently being utilized.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -202,6 +209,9 @@
                                     <span class="modifier"></span>
                                 <a href="#update" >update</a>
                             </li>
+                            <li>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -225,12 +235,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/api/strapi/auth-strapi.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/api/strapi/auth-strapi.service.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of AuthStrapiService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -239,6 +251,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -253,6 +266,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to handle JWT tokens.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>apiSvc</td>
@@ -265,6 +282,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to make API requests.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -308,7 +329,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:38</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:55</a></code>
 </div>
                         </td>
                     </tr>
@@ -316,6 +337,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs in a user with the provided credentials.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -326,6 +349,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -340,6 +364,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user&#39;s login credentials.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -349,7 +377,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the logged-in user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -381,7 +410,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:64</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:86</a></code>
 </div>
                         </td>
                     </tr>
@@ -389,11 +418,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs out the current user.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the logout result.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -426,7 +461,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:114</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:145</a></code>
 </div>
                         </td>
                     </tr>
@@ -434,11 +469,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves the current user&#39;s information.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the current user&#39;s information.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -469,7 +510,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:71</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:99</a></code>
 </div>
                         </td>
                     </tr>
@@ -477,6 +518,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registers a new user with the provided information.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -487,6 +530,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -501,6 +545,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user&#39;s registration information.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -510,7 +558,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the registered user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -544,7 +593,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:15</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:22</a></code>
 </div>
                         </td>
                     </tr>
@@ -591,6 +640,79 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUser(user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:19</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
             <section data-compodoc="block-properties">
     
@@ -628,11 +750,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:20</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:42</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track if the user is an admin.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -667,11 +795,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:22</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:52</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track if the user is an owner.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -700,11 +834,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:18</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:32</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track the login status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -733,11 +873,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:24</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:62</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track the current user.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -772,11 +918,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:21</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:47</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the admin status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -805,11 +957,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:19</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:37</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the login status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -844,11 +1002,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:23</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:57</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the owner status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -877,11 +1041,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:25</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:67</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the current user.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -901,41 +1071,58 @@ import { AuthService } from &#x27;../auth.service&#x27;;
 import { StrapiArrayResponse, StrapiExtendedUser, StrapiLoginPayload, StrapiLoginResponse, StrapiMe, StrapiRegisterPayload, StrapiRegisterResponse, StrapiResponse, StrapiUser } from &#x27;../../../interfaces/strapi&#x27;;
 import { User } from &#x27;../../../interfaces/user&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+
+/**
+ * This service handles authentication using Strapi. Note that this service is not currently being utilized.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class AuthStrapiService extends AuthService{
+export class AuthStrapiService extends AuthService {
+  updateUser(user: User): Observable&lt;any&gt; {
+    throw new Error(&#x27;Method not implemented.&#x27;);
+  }
   override update(extended: { data: any; }): any {
   }
 
+  /**
+   * Creates an instance of AuthStrapiService.
+   * 
+   * @param jwtSvc Service to handle JWT tokens.
+   * @param apiSvc Service to make API requests.
+   */
   constructor(
-    private jwtSvc:JwtService,
-    private apiSvc:ApiService
-    
+    private jwtSvc: JwtService,
+    private apiSvc: ApiService
   ) { 
     super();
-    this.jwtSvc.loadToken().subscribe(token&#x3D;&gt;{
-      if(token){
-        this.me().subscribe(user&#x3D;&gt;{
+    this.jwtSvc.loadToken().subscribe(token &#x3D;&gt; {
+      if (token) {
+        this.me().subscribe(user &#x3D;&gt; {
           this._logged.next(true);
           this._user.next(user);
-        })
-      }else{
+        });
+      } else {
         this._logged.next(false);
         this._user.next(null);
       }
     });
   }
 
- 
-  public login(credentials:UserCredentials):Observable&lt;User&gt;{
-    return new Observable&lt;User&gt;(obs&#x3D;&gt;{
-      const _credentials:StrapiLoginPayload &#x3D; {
-        identifier:credentials.username,
-        password:credentials.password
+  /**
+   * Logs in a user with the provided credentials.
+   * 
+   * @param credentials The user&#x27;s login credentials.
+   * @returns An observable of the logged-in user.
+   */
+  public login(credentials: UserCredentials): Observable&lt;User&gt; {
+    return new Observable&lt;User&gt;(obs &#x3D;&gt; {
+      const _credentials: StrapiLoginPayload &#x3D; {
+        identifier: credentials.username,
+        password: credentials.password
       };
       this.apiSvc.post(&quot;/auth/local&quot;, _credentials).subscribe({
-        next:async (data:StrapiLoginResponse)&#x3D;&gt;{
+        next: async (data: StrapiLoginResponse) &#x3D;&gt; {
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
           try {
             const user &#x3D; await lastValueFrom(this.me());
@@ -947,32 +1134,42 @@ export class AuthStrapiService extends AuthService{
             obs.error(error);
           }
         },
-        error:err&#x3D;&gt;{
+        error: err &#x3D;&gt; {
           obs.error(err);
         }
       });
     });
   }
 
-  logout():Observable&lt;void&gt;{
-    return this.jwtSvc.destroyToken().pipe(map(_&#x3D;&gt;{
+  /**
+   * Logs out the current user.
+   * 
+   * @returns An observable of the logout result.
+   */
+  logout(): Observable&lt;void&gt; {
+    return this.jwtSvc.destroyToken().pipe(map(_ &#x3D;&gt; {
       this._logged.next(false);
       return;
     }));
   }
 
-  register(info:UserRegisterInfo):Observable&lt;User&gt;{
-    return new Observable&lt;User&gt;(obs&#x3D;&gt;{
-      const _info:StrapiRegisterPayload &#x3D; {
-        email:info.email,
-        username:info.nickname,
-        password:info.password
-      }
+  /**
+   * Registers a new user with the provided information.
+   * 
+   * @param info The user&#x27;s registration information.
+   * @returns An observable of the registered user.
+   */
+  register(info: UserRegisterInfo): Observable&lt;User&gt; {
+    return new Observable&lt;User&gt;(obs &#x3D;&gt; {
+      const _info: StrapiRegisterPayload &#x3D; {
+        email: info.email,
+        username: info.nickname,
+        password: info.password
+      };
       this.apiSvc.post(&quot;/auth/local/register&quot;, _info).subscribe({
-        next:async (data:StrapiRegisterResponse)&#x3D;&gt;{
-          
+        next: async (data: StrapiRegisterResponse) &#x3D;&gt; {
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
-          const _extended_user:StrapiExtendedUser&#x3D; {
+          const _extended_user: StrapiExtendedUser &#x3D; {
             name: info.name,
             surname: info.surname,
             user_id: data.user.id,
@@ -984,9 +1181,9 @@ export class AuthStrapiService extends AuthService{
               teams: [],
               trainers: []
             }
-          }
+          };
           try {
-            await lastValueFrom(this.apiSvc.post(&quot;/extended-users&quot;, {data:_extended_user}));
+            await lastValueFrom(this.apiSvc.post(&quot;/extended-users&quot;, { data: _extended_user }));
             const user &#x3D; await lastValueFrom(this.me());
             this._user.next(user);
             this._logged.next(true);
@@ -995,31 +1192,31 @@ export class AuthStrapiService extends AuthService{
           } catch (error) {
             obs.error(error);
           }
-          
         },
-        error:err&#x3D;&gt;{
+        error: err &#x3D;&gt; {
           obs.error(err);
         }
       });
     });
   }
 
+  /**
+   * Retrieves the current user&#x27;s information.
+   * 
+   * @returns An observable of the current user&#x27;s information.
+   */
   public me(): Observable&lt;any&gt; {
-    //obtiene el users me ,lo encadenamos con un pipe y hacemos un switchmap para mapear el valor del observable obteniendo el extended que también mapearemos
+    // Obtiene el usuario y lo encadena con un pipe y hace un switchMap para mapear el valor del observable obteniendo el extended user que también mapearemos
     return this.apiSvc.get(&#x27;/users/me&#x27;).pipe(
       switchMap((user: StrapiUser) &#x3D;&gt; {
-        // Realiza la segunda llamada a la api y le hacemos un pipe, dentro un Map
+        // Realiza la segunda llamada a la API y le hacemos un pipe, dentro un map
         return this.apiSvc.get(&#x60;/extended-users?filters[users_permissions_user]&#x3D;${user.id}&amp;populate&#x3D;players&amp;populate&#x3D;teams&amp;populate&#x3D;trainers&#x60;).pipe(
           map(extended_user_response &#x3D;&gt; {
-            //para simplificar el mapeo creamos extended_user que es el contenido dentro de la posicion 0 del array response.data
+            // Para simplificar el mapeo, creamos extended_user que es el contenido dentro de la posición 0 del array response.data
             let extended_user &#x3D; extended_user_response.data[0];
-            //ahora para cada tipo de valor que tiene el extended user que está contenido dentro de un array (players,teams, y trainers) hacemos un condicional en el que si existe lo mapeamos con su id, de lo contrario tenemos un array vacio
-
-            //lo hacemos con players
+            // Mapeamos los arrays de players, teams y trainers
             let players &#x3D; extended_user.attributes.players ? extended_user.attributes.players.data.map((p: any) &#x3D;&gt; p.id) : [];
-            //teams
             let teams &#x3D; extended_user.attributes.teams ? extended_user.attributes.teams.data.map((t: any) &#x3D;&gt; t.id) : [];
-            //y trainers
             let trainers &#x3D; extended_user.attributes.trainers ? extended_user.attributes.trainers.data.map((t: any) &#x3D;&gt; t.id) : [];
 
             // Construye el objeto &#x27;ret&#x27; con la información combinada
@@ -1034,14 +1231,15 @@ export class AuthStrapiService extends AuthService{
               teams: teams,
               trainers: trainers
             };
-            //devolvemos el objeto con toda la informacion combinada
+            // Devuelve el objeto con toda la información combinada
             return ret;
           })
         );
       }),
     );
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>

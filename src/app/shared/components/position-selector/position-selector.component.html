@@ -1,7 +1,7 @@
 
 <div class="position-selector-container">
 
-<ion-button 
+<ion-button class="button"
 [ngClass]="positionsSelected.includes(position.id) ? 'selected' : 'not-selected'"
 (click)="addPosition(position)" 
 [title]="position.name"

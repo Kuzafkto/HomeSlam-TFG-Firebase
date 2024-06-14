@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service to handle Firebase authentication.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -205,6 +212,10 @@
                                 <a href="#register" >register</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#updateUserStatus" >updateUserStatus</a>
                             </li>
@@ -234,12 +245,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of FirebaseAuthService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -248,6 +261,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -262,6 +276,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to interact with Firebase.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -305,7 +323,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:51</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:71</a></code>
 </div>
                         </td>
                     </tr>
@@ -313,6 +331,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs in a user with the provided credentials.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -323,6 +343,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -337,6 +358,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user&#39;s login credentials.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -346,7 +371,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the login result.</p>
+
                             </div>
                 </td>
             </tr>
@@ -380,7 +406,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:128</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:168</a></code>
 </div>
                         </td>
                     </tr>
@@ -388,11 +414,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs out the current user.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the logout result.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -425,7 +457,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:109</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:146</a></code>
 </div>
                         </td>
                     </tr>
@@ -433,11 +465,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves the current user&#39;s information.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/User.html" target="_self" >Observable&lt;User&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>An observable of the user&#39;s information.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -464,14 +502,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="95"
-                                    class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:95</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:127</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new document in the database with the user&#39;s registration information.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -482,6 +522,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -496,6 +537,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user&#39;s information to be saved in the database.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -505,7 +550,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable of the result.</p>
+
                             </div>
                 </td>
             </tr>
@@ -539,7 +585,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:70</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:96</a></code>
 </div>
                         </td>
                     </tr>
@@ -547,6 +593,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registers a new user with the provided information.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -557,6 +605,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -571,6 +620,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The information needed to register the user.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -580,7 +633,91 @@
 
                         </div>
                             <div class="io-description">
+                                <p>An observable of the registration result.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateUser(user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:178</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the user&#39;s profile information.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The user object containing updated information.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable of the update result.</p>
+
                             </div>
                 </td>
             </tr>
@@ -608,14 +745,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/core/services/api/firebase/firebase-auth.service.ts:55</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates the user&#39;s status based on their roles.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -626,6 +765,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -640,6 +780,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user whose status needs to be updated.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -681,7 +825,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:15</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:27</a></code>
 </div>
                         </td>
                     </tr>
@@ -689,6 +833,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Updates user data.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -699,6 +845,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -713,6 +860,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The extended user data.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -765,11 +916,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:20</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:42</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track if the user is an admin.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -804,11 +961,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:22</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:52</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track if the user is an owner.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -837,11 +1000,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:18</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:32</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track the login status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -870,11 +1039,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:24</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:62</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject to track the current user.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -909,11 +1084,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:21</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:47</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the admin status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -942,11 +1123,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:19</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:37</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the login status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -981,11 +1168,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:23</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:57</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the owner status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1014,11 +1207,17 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:25</a></code>
+                                <div class="io-line">Defined in         <code><a href="../injectables/AuthService.html#source" target="_self" >AuthService:67</a></code>
 </div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the current user.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1028,25 +1227,34 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Observable, from, map } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Observable, from, map, switchMap, tap } from &#x27;rxjs&#x27;;
 import { UserCredentials } from &#x27;../../../interfaces/user-credentials&#x27;;
 import { UserRegisterInfo } from &#x27;../../../interfaces/user-register-info&#x27;;
 import { User } from &#x27;../../../interfaces/user&#x27;;
 import { AuthService } from &#x27;../auth.service&#x27;;
 import { FirebaseService, FirebaseUserCredential } from &#x27;../../firebase/firebase.service&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { getAuth, updateEmail, updatePassword } from &#x27;firebase/auth&#x27;;
 
+/**
+ * Service to handle Firebase authentication.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class FirebaseAuthService extends AuthService {
 
+  /**
+   * Creates an instance of FirebaseAuthService.
+   * 
+   * @param firebaseSvc Service to interact with Firebase.
+   */
   constructor(
     private firebaseSvc: FirebaseService
   ) { 
     super();
 
-    // Suscribirse a isLogged$ y actualizar _logged y _user
+    // Suscribe to isLogged$ and update _logged and _user
     this.firebaseSvc.isLogged$.subscribe(logged &#x3D;&gt; {
       if (logged) {
         this.me().subscribe({
@@ -1068,6 +1276,11 @@ export class FirebaseAuthService extends AuthService {
     });
   }
 
+  /**
+   * Updates the user&#x27;s status based on their roles.
+   * 
+   * @param user The user whose status needs to be updated.
+   */
   private updateUserStatus(user: User) {
     if (user) {
       this._isAdmin.next(user.isAdmin &#x3D;&#x3D;&#x3D; true);
@@ -1078,6 +1291,12 @@ export class FirebaseAuthService extends AuthService {
     }
   }
 
+  /**
+   * Logs in a user with the provided credentials.
+   * 
+   * @param credentials The user&#x27;s login credentials.
+   * @returns An observable of the login result.
+   */
   public login(credentials: UserCredentials): Observable&lt;any&gt; {
     return new Observable&lt;any&gt;(subscr &#x3D;&gt; {
       this.firebaseSvc.connectUserWithEmailAndPassword(credentials.username, credentials.password).then((credentials: FirebaseUserCredential | null) &#x3D;&gt; {
@@ -1097,6 +1316,12 @@ export class FirebaseAuthService extends AuthService {
     });
   }
 
+  /**
+   * Registers a new user with the provided information.
+   * 
+   * @param info The information needed to register the user.
+   * @returns An observable of the registration result.
+   */
   public register(info: UserRegisterInfo): Observable&lt;any | null&gt; {
     return new Observable&lt;any&gt;(subscr &#x3D;&gt; {
       this.firebaseSvc.createUserWithEmailAndPassword(info.email, info.password).then((credentials: FirebaseUserCredential | null) &#x3D;&gt; {
@@ -1122,6 +1347,12 @@ export class FirebaseAuthService extends AuthService {
     });
   }
 
+  /**
+   * Creates a new document in the database with the user&#x27;s registration information.
+   * 
+   * @param info The user&#x27;s information to be saved in the database.
+   * @returns An observable of the result.
+   */
   private postRegister(info: User): Observable&lt;any&gt; {
     if (info.uuid)
       return from(this.firebaseSvc.createDocumentWithId(&#x27;users&#x27;, {
@@ -1136,6 +1367,11 @@ export class FirebaseAuthService extends AuthService {
     throw new Error(&#x27;Unexpected error&#x27;);
   }
 
+  /**
+   * Retrieves the current user&#x27;s information.
+   * 
+   * @returns An observable of the user&#x27;s information.
+   */
   public me(): Observable&lt;User&gt; {
     if (this.firebaseSvc.user?.uid)
       return from(this.firebaseSvc.getDocument(&#x27;users&#x27;, this.firebaseSvc.user.uid)).pipe(map(data &#x3D;&gt; {
@@ -1143,8 +1379,6 @@ export class FirebaseAuthService extends AuthService {
           name: data.data[&#x27;name&#x27;],
           email: data.data[&#x27;email&#x27;],
           nickname: data.data[&#x27;nickname&#x27;],
-          players: data.data[&#x27;players&#x27;],
-          teams: data.data[&#x27;teams&#x27;],
           picture: data.data[&#x27;picture&#x27;] ?? &quot;&quot;,
           uuid: data.id,
           isAdmin: data.data[&#x27;isAdmin&#x27;],
@@ -1155,9 +1389,33 @@ export class FirebaseAuthService extends AuthService {
       throw new Error(&#x27;User is not connected&#x27;);
   }
 
+  /**
+   * Logs out the current user.
+   * 
+   * @returns An observable of the logout result.
+   */
   public logout(): Observable&lt;any&gt; {
     return from(this.firebaseSvc.signOut(false));
   }
+
+ /**
+   * Updates the user&#x27;s profile information.
+   * 
+   * @param user The user object containing updated information.
+   * @returns An observable of the update result.
+   */
+ public updateUser(user: User): Observable&lt;any&gt; {
+  if (user.uuid) {
+    return from(this.firebaseSvc.updateDocument(&#x27;users&#x27;, {
+      nickname: user.nickname,
+      picture: user.picture
+    }, user.uuid)).pipe(
+      switchMap(() &#x3D;&gt; this.me()), // Fetch the updated user information
+      tap(updatedUser &#x3D;&gt; this._user.next(updatedUser)) // Update the user observable
+    );
+  }
+  throw new Error(&#x27;Unexpected error&#x27;);
+}
 }
 </code></pre>
     </div>

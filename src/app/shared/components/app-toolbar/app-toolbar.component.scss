@@ -1,5 +1,5 @@
 ion-toolbar{
---background: var(--ion-color-customBrown);
+--background: var(--ion-color-appBarBackground);
 }
 
 .home-slam-title {
@@ -14,9 +14,24 @@ ion-toolbar{
 .button-icon {
   width: 3em;
   height: 3em;
-  color: var(--ion-color-customGreen);
 }
 
 .hidden {
   visibility: hidden;
+}
+
+ion-button {
+  color:var(--ion-color-mediumEndCallToAction);
+  --background: var(--ion-color-mediumEndCallToAction);
+  --background-hover: var(--ion-color-callToActionGreen);
+  --background-activated: var(--ion-color-callToActionGreen);
+  --background-focused: var(--ion-color-callToActionGreen);
+  transition: box-shadow 0.3s ease;
+}
+ion-button:hover {
+  ion-icon{
+    color:var(--ion-color-textColorDark)
+  }
+  --background: var(--ion-color-callToActionGreen);
+  color:var(--ion-color-textColorDark);
 }

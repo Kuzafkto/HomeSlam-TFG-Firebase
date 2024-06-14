@@ -9,20 +9,33 @@ import { StrapiArrayResponse, StrapiExtendedUser, StrapiLoginPayload, StrapiLogi
 import { User } from '../../../interfaces/user';
 import { MediaService } from '../media.service';
 
-export class StrapiMediaService extends MediaService{
+/**
+ * This service handles media operations using Strapi. Note that this service is not currently being utilized.
+ */
+export class StrapiMediaService extends MediaService {
 
+  /**
+   * Creates an instance of StrapiMediaService.
+   * 
+   * @param apiSvc Service to make API requests.
+   */
   constructor(
-    private apiSvc:ApiService
+    private apiSvc: ApiService
   ) { 
     super();
   }
 
-  public upload(blob:Blob):Observable<number[]>{
+  /**
+   * Uploads a media file to Strapi.
+   * 
+   * @param blob The media file as a Blob.
+   * @returns An observable of the uploaded media IDs.
+   */
+  public upload(blob: Blob): Observable<number[]> {
     const formData = new FormData();
     formData.append('files', blob);
-    return this.apiSvc.post('/upload', formData).pipe(map((response:StrapiUploadResponse)=>{
-      return response.map(media=>media.id);
+    return this.apiSvc.post('/upload', formData).pipe(map((response: StrapiUploadResponse) => {
+      return response.map(media => media.id);
     }));
   }
-
 }

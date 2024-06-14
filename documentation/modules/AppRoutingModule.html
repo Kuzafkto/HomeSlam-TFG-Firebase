@@ -129,7 +129,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { PreloadAllModules, RouterModule, Routes } from &#x27;@angular/router&#x27;;
 import { AuthGuard } from &#x27;./core/guards/auth.guard&#x27;;
 import { OwnerGuard } from &#x27;./core/guards/owner.guard&#x27;;
@@ -137,63 +137,63 @@ import { OwnerGuard } from &#x27;./core/guards/owner.guard&#x27;;
 const routes: Routes &#x3D; [
   {
     path: &#x27;home&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/home/home.module&#x27;).then( m &#x3D;&gt; m.HomePageModule)&quot;,
-    canActivate:[AuthGuard]
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/home/home.module&#x27;).then(m &#x3D;&gt; m.HomePageModule)&quot;,
+    canActivate: [AuthGuard]  // Protege la ruta &#x27;home&#x27; con AuthGuard
   },
   {
     path: &#x27;&#x27;,
     redirectTo: &#x27;splash&#x27;,
-    pathMatch: &#x27;full&#x27;
+    pathMatch: &#x27;full&#x27;  // Redirige la ruta vacía a &#x27;splash&#x27;
   },
   {
     path: &#x27;login&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/login/login.module&#x27;).then( m &#x3D;&gt; m.LoginPageModule)&quot;
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginPageModule)&quot;
   },
   {
     path: &#x27;register&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/register/register.module&#x27;).then( m &#x3D;&gt; m.RegisterPageModule)&quot;
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/register/register.module&#x27;).then(m &#x3D;&gt; m.RegisterPageModule)&quot;
   },
   {
     path: &#x27;players&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/players/players.module&#x27;).then( m &#x3D;&gt; m.PlayersPageModule)&quot;,
-    canActivate:[AuthGuard]
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/players/players.module&#x27;).then(m &#x3D;&gt; m.PlayersPageModule)&quot;,
+    canActivate: [AuthGuard]  // Protege la ruta &#x27;players&#x27; con AuthGuard
   },
   {
     path: &#x27;teams&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/teams/teams.module&#x27;).then( m &#x3D;&gt; m.TeamsPageModule)&quot;,
-    canActivate:[AuthGuard]
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/teams/teams.module&#x27;).then(m &#x3D;&gt; m.TeamsPageModule)&quot;,
+    canActivate: [AuthGuard]  // Protege la ruta &#x27;teams&#x27; con AuthGuard
   },
   {
     path: &#x27;about&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/about/about.module&#x27;).then( m &#x3D;&gt; m.AboutPageModule)&quot;
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/about/about.module&#x27;).then(m &#x3D;&gt; m.AboutPageModule)&quot;
   },
   {
     path: &#x27;splash&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/splash/splash.module&#x27;).then( m &#x3D;&gt; m.SplashPageModule)&quot;
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/splash/splash.module&#x27;).then(m &#x3D;&gt; m.SplashPageModule)&quot;
   },
   {
     path: &#x27;games&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/games/games.module&#x27;).then( m &#x3D;&gt; m.GamesPageModule)&quot;,
-    canActivate:[AuthGuard]
-
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/games/games.module&#x27;).then(m &#x3D;&gt; m.GamesPageModule)&quot;,
+    canActivate: [AuthGuard]  // Protege la ruta &#x27;games&#x27; con AuthGuard
   },
   {
     path: &#x27;users-admin&#x27;,
-    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/users-admin/users-admin.module&#x27;).then( m &#x3D;&gt; m.UsersAdminPageModule)&quot;,
-    canActivate:[AuthGuard,OwnerGuard]
-
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/users-admin/users-admin.module&#x27;).then(m &#x3D;&gt; m.UsersAdminPageModule)&quot;,
+    canActivate: [AuthGuard, OwnerGuard]  // Protege la ruta &#x27;users-admin&#x27; con AuthGuard y OwnerGuard
   },
-
-
-
+  {
+    path: &#x27;settings&#x27;,
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/settings/settings.module&#x27;).then( m &#x3D;&gt; m.SettingsPageModule)&quot;,
+    canActivate: [AuthGuard] 
+  },
 
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })  // Configura el enrutador con las rutas y la estrategia de precarga
   ],
-  exports: [RouterModule]
+  exports: [RouterModule]  // Exporta RouterModule para que esté disponible en el resto de la aplicación
 })
 export class AppRoutingModule { }
 </code></pre>

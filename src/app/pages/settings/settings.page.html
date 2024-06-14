@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content class="main-background">
+  <div class="outer-container">
+    <div class="form-container">
+      <form class="form" [formGroup]="userForm" (ngSubmit)="updateUser()">
+        <div class="picture-container">
+          <app-picture-selectable formControlName="picture"></app-picture-selectable>
+        </div>
+        <div class="input-wrapper">
+          <ion-title class="input-title">{{ 'settings.nickname' | translate }}</ion-title>
+          <ion-item>
+            <ion-input formControlName="nickname" type="text"></ion-input>
+          </ion-item>
+        </div>
+        <ion-button type="submit" class="submit" [disabled]="!userForm.valid || !isFormDirty">{{ 'settings.update' | translate }}</ion-button>
+      </form>
+      <ion-title class="input-title">{{ 'settings.language' | translate }}</ion-title>
+      <div class="buttons-container">
+        <ion-button *ngFor="let language of languages" (click)="setLanguage(language)" class="button" expand="block">
+          {{ language | uppercase }} - {{ 'header.languages.' + language | translate }}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for managing JWT tokens. Provides methods to load, retrieve, save, and destroy JWT tokens.</p>
+
+            </p>
 
 
 
@@ -184,7 +191,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/core/services/jwt.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/jwt.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -217,19 +224,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/core/services/jwt.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/core/services/jwt.service.ts:76</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Destroys the JWT token, removing it from storage.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#JwtToken" target="_self" >Observable&lt;JwtToken&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable emitting the destroyed JWT token.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -254,19 +267,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/core/services/jwt.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/core/services/jwt.service.ts:46</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves the current JWT token.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#JwtToken" target="_self" >JwtToken</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>The current JWT token.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -291,19 +310,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/core/services/jwt.service.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/app/core/services/jwt.service.ts:22</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Loads the JWT token from storage.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#JwtToken" target="_self" >Observable&lt;JwtToken&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable emitting the loaded JWT token.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -328,14 +353,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/core/services/jwt.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/core/services/jwt.service.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Saves the JWT token to storage.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -346,6 +373,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -360,6 +388,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The JWT token to save.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -369,7 +401,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable emitting the saved JWT token.</p>
+
                             </div>
                 </td>
             </tr>
@@ -405,7 +438,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/core/services/jwt.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/jwt.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -423,39 +456,57 @@ import { Observable } from &#x27;rxjs&#x27;;
 import { Preferences } from &#x27;@capacitor/preferences&#x27;;
 
 export type JwtToken &#x3D; string;
-@Injectable({providedIn: &#x27;root&#x27;})
+
+/**
+ * Service for managing JWT tokens. Provides methods to load, retrieve, save, and destroy JWT tokens.
+ */
+@Injectable({ providedIn: &#x27;root&#x27; })
 export class JwtService {
 
   token: string &#x3D; &quot;&quot;;
 
-  constructor() {
-  }
+  constructor() {}
 
+  /**
+   * Loads the JWT token from storage.
+   * 
+   * @returns Observable emitting the loaded JWT token.
+   */
   loadToken(): Observable&lt;JwtToken&gt; {
-    
     return new Observable&lt;JwtToken&gt;(observer &#x3D;&gt; {
-      Preferences.get({key:&#x27;jwtToken&#x27;}).then((ret:any) &#x3D;&gt; {
+      Preferences.get({ key: &#x27;jwtToken&#x27; }).then((ret: any) &#x3D;&gt; {
         if (ret[&#x27;value&#x27;]) {
           this.token &#x3D; JSON.parse(ret.value);
-          if(this.token &#x3D;&#x3D; &#x27;&#x27; || this.token &#x3D;&#x3D; null)
+          if (this.token &#x3D;&#x3D; &#x27;&#x27; || this.token &#x3D;&#x3D; null) {
             observer.next(&#x27;&#x27;);
-          else 
+          } else {
             observer.next(this.token);
+          }
           observer.complete();
-        }
-        else {
+        } else {
           observer.next(&#x27;&#x27;);
           observer.complete();
         }
-      }).catch((error:any) &#x3D;&gt; observer.next(error));
+      }).catch((error: any) &#x3D;&gt; observer.next(error));
     });
   }
 
+  /**
+   * Retrieves the current JWT token.
+   * 
+   * @returns The current JWT token.
+   */
   getToken(): JwtToken {
     return this.token;
   }
 
-  saveToken(token: JwtToken):Observable&lt;JwtToken&gt; {
+  /**
+   * Saves the JWT token to storage.
+   * 
+   * @param token The JWT token to save.
+   * @returns Observable emitting the saved JWT token.
+   */
+  saveToken(token: JwtToken): Observable&lt;JwtToken&gt; {
     return new Observable&lt;JwtToken&gt;(observer &#x3D;&gt; {
       Preferences.set({
         key: &#x27;jwtToken&#x27;,
@@ -464,14 +515,18 @@ export class JwtService {
         this.token &#x3D; token;
         observer.next(this.token);
         observer.complete();
-      }).catch((error:any) &#x3D;&gt; {
+      }).catch((error: any) &#x3D;&gt; {
         observer.error(error);
       });
     });
   }
 
+  /**
+   * Destroys the JWT token, removing it from storage.
+   * 
+   * @returns Observable emitting the destroyed JWT token.
+   */
   destroyToken(): Observable&lt;JwtToken&gt; {
-    //this.token &#x3D; null;
     this.token &#x3D; &quot;&quot;;
     localStorage.removeItem(&#x27;CapacitorStorage.jwtToken&#x27;);
     return this.saveToken(this.token);

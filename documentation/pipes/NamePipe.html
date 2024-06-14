@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Pipe que transforma un nombre, capitalizando la primera letra y truncando el texto si excede el límite especificado.</p>
+
+            </p>
 
 
         <section data-compodoc="block-metadata">
@@ -162,14 +169,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="8"
-                                    class="link-to-prism">src/app/shared/pipes/name.pipe.ts:8</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/shared/pipes/name.pipe.ts:18</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Transforma un nombre, capitalizando la primera letra y truncando el texto si excede el límite especificado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -180,6 +189,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -194,6 +204,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El nombre a transformar.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>limit</td>
@@ -206,6 +220,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El límite de caracteres para truncar el nombre.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -215,7 +233,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>El nombre transformado, capitalizado y truncado si es necesario.</p>
+
                             </div>
                 </td>
             </tr>
@@ -229,22 +248,38 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 
+/**
+ * Pipe que transforma un nombre, capitalizando la primera letra y truncando el texto si excede el límite especificado.
+ */
 @Pipe({
   name: &#x27;name&#x27;
 })
 export class NamePipe implements PipeTransform {
-  transform(name: string|undefined,limit:number): string {
-    if (name) {
-    let firstLetterCapital &#x3D; name.charAt(0).toUpperCase() + name.slice(1);
 
-    if(firstLetterCapital.length&gt;limit){
-      return firstLetterCapital.substring(0, limit) + &#x27;... &#x27;
-    }else{
-      return firstLetterCapital
-    }
-    
-    }else{
-      return &quot;&quot;
+  /**
+   * Transforma un nombre, capitalizando la primera letra y truncando el texto si excede el límite especificado.
+   * 
+   * @param name El nombre a transformar.
+   * @param limit El límite de caracteres para truncar el nombre.
+   * @returns El nombre transformado, capitalizado y truncado si es necesario.
+   */
+  transform(name: string | undefined, limit: number): string {
+    // Verifica si el nombre es válido
+    if (name) {
+      // Capitaliza la primera letra del nombre
+      let firstLetterCapital &#x3D; name.charAt(0).toUpperCase() + name.slice(1);
+
+      // Verifica si el nombre capitalizado excede el límite
+      if (firstLetterCapital.length &gt; limit) {
+        // Trunca el nombre y añade &quot;...&quot; al final
+        return firstLetterCapital.substring(0, limit) + &#x27;... &#x27;;
+      } else {
+        // Devuelve el nombre completo si no excede el límite
+        return firstLetterCapital;
+      }
+    } else {
+      // Si el nombre es undefined o vacío, devuelve una cadena vacía
+      return &quot;&quot;;
     }
   }
 }

@@ -9,27 +9,59 @@ import { ApiService } from 'src/app/core/services/api/api.service';
 })
 export class PlayerInfoComponent implements OnInit {
 
+  /**
+   * The player object to display information for.
+   */
   @Input() player: Player | null = null;
+
+  /**
+   * Event emitted when the player card is clicked.
+   */
   @Output() onCardClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Event emitted when the delete button is clicked.
+   */
   @Output() onDeleteClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Determines whether to show the delete button.
+   */
   @Input() showDeleteButton: boolean = true;
 
   constructor(private apisvc: ApiService) { }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit() { }
 
+  /**
+   * Handles the click event on the player card.
+   */
   onCardClick() {
     this.onCardClicked.emit();
   }
 
+  /**
+   * Handles the click event on the delete button.
+   * 
+   * @param event The event object.
+   */
   onDeleteClick(event: any) {
     this.onDeleteClicked.emit();
     event.stopPropagation();
   }
 
+  /**
+   * Gets the URL for the position image based on the position ID.
+   * 
+   * @param positionId The ID of the position.
+   * @returns The URL of the position image.
+   */
   getPositionImageUrl(positionId: number): string {
-    // Aquí puedes devolver la URL de la imagen basada en el ID de la posición.
-    // De momento, usaremos una imagen genérica.
+    // Here you can return the URL of the image based on the position ID.
+    // For now, we use a generic image.
     return `/assets/positions/${positionId}.png`;
   }
 }

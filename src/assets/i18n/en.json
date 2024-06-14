@@ -9,7 +9,8 @@
         "submit":"Access",
         "access":"Home Slam Access",
         "pwdError":"Password has to be 12 characters longs at least",
-        "userError":"Name has to be 2 characters long at least"
+        "userError":"Name has to be 2 characters long at least",
+        "submitError":"Email or password is incorrect"
     },
     "register":{
         "email":"Email",
@@ -27,21 +28,10 @@
         "passwordError":"Password has to be 12 characters longs at least",
         "nickError":"Enter your nickname (2 characters long minimum)"
     },
-    "header":{
-        "user":{
-            "profile":"My profile",
-            "signout":"signout"
-        },
-        "languages":{
-            "es":"Spanish",
-            "en":"English"
-        }
-    },
-    
     "menu":{
         "players":"Players",
         "players-alt":"Go to Players",
-        "about":"About Kuza",
+        "games":"Games",
         "about-alt":"More about Kuza",
         "teams":"Teams",
         "teams-alt":"Go to Teams"
@@ -55,7 +45,9 @@
         "save":"Save",
         "ageError":"Age has to be 18 minimum",
         "title":"Players",
-        "submit":"Submit"
+        "submit":"Submit",
+        "downloadPlayersCsv":"Download players CSV"
+
     },
     "teams":{
         "new":"New Team",
@@ -63,7 +55,12 @@
         "name":"Name: ",
         "players":"Players",
         "title":"Teams",
-        "submit":"Submit"
+        "playerAssignator": "Player manager",
+        "availablePlayers":"Available players",
+        "currentTeam": "Players in current team",
+        "submit":"Submit",
+        "downloadTeamsCsv":"Download teams CSV"
+
     },
     "games":{
         "date":"Date",
@@ -73,7 +70,11 @@
         "visitorRuns":"Visitor team runs",
         "story":"Story",
         "runs":"Runs",
-        "submit":"Submit"
+        "submit":"Submit",
+        "votes":"votes",
+        "votesTitle":"Winner team votes",
+        "downloadVotesCsv":"Download votes CSV",
+        "downloadGamesCsv":"Download games CSV"
     },
     "errors":{
         "accessDeniedTitle":"Access Denied",
@@ -81,5 +82,18 @@
     },
     "users":{
         "isAdmin":"Admin"
-    }
+    },
+    "settings": {
+          "title": "Settings",
+          "language": "Language",
+          "nickname":"Nickname",
+          "update":"Update user"
+        },
+        "header": {
+          "languages": {
+            "es": "Spanish",
+            "en": "English"
+          }
+        }
+      
 }
