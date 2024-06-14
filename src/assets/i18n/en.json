@@ -26,7 +26,8 @@
         "nameError":"Enter your name (2 characters long minimum)" ,
         "surnameError":"Enter your surname (2 characters long minimum)",
         "passwordError":"Password has to be 12 characters longs at least",
-        "nickError":"Enter your nickname (2 characters long minimum)"
+        "nickError":"Enter your nickname (2 characters long minimum)",
+        "confirmPwd":"Confirm password"
     },
     "menu":{
         "players":"Players",

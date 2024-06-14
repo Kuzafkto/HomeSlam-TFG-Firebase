@@ -27,7 +27,9 @@
         "nameError":"Ingrese su nombre (minimo 2 caracteres)" ,
         "surnameError":"Ingrese su apellido (minimo 2 caracteres)",
         "passwordError":"La contraseña debe contener al menos 12 caracteres",
-        "nickError":"Ingrese un apodo (minimo 2 caracteres)"
+        "nickError":"Ingrese un apodo (minimo 2 caracteres)",
+        "confirmPwd":"Confirmar contraseña"
+
     },
     
     "menu":{
